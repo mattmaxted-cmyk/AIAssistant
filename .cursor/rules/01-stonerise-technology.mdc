@@ -1,0 +1,325 @@
+---
+description: StoneRise Technology context - SaaS ERP for construction. Apply when StoneRise, ERP, or product development topics are discussed.
+alwaysApply: false
+---
+
+# StoneRise Technology
+
+Multi-tenant SaaS ERP platform purpose-built for the construction and built environment sector. The only solution in the market addressing the complete construction business lifecycle.
+
+## Leadership & Team
+
+**UK-Based:**
+- Stelios Ioannou — CEO
+- Michael Loizias — CPO / Chief Software Architect
+- Harry Webb — Junior Developer
+- David Adair — Customer Success Manager
+- Maria Feliciano — EA to Michael and Stelios
+- Matt — Digital Marketing Manager
+- Haidar — Sales Manager
+- (1 Junior Developer — hiring)
+
+**India-Based Development Team:**
+- Mounil Shah — Lead Developer / Team Lead
+- Bhadresh — Senior Developer
+- Pavan — Developer
+- Kuldip — Developer
+
+## Key Differentiators
+
+- **Built by construction professionals** — Stelios and Michael are qualified QSs who ran construction businesses for ~10 years
+- **No translation loss** — Michael actively scopes and develops the software; speaks construction, technical, coding, and business languages
+- **Modern tech stack** — Not an outdated legacy system
+- **Bespoke QS AI** — Training own model specifically for quantity surveying, not plug-and-play
+- **Complete lifecycle** — Only solution covering the entire construction business lifecycle
+
+## Business Model
+
+**Pricing (Module-Specific):**
+- Procurement: Banded by PO volume (300 POs = £400/mo, 600 = £700/mo, 3000 = £1400/mo) + £200/1000 pages for Invoice AI
+- HR: £4/user/month + training courses charged individually
+- Commercial: £100/user + ~£25/application for subcontractor payment submissions (pricing TBC)
+
+**Target Market:**
+- Primary: Main contractors (Commercial app forces subcontractor adoption → built-in CRM pipeline)
+- Secondary: Subcontractors and any size company for point solutions (Procurement, Site Management, etc.)
+- Sector: Entire built environment
+
+**Customer Status:**
+- ~5 beta testers externally
+- Milestone Group acts as alpha tester (100 users)
+- Testing pipeline: StoneRise internal (80% bugs) → Milestone alpha (15% bugs + feature feedback) → Beta testers (5% bugs + broader feedback)
+
+---
+
+## Product Suite
+
+### Procurement App (Live)
+
+Complete procurement lifecycle management:
+
+**Core Workflows:**
+- Request Creation (Materials, Plant hire, Waste) with auto-save drafts
+- Intelligent RFQ Allocation — split requests across suppliers at line-item level
+- Supplier Management — directory, branches, performance tracking, documents
+- Multi-Level Approval Workflows — value-based routing, mobile approvals, delegation
+- Purchase Orders — auto-generated from approved RFQs
+- Delivery Tracking — real-time for Materials, Waste, Plant with quick receipt
+- AI Invoice Matching — batch upload, OCR, three-way matching, query management
+- Analytics & Reporting — dashboards, spending trends, supplier metrics, exports
+
+**Key Features:**
+- Project/sub-code cost allocation
+- Bulk operations (RFQs, approvals, uploads)
+- Product catalog with auto-SKUs
+- Item lists for repeat orders
+- Complete audit trail
+- Mobile-responsive
+- Page-based access control
+
+---
+
+### HR App (Live)
+
+Comprehensive employee lifecycle management:
+
+**Core Modules:**
+- Employee Management — records, profiles, org charts, departments, positions
+- Leave & Absence — multi-type requests, team calendars, Bradford Factor, RTW interviews, absence patterns
+- Expense Management — HMRC-compliant OCR scanning, mileage claims (auto HMRC rates), Sage integration
+- Learning Platform — LMS with SCORM, course wizard, video/PDF/assessments, certificates with QR verification, gamification
+- Training Records — complete matrix (internal, external, vocational, CSCS, professional certs)
+- Document Management — secure storage, expiry alerts, verification workflows, templates
+- Manager Portal — team oversight, approvals, absence monitoring, analytics
+
+**Key Features:**
+- Mobile-first for site workers
+- Role-based permissions (employee/manager/admin)
+- Bradford Factor intelligence
+- HMRC compliance
+- Sage integration
+- Supports PAYE and self-employed workers
+
+---
+
+### Commercial/QS App (In Development)
+
+Comprehensive project commercial management — upstream (client) and downstream (subcontractor):
+
+**Upstream (Client-Facing):**
+- WP1: Main Contract Setup — contract foundation, dynamic terminology
+- WP2: Main Contract Variations — unified workflow, auto-calculations, approval routing
+- WP3: Main Contract Payment Applications — flexible apps, automatic variation inclusion, multi-currency
+
+**Downstream (Subcontractor-Facing):**
+- WP4: Subcontractor Database & PQQ — platform-wide profiles, dual approval pathways
+- WP5: Bid Adjudication & Evaluation — settled quotation upload, structured evaluation
+- WP6: Sub-Contract Order Creation — formal orders from approved bids
+- WP7: Sub-Contract Variations — configurable workflows, auto-calculations
+- WP8: Payment Applications & Invoice Submission — complete lifecycle from submission to invoicing
+
+**Analytics:**
+- WP9: Commercial Analytics — dashboards, margin analysis, cash flow forecasting, performance metrics
+
+---
+
+### Health & Safety App (Planned)
+
+Comprehensive H&S management:
+- Risk Assessments, Method Statements, RAMS (with AI review)
+- Audits & Inspections (statutory, equipment)
+- Toolbox Talks
+- Permits to Work (hot works, confined spaces, electrical, height, excavations)
+- Site Inductions
+- Accident/Incident Reporting (RIDDOR, near-miss, investigations)
+- COSHH Assessments
+- PPE Management
+- LOLER compliance, lift plans, fire risk assessments
+
+**Cross-App Intelligence:**
+- Subcontractor H&S audit failures trigger warnings when awarding new packages
+- Red-carded operatives blocked from other company sites
+
+---
+
+### Site Management App (Planned)
+
+Day-to-day site manager operations:
+- Quality Control & Inspections — workflows, snagging, defects
+- Reporting — weekly/monthly reports, configurable templates
+- Daily Diaries — site entries, weather recording
+- Progress Tracking — works completion, milestone monitoring
+
+---
+
+### Labour Gang App (Planned)
+
+For labour-only subcontractors on piece rates (e.g. £20/m² roofing labour):
+- Short Form Orders — scope documents with unit rates
+- Gang Management — track gangs and rates
+- Self-Billing — generate invoices on behalf of gangs
+- Piece Rate Tracking — m², linear metres, per unit
+- Payment Processing
+
+---
+
+### Timesheets App (Planned)
+
+For directly employed operatives (day/hourly rates):
+- Timesheet Submission
+- Approval Workflows
+- Project Cost Allocation
+- Rate Management (day, hourly, overtime)
+- Payroll Integration
+
+---
+
+### Fleet Management App (Planned)
+
+Company vehicle management:
+- Vehicle Allocation
+- Repair Schedules (MOT, service reminders)
+- Repair Cost Tracking
+- Condition Monitoring
+- Cost Analysis (TCO, running costs)
+
+---
+
+### CRM App (Planned)
+
+Construction-specific CRM:
+- Contact Management
+- Tender Pipeline
+- Lead Sources (contacts, public portals, marketing)
+- Construction Sales Lifecycle
+- Activity Tracking
+
+---
+
+### Asset Management App (Planned)
+
+Equipment and asset management:
+- Asset Register
+- Tagging (QR, serial numbers)
+- Allocation (employees, projects, sites)
+- Monitoring
+- Auditing
+- Maintenance Tracking
+
+---
+
+## AI Capabilities
+
+### QS AI Model (Bespoke)
+
+Purpose-built AI to automate QS tasks — goal is to eliminate need for dedicated QS staff (AI handles heavy lifting, humans review output).
+
+**Downstream Variation Assessment:**
+- Subcontractor submits variation → AI reviews subcontract docs, spec, pricing → determines validity
+- Invalid: AI notifies subcontractor with reasons
+- Valid: AI assesses pricing using platform data
+
+**Upstream Variation Generation:**
+- Auto-creates corresponding client variation from approved subcontractor variations
+- Calculates margin/markup per contract terms
+- Links downstream/upstream for audit trail and margin visibility
+
+**Contract Document Analysis:**
+- Understands JCT, NEC, bespoke terms
+- Interprets specifications and scope boundaries
+- Identifies entitlement from contract clauses
+
+**Pricing Intelligence:**
+- Platform-wide data for cost assessments
+- References procurement history, comparable contracts, supplier pricing
+- Builds rate libraries from historical data
+
+**Measurement & Quantification:**
+- BOQ generation assistance
+- Quantity validation against drawings/specs
+- Cross-references site progress
+
+**Scope Gap Analysis:**
+- Analyses main contract scope, spec, BOQ
+- Identifies work elements needing subcontract packages
+- Flags scope gaps — ensures 100% main contract coverage
+- Suggests package splits and trade boundaries
+
+**Cost Forecasting:**
+- Predictive final account analysis
+- Early margin erosion warnings
+- Cash flow projections
+- Uncommitted cost identification
+
+---
+
+### Invoice Matching AI
+(Procurement) — OCR extraction, three-way matching (Invoice-PO-Delivery), discrepancy management
+
+### RAMS Review AI
+- Analyse submitted RAMS for compliance
+- Draft generation based on project scope/hazards
+- Recommendations and gap flagging
+
+### Quotation Extraction AI
+(Procurement) — automatically extracts line items from supplier quotations, maps to RFQ, eliminates manual entry
+
+---
+
+## Technical Architecture
+
+### Infrastructure (AWS)
+
+- **Frontend:** AWS Amplify (Next.js 15 micro-frontends)
+- **Backend:** AWS EC2 with PM2 (Fastify API, port 4003)
+- **Database:** AWS RDS PostgreSQL (primary) + DynamoDB (audit/API logs, metrics)
+- **Cache:** Redis/Valkey (sessions, caching)
+- **Storage:** AWS S3 (documents)
+- **Monitoring:** Sentry (errors, performance)
+- **Deployment:** CodePipeline/CodeDeploy (test/stage/production)
+
+### Architecture Patterns
+
+- **Hybrid Micro-Frontend:** Host app (Next.js 15 App Router) + remote modules (Pages Router + Module Federation) via RemoteLoader
+- **Class-Based Backend with DI:** Controller-Service-Repository pattern with dependency injection
+- **Layered Separation:** Controller (HTTP only) → Service (business logic, logging, audit) → Repository (data access, silent)
+- **BFF Pattern:** Next.js API routes as proxy layer (CSRF/security, no business logic)
+- **Modular Prisma Schemas:** Split into work package files (wp1-main-contract.prisma, etc.) with auto-discovery
+- **Git-Based Package Distribution:** Shared auth (@myerp/auth) via Git dependency, internal packages via workspace protocol
+- **Dual Logging:** Winston (structured) + DynamoDB (audit trails) + Sentry (errors)
+
+### Database Design
+
+- **Multi-tenancy:** Row-level with tenantId on every table
+- **Separate DBs per app group:** Core (Procurement, Shell, HR), Commercial, Site Management, etc.
+- **Soft Delete:** All entities have deletedAt (never hard delete)
+- **Mandatory Indexes:** tenantId, deletedAt, createdAt
+- **Audit Fields:** createdAt, createdBy, updatedAt, updatedBy, deletedAt, deletedBy
+- **Tenant Isolation:** EVERY query filters by tenantId AND deletedAt: null (enforced at repository layer)
+- **DynamoDB:** Audit logs, API logs, error logs (no ACID requirements)
+- **ORM:** Prisma with modular schema organization, singleton client, connection pooling
+
+### Tech Stack
+
+- Next.js 15, TypeScript
+- Fastify (backend API)
+- Prisma, PostgreSQL, DynamoDB
+- Tailwind CSS
+- JWT authentication
+- TurboRepo (monorepo)
+
+---
+
+## Integrations
+
+**Current (Import/Export):**
+- Office 365 / Microsoft Exchange — outbound email notifications
+- CSV/Excel imports for bulk data
+- Export for accounting feeds
+- Sage integration via export files
+
+**Future Roadmap:**
+- Direct Sage/Xero integrations
+- Open Banking
+- CIS (HMRC) integration
+- Credit checking (CreditSafe, Experian)
