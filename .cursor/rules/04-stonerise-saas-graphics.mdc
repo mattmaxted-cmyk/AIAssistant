@@ -1,0 +1,76 @@
+---
+description: Guidelines for turning StoneRise screenshots into polished SaaS-style graphics for organic LinkedIn posts.
+alwaysApply: false
+---
+
+# StoneRise SaaS-Style Graphics (Organic LinkedIn)
+
+Use this when remaking StoneRise product screenshots into clean, modern visuals for founder/employee LinkedIn posts (not paid ads).
+
+## Must-Haves
+
+- **Look like product design, not an advert**: no big headlines, no CTA buttons, no "Book a demo", no promotional badges
+- **Keep the UI truthful**: preserve the same feature/flow shown; don't invent UI elements or claims
+- **Use the official logo**: `Marketing/Brand/stonerise-logo.png` (small, subtle; plenty of padding)
+
+---
+
+## Two Graphic Styles
+
+Choose the appropriate style based on content and context.
+
+### Style A — Polished Screenshot (Browser Frame)
+
+Best for: showing a specific workflow, form, or single-screen feature in context.
+
+- Place UI inside a clean browser/app window frame (rounded corners, thin top bar with traffic-light dots)
+- Soft gradient background behind the frame
+- Subtle drop shadow on the frame
+- Logo placed small outside the frame (bottom-right corner)
+
+### Style B — Conceptual Floating UI (Layered Cards)
+
+Best for: dashboards, analytics, multi-element features, or conveying capability without showing exact screens.
+
+**Composition:**
+- Multiple UI cards/panels floating and overlapping at slight angles
+- No browser frame — elements float freely on the background
+- Layered depth with soft shadows between cards
+- Call-out stat badges or progress rings to highlight key metrics
+
+**Visual language:**
+- Stylised, simplified data (clean tables, rounded charts, branded accent colours)
+- Soft, light gradient background (off-white to pale blue/green/grey)
+- Generous whitespace; avoid clutter
+- Accent colours from StoneRise palette (greens, blues) for highlights, icons, progress bars
+
+**Examples of card types:**
+- Data tables (severity, status, amounts)
+- Line/area charts showing trends over time
+- Stat call-outs ("52 Identified", "Approval delays reduced by 75%")
+- Progress rings or status indicators
+- Workflow node snippets
+
+---
+
+## Shared Guidelines (Both Styles)
+
+### Palette
+- **Backgrounds:** light neutrals — off-white, pale grey, soft gradients
+- **Accents:** StoneRise green (#00A86B) and blue (#1E5AA8) for highlights, icons, progress elements
+- **Text:** dark navy/charcoal for readability
+
+### Legibility
+- All text must be readable at LinkedIn mobile feed size (~1080×1080 displayed at ~500px)
+- Minimum effective font size ~14px at final resolution
+
+### Branding
+- Include StoneRise logo subtly (small, bottom-right or bottom-centre, outside main UI elements)
+- Do not over-brand; this is organic content, not an ad
+
+## Avoid
+
+- Heavy noise, harsh glows, gimmicky 3D, or overly "salesy" layouts
+- Over-branding: keep logo and accents understated
+- Inventing UI elements or stats not present in the source material
+- Browser chrome for Style B (floating UI should not have window frames)

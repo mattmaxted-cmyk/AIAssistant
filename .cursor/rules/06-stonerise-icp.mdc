@@ -1,0 +1,74 @@
+---
+description: StoneRise ICP and persona targeting rules. Apply when writing LinkedIn content, creating ads, building lead lists, configuring PhantomBuster, segmenting HubSpot, or any targeting/persona decisions.
+alwaysApply: false
+---
+
+# StoneRise ICP & Persona Targeting
+
+Reference doc: `Marketing/StoneRise-ICP.md`
+
+## Core ICP
+
+| Attribute | Ideal | Acceptable |
+|-----------|-------|------------|
+| Geography | United Kingdom | UK-based |
+| Industry | Construction main contractors, subcontractors | Any built environment contractor |
+| Turnover | £10m – £50m | £5m – £100m |
+| Employees | 50 – 200 | 11 – 500 |
+| Monthly PO Volume | 200+ | 100+ |
+
+## Four Buyer Personas
+
+| Persona | Key Job Titles | Decision Authority |
+|---------|---------------|-------------------|
+| **Commercial Leader** | Commercial Director, QS Director, Head of Commercial | High |
+| **Finance Leader** | Finance Director, FD, Financial Controller, CFO | High |
+| **Procurement Leader** | Procurement Manager, Procurement Director, Head of Procurement, Buying Manager | Medium-High |
+| **Operations Leader** | Managing Director, MD, Operations Director, CEO, Owner | Highest |
+
+## Michael vs Stelios Targeting Split
+
+| | Michael Loizias | Stelios Ioannou |
+|---|---|---|
+| **Primary Persona** | Commercial Leader | Finance Leader |
+| **Secondary Persona** | Procurement Leader, Tech-forward MDs | Business-focused MDs |
+| **Content Angle** | Product features, technical deep-dives, QS workflows, building in public | ROI, business case, margin protection, scaling efficiency |
+| **Tone** | Enthusiastic builder, practitioner | Strategic advisor, financial rigour |
+
+### Michael's LinkedIn Targeting
+
+**Include:** Commercial Director, Commercial Manager, QS Director, Head of Commercial, Operations Director, Technical Director, Procurement Manager, Procurement Director, Head of Procurement, Buying Manager
+
+**Exclude:** Finance Director, Financial Controller, CFO
+
+### Stelios's LinkedIn Targeting
+
+**Include:** Finance Director, FD, Financial Controller, CFO, Managing Director, MD, Owner, CEO, Founder
+
+**Exclude:** Commercial Director, QS Director, Procurement Director (these go to Michael)
+
+## Exclusions (Never Target)
+
+- Recruiters / Staffing agencies
+- Software vendors / SaaS companies
+- Marketing agencies / Consultants
+- Tier 1 contractors (Balfour Beatty, Skanska, etc.)
+- Non-UK companies
+
+## Post Tagging
+
+Every LinkedIn post should include a target persona tag:
+
+```
+<!-- Target: Commercial Leader -->
+<!-- Target: Finance Leader -->
+<!-- Target: Procurement Leader -->
+<!-- Target: Operations Leader -->
+```
+
+## Quick Reference
+
+- **Procurement titles ARE now included** — Procurement Manager, Director, Head of Procurement are valid targets
+- Michael owns Commercial + Procurement personas
+- Stelios owns Finance + Operations (MD/FD) personas
+- No scatter-gun approach — every post and connection should map to a specific persona

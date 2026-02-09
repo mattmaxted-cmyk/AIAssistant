@@ -5,7 +5,7 @@
 **Target Audience:**
 - UK construction sub-contractors and main contractors
 - Commercial, Financial, Buyer roles at **Director level**
-- Exclude: Procurement job titles
+- Include: Procurement job titles (Procurement Manager, Procurement Director, Head of Procurement)
 
 **Target Outcome:** 10-20 intro calls booked per month from warm leads.
 
@@ -86,8 +86,8 @@ Build a targeted network of construction decision-makers who will see StoneRise 
 | Company Headcount | 11-50, 51-200, 201-500, 501-1000 |
 | Seniority Level | Director, VP, CXO, Owner, Partner |
 | Function | Finance, Operations |
-| Title Keywords | `Commercial Director`, `Finance Director`, `Financial Controller`, `Commercial Manager`, `Buying Manager`, `Buyer`, `QS Director`, `Operations Director`, `Managing Director` |
-| Exclude Titles | `Procurement Manager`, `Procurement Director`, `Head of Procurement` |
+| Title Keywords | `Commercial Director`, `Finance Director`, `Financial Controller`, `Commercial Manager`, `Buying Manager`, `Buyer`, `QS Director`, `Operations Director`, `Managing Director`, `Procurement Manager`, `Procurement Director`, `Head of Procurement` |
+| Exclude Titles | — |
 
 **Export:** Save search as CSV with:
 - Full name
@@ -194,13 +194,13 @@ Convert people who engage with StoneRise content into qualified leads and intro 
 **Filter Criteria — INCLUDE if:**
 | Field | Include If Contains |
 |-------|---------------------|
-| Headline | `Director`, `MD`, `Managing Director`, `Commercial`, `Finance`, `Financial`, `Buyer`, `QS`, `Quantity Surveyor` |
+| Headline | `Director`, `MD`, `Managing Director`, `Commercial`, `Finance`, `Financial`, `Buyer`, `QS`, `Quantity Surveyor`, `Procurement` |
 | Company/Headline | `Construction`, `Contractor`, `Building`, `Civil`, `Roofing`, `M&E`, `Groundworks`, `Fit-out`, `Refurbishment` |
 
 **Filter Criteria — EXCLUDE if:**
 | Field | Exclude If Contains |
 |-------|---------------------|
-| Headline | `Procurement`, `Recruitment`, `Recruiter`, `Sales`, `Marketing`, `Consultant` (unless construction consultant) |
+| Headline | `Recruitment`, `Recruiter`, `Sales`, `Marketing`, `Consultant` (unless construction consultant) |
 | Company | `Software`, `Agency`, `Recruitment`, `Staffing` |
 
 **Process:**
