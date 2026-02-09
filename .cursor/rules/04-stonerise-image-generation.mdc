@@ -1,0 +1,139 @@
+---
+description: Rules for generating StoneRise marketing images and graphics. Apply when creating any visual assets, product illustrations, or social media graphics.
+alwaysApply: false
+---
+
+# StoneRise Image Generation Rules
+
+Use this when generating any marketing images, product graphics, or visual assets for StoneRise.
+
+## Official Logo — MANDATORY
+
+**Always use the official StoneRise logo from:** `Marketing/Brand/stonerise-logo.png`
+
+The logo consists of:
+- Three overlapping chevron/arrow shapes (green, teal, blue) pointing right
+- "STONERISE" wordmark below in green
+
+**Logo usage:**
+- Place in bottom-right corner, outside main content/cards
+- Keep small but clearly visible
+- Generous padding/whitespace around it
+- Never distort, recolour, or add effects
+- Never invent or generate a different logo
+
+---
+
+## Image Types
+
+### Type 1: Paid Ad Creatives
+
+For Meta, LinkedIn, or display ads with promotional intent.
+
+**Include:**
+- Bold headline (problem-first, per messaging canvas)
+- CTA button or prompt
+- Strong visual metaphor or attention-grabbing imagery
+- StoneRise logo
+
+**Style:** Dark/dramatic backgrounds acceptable, high contrast, direct messaging
+
+### Type 2: Organic LinkedIn Graphics (Founder/Employee Posts)
+
+For product updates, feature showcases, thought leadership visuals.
+
+**Must NOT look like an ad:**
+- No big headlines or CTA buttons
+- No "Book a demo" or promotional badges
+- Product illustration style, not advertisement
+
+**Two sub-styles available:**
+
+#### Style A — Polished Screenshot (Browser Frame)
+- UI inside clean browser/app window frame (rounded corners, traffic-light dots)
+- Soft gradient background behind frame
+- Logo small, outside the frame
+
+#### Style B — Conceptual Floating UI (Layered Cards)
+- Multiple UI cards floating and overlapping
+- No browser frame — elements float freely
+- Varied card angles (mix left tilt, right tilt, flat)
+- Soft shadows creating depth layers
+- Stat call-outs, progress indicators, mini charts
+
+---
+
+## Style B Layout Guidelines (Floating UI)
+
+### Composition Variance
+- **Vary card angles:** Some tilted left, some right, some nearly flat
+- **Vary card sizes:** Mix large panels, medium cards, small accent badges
+- **Asymmetrical layouts:** Avoid uniform grid arrangements
+- **Overlapping:** Cards should overlap to create depth
+- **Visual flow:** Arrange cards to suggest a process or workflow where relevant
+
+### Background Options (rotate to avoid repetition)
+- Off-white to pale blue-green gradient + dotted grid
+- Off-white to warm grey + subtle flowing curves
+- Off-white to pale lavender + diagonal lines
+- Light neutral to soft teal + abstract shapes
+
+### Card Types to Include
+- Data tables (status, amounts, categories)
+- Stat call-outs ("75%", "30 sec", "£2.1M")
+- Progress rings or bars
+- Mini charts (bar, donut, line)
+- Workflow node snippets
+- Status/alert badges
+- Process flow diagrams
+
+---
+
+## Colour Palette
+
+| Use | Colour | Hex |
+|-----|--------|-----|
+| Primary accent / success | StoneRise Green | #00A86B |
+| Secondary accent / UI | StoneRise Blue | #1E5AA8 |
+| Warnings / review items | Amber | #F59E0B |
+| Error / critical | Red | #EF4444 |
+| Backgrounds | Light neutrals | Off-white, pale grey, soft gradients |
+| Text | Dark navy/charcoal | #1E293B |
+
+---
+
+## Typography & Legibility
+
+- All text must be readable at LinkedIn mobile feed size (~1080×1080 displayed at ~500px)
+- Minimum effective font size ~14px at final resolution
+- Use clean sans-serif fonts
+- High contrast between text and background
+
+---
+
+## Content Accuracy
+
+- **Keep UI truthful:** Preserve the feature/flow shown in source screenshots
+- **Don't invent stats:** Only use approved proof points from the messaging canvas, or stats explicitly provided in post copy
+- **Match post content:** Graphics should reflect the key points from the accompanying LinkedIn post
+
+---
+
+## Reference Images
+
+When generating, always include these as reference:
+1. `Marketing/Brand/stonerise-logo.png` — for correct logo
+2. Previous generated images in the same style (for visual consistency)
+3. Any source screenshots provided by the user
+
+---
+
+## Checklist Before Generating
+
+- [ ] Official StoneRise logo will be included (bottom-right, outside content)
+- [ ] Image type identified (paid ad vs organic)
+- [ ] Style identified (browser frame vs floating UI)
+- [ ] Background style chosen (vary from recent images)
+- [ ] Card angles varied (not all same tilt)
+- [ ] Content matches post copy / feature being showcased
+- [ ] Colours match brand palette

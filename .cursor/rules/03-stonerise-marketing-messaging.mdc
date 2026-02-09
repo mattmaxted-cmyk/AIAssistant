@@ -1,0 +1,88 @@
+---
+description: StoneRise positioning, messaging and ad copy rules. Apply when writing any marketing copy, ad creatives, social posts, landing pages or email campaigns for StoneRise.
+alwaysApply: false
+---
+
+# StoneRise Marketing Messaging Rules
+
+All marketing ad copy must align with the Positioning & Messaging Canvas. Reference doc: `Marketing/stonerise-positioning-messaging-canvas.md`
+
+## Brand Asset (Logo)
+
+- Use the official StoneRise logo from `Marketing/Brand/stonerise-logo.png` in any marketing creative where a logo is needed
+- Do not recolour, distort, stretch, or add effects to the logo
+- Keep clear space around the logo (no tight cropping)
+
+## Target Audience
+
+- **Company:** UK construction sub-contractors and main contractors
+- **Persona:** Buyer, Commercial & Financial Teams at **Director level** — never target Procurement job titles
+- **Use Case:** Purchasing materials, managing external suppliers, consolidating spending
+
+## Category Framing
+
+Always position StoneRise as **"Construction Procurement Software"** — never generic "SaaS", "ERP" or "business software".
+
+## Messaging Hierarchy (follow this order)
+
+1. **Lead with the problem** — fragmented, manual procurement causing overspend, delays, errors
+2. **Introduce the category** — construction procurement software
+3. **State the solution** — one digital workflow for the entire procurement process
+4. **Reinforce with pillars** — multi-supplier management, automated POs, rule-based approvals, real-time tracking
+5. **Prove with benefits/stats** — use the approved proof points below
+6. **Close with differentiation** — better prices, faster approvals, fewer problems on site
+
+## Four Differentiation Pillars
+
+Always frame capabilities around these four pillars:
+
+| Pillar | Core Message |
+|--------|-------------|
+| Centralised Multi-Supplier Management | Compare quotes from multiple suppliers instantly |
+| Automated PO Creation | Auto-build POs from approved requests with specs attached |
+| Rule-Based Approvals | Custom approval chains with escalation logic and mobile access |
+| Real-Time Order Tracking | Live status, delivery photos, audit trails |
+
+## Approved Proof Points
+
+Use these stats in copy — do not invent new ones:
+
+- Invoices processed in **3 minutes**
+- **20%** time saved per order
+- **90%** fewer admin errors
+- Approval delays reduced by **75%**
+- **90%** fewer delivery disputes
+
+## Approved Core Copy Blocks
+
+**One-sentence description:**
+> StoneRise is an automated procurement tool that helps Commercial & Financial teams in construction purchase materials, manage external suppliers and consolidate spending in one digital workflow.
+
+**Differentiation summary (use as CTA foundation):**
+> Better prices, faster approvals and fewer problems on site.
+
+**Problem hook:**
+> Construction firms use a fragmented, manual process for procurement that results in overspend, poor supplier visibility, compliance gaps and costly delays.
+
+## Four Sub-Problems (use in hooks and pain-point copy)
+
+1. Overspend & pricing inconsistencies from manual, disparate systems
+2. Admin overload, errors and invoice disputes from paperwork and manual POs
+3. Slow, inconsistent approvals vulnerable to bottlenecks
+4. Zero visibility on requests and deliveries causing delays and compliance failures
+
+## Tone & Voice
+
+- Speak to professionals — confident, direct, no jargon-for-jargon's sake
+- Use construction-industry language naturally (POs, RFQs, site, subcontractors, quantities)
+- Problem-first, solution-second — always lead with the pain
+- Quantify outcomes wherever possible
+- Never use "revolutionary", "game-changing" or generic SaaS hype language
+
+## Do NOT
+
+- Target "Procurement" job titles — target Commercial, Financial, Buyer, Director roles
+- Call StoneRise an "ERP", "platform" or "suite" in ad copy — use "procurement software" or "procurement tool"
+- Invent statistics not listed in approved proof points
+- Use generic benefits — always tie back to construction-specific outcomes
+- Ignore the messaging hierarchy — problem first, always

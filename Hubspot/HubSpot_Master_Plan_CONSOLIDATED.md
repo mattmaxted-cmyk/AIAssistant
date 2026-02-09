@@ -4,9 +4,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Version** | 1.0 |
+| **Version** | 1.1 |
 | **Created** | 2026-02-03 |
-| **Status** | Ready for Review |
+| **Last Updated** | 2026-02-04 |
+| **Status** | Implementation In Progress |
 | **Primary Owner** | Matt Maxted (HubSpot/Marketing) |
 | **Process Owner** | Haidar (Sales Manager) |
 | **Executive Sponsor** | Stelios Ioannou |
@@ -88,7 +89,7 @@ Configure HubSpot lifecycle stages to track contact progression:
 |-------|-------------|---------|
 | **Subscriber** | Known contact, no buying intent | Newsletter signup, content download |
 | **Lead** | Potential buyer, light interest | "Request a Demo" form submission |
-| **MQL** | Marketing believes likely buyer | Qualification call booked |
+| **MQL** | Marketing believes likely buyer | Intro call booked |
 | **SQL** | Sales actively pursuing | Qualification passed |
 | **Opportunity** | Demo booked, deal exists | Product demo scheduled |
 | **Customer** | Closed won | Payment received |
@@ -120,9 +121,9 @@ Create custom **Lead Status** property (single select dropdown) for sub-stage tr
 | **NEW** | Submitted demo request, not yet booked call | New Demo Requests |
 | **ATTEMPTED_TO_CONTACT** | Rep has tried calling/emailing, no response yet | Attempted Contact - Follow Up |
 | **IN_PROGRESS** | Active conversation happening, working towards booking | In Progress |
-| **QUALIFICATION_SCHEDULED** | Discovery call booked, awaiting call | Qualification Calls Scheduled |
+| **QUALIFICATION_SCHEDULED** | Intro call booked, awaiting call | Intro Calls Scheduled |
 | **QUALIFIED** | Passed qualification, ready for demo | Qualified - Ready for Demo |
-| **NO_SHOW** | Missed qualification call | No Shows - Follow Up |
+| **NO_SHOW** | Missed intro call | No Shows - Follow Up |
 | **NO_RESPONSE** | Completed outreach sequence with no engagement | Periodic Follow-Up |
 | **OPEN_DEAL** | Deal exists (auto-set) | (Managed in pipeline) |
 | **BAD_TIMING** | Good fit but not right now | Bad Timing Follow-Ups |
@@ -142,25 +143,25 @@ Create custom **Lead Status** property (single select dropdown) for sub-stage tr
 
 Create 7 filtered contact views for sales team:
 
-### View 1: "Need Qualification Call"
+### View 1: "Need Intro Call"
 
 | Filter | Value |
 |--------|-------|
 | Lifecycle Stage | Lead |
 | Lead Status | NEW, ATTEMPTED_TO_CONTACT, IN_PROGRESS |
 
-**Purpose:** All leads awaiting qualification call booking
+**Purpose:** All leads awaiting intro call booking
 
 ---
 
-### View 2: "Qualification Calls Scheduled"
+### View 2: "Intro Calls Scheduled"
 
 | Filter | Value |
 |--------|-------|
 | Lifecycle Stage | MQL |
 | Lead Status | QUALIFICATION_SCHEDULED |
 
-**Purpose:** Upcoming discovery calls requiring prep
+**Purpose:** Upcoming intro calls requiring prep
 
 ---
 
@@ -191,9 +192,9 @@ Create 7 filtered contact views for sales team:
 | Filter | Value |
 |--------|-------|
 | Lead Status | NO_SHOW |
-| Qualification Call Date | Last 7 days |
+| Intro Call Date | Last 7 days |
 
-**Purpose:** Missed qualification calls needing follow-up
+**Purpose:** Missed intro calls needing follow-up
 
 ---
 
@@ -224,8 +225,9 @@ Create 7 filtered contact views for sales team:
 | Form Name | Type | Object | Purpose | Status |
 |-----------|------|--------|---------|--------|
 | **LP \| Procurement \| Demo Form** | Public | Contact | Website entry point - captures demo requests | ✅ Created |
-| **Sales Qualification Form** | Internal | Contact | Post-discovery call qualification capture | ✅ Created |
-| **Demo Debrief Form** | Internal | Deal | Post-demo details capture (NOT USED - fields entered directly on deal) | ❌ Not needed |
+| **Sales Qualification Form** | Internal | Contact | Post-intro call qualification capture (Procurement Problem Confirmed removed - not module-specific) | ✅ Created |
+| **~~Demo Debrief Form~~** | Internal | Deal | Post-demo details (NOT USED - fields entered directly on deal) | ❌ Not needed |
+| **~~Handover Form~~** | Internal | Deal | CSM handover (NOT USED - handover via 14 required deal properties) | ❌ Not needed |
 
 ---
 
@@ -238,7 +240,7 @@ Create 7 filtered contact views for sales team:
 | **Form Name** | Sales Qualification Form |
 | **Form Type** | Internal/Non-public (sales team only) |
 | **Associated Object** | Contact |
-| **Purpose** | Capture qualification data after discovery call, trigger SQL promotion workflow |
+| **Purpose** | Capture qualification data after intro call, trigger SQL promotion workflow |
 | **Status** | ✅ Created |
 
 ### Form Fields
@@ -248,13 +250,13 @@ Create 7 filtered contact views for sales team:
 | Field | Type | Options |
 |-------|------|---------|
 | Qualification Outcome | Dropdown | Qualified / Not a Fit / Bad Timing |
-| Procurement Problem Confirmed | Yes/No | - |
 | Contact Role | Dropdown | Decision Maker / Influencer / Champion / End User |
 | Company Size | Number | - |
 | Primary Module Interest | Dropdown | Procurement / HR / Commercial / H&S / Site Management |
 | Key Pain Points | Multi-checkbox | Manual processes / No visibility / Poor supplier mgmt / Compliance / Cost control / Other |
 | Budget Indication | Dropdown | £0-500/mo / £500-1000/mo / £1000-2500/mo / £2500+/mo / Not Discussed |
 | Timeline to Decision | Dropdown | <1 month / 1-3 months / 3-6 months / 6+ months / Exploring |
+| **Deal Value Estimate** | Currency | - |
 | Qualification Notes | Text area | - |
 
 #### Optional Fields
@@ -278,7 +280,7 @@ Create 7 filtered contact views for sales team:
 
 - **Visible to:** Sales team only
 - **Linked from:** Contact record sidebar or CRM card
-- **When to use:** After completing a qualification call with a lead
+- **When to use:** After completing an intro call with a lead
 
 ---
 
@@ -420,11 +422,10 @@ See [Section 8: Workflow 5](#workflow-5-auto-create-deal-on-product-demo-booking
 | Property | Type | Required | Purpose |
 |----------|------|----------|---------|
 | Qualification Form Completed | Checkbox | - | Triggers workflow |
-| Qualification Call Date | DateTime | - | Auto from meeting |
+| Intro Call Date | DateTime | - | Auto from meeting |
 | Qualification Meeting Booked | Checkbox | - | Auto-populated |
 | Overdue Qualification Form | Yes/No | No | Triggers View 3 when form not completed after call |
 | Qualification Outcome | Dropdown | Yes | Qualified / Not a Fit / Bad Timing |
-| Procurement Problem Confirmed | Yes/No | Yes | - |
 | Contact Role | Dropdown | Yes | Decision Maker / Influencer / Champion / End User |
 | Company Size | Number | Yes | - |
 | Current Software Used | Text | - | - |
@@ -433,6 +434,7 @@ See [Section 8: Workflow 5](#workflow-5-auto-create-deal-on-product-demo-booking
 | Key Pain Points | Multi-checkbox | Yes | Manual processes / No visibility / Poor supplier mgmt / Compliance / Cost control / Other |
 | Budget Indication | Dropdown | Yes | £0-500/mo / £500-1000/mo / £1000-2500/mo / £2500+/mo / Not Discussed |
 | Timeline to Decision | Dropdown | Yes | <1 month / 1-3 months / 3-6 months / 6+ months / Exploring |
+| **Deal Value Estimate** | Currency | Yes | Estimated annual contract value - copied to Deal Amount when deal created |
 | Decision Making Process | Text area | - | - |
 | Qualification Notes | Text area | Yes | - |
 
@@ -444,7 +446,7 @@ See [Section 8: Workflow 5](#workflow-5-auto-create-deal-on-product-demo-booking
 
 | Property | Type | Stage Required | Options |
 |----------|------|----------------|---------|
-| Deal Value | Currency | Demo Booked | - |
+| Amount (Deal Value) | Currency | Demo Booked | Copied from Contact "Deal Value Estimate" property via WF5 |
 
 #### Budget & Timeline Fields
 
@@ -592,7 +594,7 @@ Using HubSpot's native property logic feature to enforce required fields per sta
    - Lead Status → NEW
    - Contact Owner → Round-robin to sales team
    - `date_entered_new` → Current datetime
-2. Enroll in **Sequence 1: Qualification Call Booking** (NOT workflow email)
+2. Enroll in **Sequence 1: Intro Call Booking** (NOT workflow email)
 
 **Note:** Task creation and Haidar notification removed - Sequence 1 handles follow-up automatically.
 
@@ -600,34 +602,34 @@ Using HubSpot's native property logic feature to enforce required fields per sta
 
 ### Workflow 1B: Sequence 1 No Response Handler
 
-**Trigger:** Contact completed Sequence 1 (Qualification Call Booking)
+**Trigger:** Contact completed Sequence 1 (Intro Call Booking)
 
 **Actions:**
 1. Check if Lead Status = NEW (hasn't progressed)
    - IF yes → Set Lead Status → NO_RESPONSE
    - IF no → End (contact already booked or progressed)
 
-**Purpose:** Auto-marks contacts as cold when they complete the full sequence without booking a discovery call.
+**Purpose:** Auto-marks contacts as cold when they complete the full sequence without booking an intro call.
 
 ---
 
-### Workflow 2: Qualification Call Booked
+### Workflow 2: Intro Call Booked
 
-**Trigger:** Meeting booked with type = "Discovery Call" (internal name: Qualification Call)
+**Trigger:** Meeting booked with type = "Intro Call"
 
-**Note:** Meeting is called "Discovery Call" on all public-facing materials to avoid sales-y language.
+**Note:** Meeting is called "Intro Call" on all public-facing materials.
 
 **Actions:**
 1. Update contact properties:
    - Lifecycle Stage → MQL
    - Lead Status → QUALIFICATION_SCHEDULED
-   - Qualification Call Date → Meeting datetime
+   - Intro Call Date → Meeting datetime
    - Qualification Meeting Booked → True
    - `date_entered_qual_scheduled` → Current datetime
 2. Calculate: `days_new_to_qual_scheduled`
 3. Unenroll from Sequence 1
 4. Mark "New demo request" task complete
-5. Create new task: "Prep for qualification call: [Contact Name]"
+5. Create new task: "Prep for intro call: [Contact Name]"
    - Due: 1 day before call
 6. Create new task: "Complete qualification form: [Contact Name]"
    - Due: Meeting start time + 2 hours
@@ -724,9 +726,9 @@ Using HubSpot's native property logic feature to enforce required fields per sta
 
 ---
 
-### Workflow 4: Qualification Call No-Show Handler
+### Workflow 4: Intro Call No-Show Handler
 
-**Trigger:** Meeting type = "Discovery Call" AND Outcome = "No Show"
+**Trigger:** Meeting type = "Intro Call" AND Outcome = "No Show"
 
 **Actions:**
 1. Update Lead Status → NO_SHOW
@@ -768,6 +770,7 @@ Using HubSpot's native property logic feature to enforce required fields per sta
    - Owner: Contact owner (inherited)
    - Associated contacts: Primary + meeting attendees
    - Close date: +30 days from demo
+   - Amount: Copy from contact Deal Value Estimate
    - Copy from contact: Primary Module Interest, Contact Role, Company Size, Key Pain Points, Budget Indication, Qualification Notes, Secondary Module Interest
 4. Update contact:
    - Lifecycle Stage → Opportunity
@@ -821,6 +824,21 @@ Branch by Follow-Up Strategy property:
    - Notes: List all required fields (Demo Recording Link, Demo Notes, Budget, Timeline, Modules, Next Steps, Authority Present)
 
 **Purpose:** Prompts rep to fill in required demo fields. Property logic gate enforces completion before allowing progression to Demo Completed stage.
+
+---
+
+### Workflow 7B: Demo Completed - Pricing Task
+
+**Trigger:** Deal Stage changed to Demo Completed
+
+**Actions:**
+1. Create task:
+   - Title: "Prepare and send pricing: [Deal Name]"
+   - Assigned to: Deal owner
+   - Due: 2 days from now
+   - Notes: Prepare pricing proposal based on modules demonstrated, create proposal document, send to decision maker, fill pricing fields, progress to Pricing Presented
+
+**Purpose:** Prompts rep to prepare and send pricing after demo is complete.
 
 ---
 
@@ -919,14 +937,14 @@ Branch by Follow-Up Strategy property:
 - Current tier: **Sales Hub Professional**
 - **Workaround implemented:** Workflows create tasks prompting reps to manually enroll contacts in sequences
 - **Meeting links in sequences:** Use "Sender's meetings link" to dynamically insert contact owner's personal meeting scheduler
-- **Requirement:** Each sales rep must set their Discovery Call (30 min) as their default meeting link
+- **Requirement:** Each sales rep must set their Intro Call (30 min) as their default meeting link
 - Product Demo bookings are handled manually by reps (not via sequences)
 
-### Sequence 1: Qualification Call Booking
+### Sequence 1: Intro Call Booking
 
 **Enrollment:** Workflow 1 (demo request form submission)
-**Purpose:** Encourage contact to self-book discovery call
-**Auto-unenroll:** When discovery call is booked or contact replies
+**Purpose:** Encourage contact to self-book intro call
+**Auto-unenroll:** When intro call is booked or contact replies
 
 | Step | Day | Type | Template Name | Content |
 |------|-----|------|---------------|---------|
@@ -943,7 +961,7 @@ Branch by Follow-Up Strategy property:
 
 ### Sequence 2: No-Show Follow-Up
 
-**Enrollment:** Workflow 4 (discovery call no-show)
+**Enrollment:** Workflow 4 (intro call no-show)
 **Purpose:** Re-engage no-shows to reschedule
 **Auto-unenroll:** When meeting rescheduled or contact replies
 
@@ -953,7 +971,7 @@ Branch by Follow-Up Strategy property:
 | 2 | 2 | Email | S2-02 Still Interested | "Still interested in improving [Company]'s operations?" + sender's meeting link |
 | 3 | 3 | Task | S2-03 Call Task | Call no-show contact - final outreach attempt |
 
-**Meeting Link Strategy:** Uses "Sender's meetings link" (contact owner's default Discovery Call scheduler).
+**Meeting Link Strategy:** Uses "Sender's meetings link" (contact owner's default Intro Call scheduler).
 
 **On sequence completion (no response):** WF4B auto-updates Lead Status → NOT_INTERESTED
 
@@ -1169,39 +1187,43 @@ HubSpot automatically tracks for each lifecycle stage:
 
 ## 14. Dashboards & Reporting
 
-### Dashboard 1: Pre-Pipeline Funnel Analysis
+### Dashboard 1: Pre-Pipeline Funnel Analysis ✅ BUILT
 
 **Purpose:** Identify where contacts drop off before becoming opportunities
 
+**Status:** ✅ Built with 6 widgets
+
 **Widgets:**
-1. Funnel Conversion Rates (Lead → MQL → SQL → Opportunity)
-2. Average Time in Each Stage (bar chart)
-3. Fall-Off Point Identification (table with % drop-off)
-4. Lead Status Distribution Over Time (stacked area)
-5. Qualification Call Booking Rate (target: >60% within 7 days)
-6. No-Show Rate (target: <20%)
-7. Qualification Pass Rate by Rep
-8. Aging Analysis (contacts stuck >X days)
+1. Funnel Conversion Rates (Lead → MQL → SQL → Opportunity) ✅
+2. ~~Average Time in Each Stage~~ - SKIPPED (funnel report shows this data when clicked)
+3. Fall-Off Point Identification (table with % drop-off) ✅
+4. Lead Status Distribution Over Time (stacked area) ✅
+5. Intro Call Booking Rate (target: >60% within 7 days) ✅
+6. No-Show Rate (target: <20%) ✅
+7. Qualification Pass Rate by Rep ✅
+8. Aging Analysis (contacts stuck >X days) ✅
 
 ---
 
-### Dashboard 2: Deal Pipeline Health + Governance
+### Dashboard 2: Deal Pipeline Health + Governance ✅ BUILT
 
 **Purpose:** Monitor pipeline health and governance compliance
 
+**Status:** ✅ Built with 9 widgets
+
 **Pipeline Health Widgets:**
-1. Deal Stage Funnel (with conversion rates)
-2. Average Days in Each Deal Stage
-3. Pipeline Velocity Trend
-4. Deal Stage Distribution (count + value)
-5. Win/Loss Rate by Month
+1. Deal Stage Funnel (with conversion rates) ✅
+2. Average Days in Each Deal Stage ✅
+3. ~~Pipeline Velocity Trend~~ - SKIPPED (complex calculation, use funnel time data instead)
+4. Deal Stage Distribution (count + value) ✅
+5. Win/Loss Rate by Month ✅
 
 **Governance Widgets (NEW):**
-6. Deals Without Authority Confirmed
-7. Deals with Discounts Pending Approval
-8. Deals Won Without Handover Completed
-9. Deal Health Distribution (Healthy/At Risk/Stalled)
-10. Deals at Risk (Pricing >30 days, Demo Completed >14 days)
+6. Deals Without Authority Confirmed ✅
+7. Deals with Discounts Pending Approval ✅
+8. Deals Won Without Handover Completed ✅
+9. Deal Health Distribution (Healthy/At Risk/Stalled) ✅
+10. Deals at Risk (Pricing >30 days, Demo Completed >14 days) ✅
 
 ---
 
@@ -1217,7 +1239,7 @@ HubSpot automatically tracks for each lifecycle stage:
 5. Undefined Decision Timeline Deals
 
 **Activity Section (For Trend Analysis Only - NOT Rep Ranking):**
-6. Qualification calls held by rep
+6. Intro calls held by rep
 7. Product demos delivered by rep
 8. Proposals sent
 9. Module Interest Heatmap
@@ -1277,7 +1299,7 @@ HubSpot automatically tracks for each lifecycle stage:
 
 ---
 
-### Report 2: Qualification Call Conversion Analysis
+### Report 2: Intro Call Conversion Analysis
 
 **Filters:**
 - Date became MQL = Last 90 days
@@ -1285,7 +1307,7 @@ HubSpot automatically tracks for each lifecycle stage:
 
 **Columns:** Contact, Company, Call booked date, Call held date, Outcome, Days booked→held, No-show?, Owner
 
-**Purpose:** Track rep performance on qualification calls
+**Purpose:** Track rep performance on intro calls
 
 ---
 
@@ -1314,12 +1336,12 @@ HubSpot automatically tracks for each lifecycle stage:
 
 ## 16. Automated Alerts
 
-### Alert 1: Qualification Call Not Booked
+### Alert 1: Intro Call Not Booked
 - **Trigger:** Lead Status = NEW for >5 days
 - **Action:** Alert to contact owner + high-priority task
-- **Message:** "Contact has not booked qualification call after 5 days - manual outreach needed"
+- **Message:** "Contact has not booked intro call after 5 days - manual outreach needed"
 
-### Alert 2: Qualification Call No-Show
+### Alert 2: Intro Call No-Show
 - **Trigger:** Lead Status changes to NO_SHOW
 - **Action:** Immediate notification to rep + manager
 - **Message:** "No-show detected. Auto follow-up sent, needs manual outreach."
@@ -1349,7 +1371,7 @@ HubSpot automatically tracks for each lifecycle stage:
 | Event | Notification Type |
 |-------|-------------------|
 | New lead assigned | Email + in-app |
-| Qualification call scheduled | Email 24hrs before |
+| Intro call scheduled | Email 24hrs before |
 | Product demo scheduled | Email 24hrs before |
 | Qualification form not completed (2 days) | Reminder task |
 | SQL not progressed (10 days) | Alert task |
@@ -1361,7 +1383,7 @@ HubSpot automatically tracks for each lifecycle stage:
 | Event | Notification Type |
 |-------|-------------------|
 | New demo request | Daily digest (9am) |
-| Qualification call no-show | Immediate alert |
+| Intro call no-show | Immediate alert |
 | SQL stagnant >10 days | Daily digest |
 | Deal at risk | Weekly digest |
 | Deal Closed Won | Immediate |
@@ -1420,7 +1442,7 @@ Enable automatic detection on:
 
 | Metric | Target |
 |--------|--------|
-| Qualification call booking rate | >60% (within 7 days) |
+| Intro call booking rate | >60% (within 7 days) |
 | No-show rate | <20% |
 | Days NEW → QUAL_SCHEDULED | <3 days |
 | Days QUAL_SCHEDULED → Call held | <5 days |
@@ -1473,9 +1495,9 @@ Enable automatic detection on:
 | Task | Owner | Status |
 |------|-------|--------|
 | Create "LP \| Procurement \| Demo Form" | Matt | ✅ Done |
-| Set up Discovery Call meeting link (20-30 min) | Matt | ✅ Done |
+| Set up Intro Call meeting link (30 min) | Matt | ✅ Done |
 | Set up Product Demo meeting link (60 min) | Matt | ✅ Done |
-| Configure each sales rep's default meeting link to Discovery Call | Matt | ⏳ Per rep |
+| Configure each sales rep's default meeting link to Intro Call | Matt | ⏳ Per rep |
 | Create Sales Qualification Form | Matt | ✅ Done |
 | ~~Create handover form template~~ | Matt | ✅ Replaced with deal properties |
 
@@ -1485,7 +1507,7 @@ Enable automatic detection on:
 |------|-------|--------|
 | Build Workflow 1: Demo request handler | Matt | ✅ Done |
 | Build Workflow 1B: Sequence 1 no response handler | Matt | ✅ Done |
-| Build Workflow 2: Discovery call booked | Matt | ✅ Done |
+| Build Workflow 2: Intro call booked | Matt | ✅ Done |
 | Build Workflow 3: Qualification form validation | Matt | ✅ Done |
 | Build Workflow 3B: Bad timing follow-up | Matt | ✅ Done |
 | ~~Build Workflow 3C: SQL stagnant alert~~ | Matt | ✅ Built into WF3 Branch A |
@@ -1494,43 +1516,47 @@ Enable automatic detection on:
 | Build Workflow 5: Deal creation | Matt | ✅ Done |
 | Build Workflow 6: Closed lost routing | Matt | ✅ Done |
 | Build Workflow 7: Demo completed task reminder | Matt | ✅ Done |
+| Build Workflow 7B: Demo completed - pricing task | Matt | ✅ Done |
+| Build Workflow 2A: Qualification form overdue handler | Matt | ✅ Done |
 | Build Workflow 8: Discount approval routing | Matt | ✅ Done |
 | Build Workflow 8B: Discount approval notification | Matt | ✅ Done |
 | Build Workflow 9: Closed won auto-actions | Matt | ✅ Done |
 | Build Workflow 10: Pricing follow-up & escalation | Matt | ✅ Done |
-| Create Sequence 1: Discovery Call Booking | Matt | ✅ Done |
+| Create Sequence 1: Intro Call Booking | Matt | ✅ Done |
 | Create Sequence 2: No-Show Follow-Up | Matt | ✅ Done |
 | Configure property logic gates (stages 2-5) | Matt | ✅ Done |
 | Configure sequence enrollment (task-based workaround) | Matt | ✅ Done |
 | Configure handover properties (deal fields) | Matt | ✅ Done |
+| Customize deal record layout (3-column structure) | Matt | ✅ Done |
+| Customize contact record layout (3-column structure) | Matt | ✅ Done |
 | Build 5 automated alert workflows | Matt | ⏳ Pending |
 | Configure notifications | Matt | ⏳ Pending |
 
-### Week 3: Reporting
+### Week 3: Reporting ⏳ IN PROGRESS
 
-| Task | Owner |
-|------|-------|
-| Create Dashboard 1: Pre-Pipeline Funnel | Matt |
-| Create Dashboard 2: Deal Pipeline Health + Governance | Matt |
-| Create Dashboard 3: Sales Manager Overview | Matt |
-| Create Dashboard 4: Lead Source Attribution | Matt |
-| Create Dashboard 5: Enterprise Pipeline | Matt |
-| Build 4 custom reports | Matt |
-| Set up weekly/monthly reporting emails | Matt |
+| Task | Owner | Status |
+|------|-------|--------|
+| Create Dashboard 1: Pre-Pipeline Funnel | Matt | ✅ Done (6 widgets) |
+| Create Dashboard 2: Deal Pipeline Health + Governance | Matt | ✅ Done (9 widgets) |
+| Create Dashboard 3: Sales Manager Overview | Matt | ⏳ Pending |
+| Create Dashboard 4: Lead Source Attribution | Matt | ⏳ Pending |
+| Create Dashboard 5: Enterprise Pipeline | Matt | ⏳ Pending |
+| Build 4 custom reports | Matt | ⏳ Pending |
+| Set up weekly/monthly reporting emails | Matt | ⏳ Pending |
 
-### Week 3-4: Testing
+### Week 3-4: Testing ⏳ IN PROGRESS
 
-| Task | Owner |
-|------|-------|
-| Test complete funnel (Form → Customer) | Matt + Haidar |
-| Test all 5 sales sequences | Matt |
-| Test no-show scenario | Matt |
-| Test all 5 alert workflows | Matt |
-| Test discount approval workflow | Matt + Haidar |
-| Validate stage gates | Matt |
-| Verify dashboards populate correctly | Matt |
-| Confirm NO marketing contacts consumed | Matt |
-| Complete acceptance checklist | Matt + Haidar |
+| Task | Owner | Status |
+|------|-------|--------|
+| Test complete funnel (Form → Customer) | Matt + Haidar | ⏳ In Progress (3 test contacts created) |
+| Test all 5 sales sequences | Matt | ⏳ Pending |
+| Test no-show scenario | Matt | ⏳ Pending |
+| Test all 5 alert workflows | Matt | ⏳ Pending |
+| Test discount approval workflow | Matt + Haidar | ⏳ In Progress |
+| Validate stage gates | Matt | ✅ Done |
+| Verify dashboards populate correctly | Matt | ⏳ In Progress |
+| Confirm NO marketing contacts consumed | Matt | ⏳ Pending |
+| Complete acceptance checklist | Matt + Haidar | ⏳ Pending |
 
 ### Week 4: Training & Launch
 
@@ -1568,14 +1594,15 @@ Enable automatic detection on:
 - [x] Demo Booked gated by Workflow 5 (auto-creation)
 - [x] Demo Completed gated by property logic (7 required fields)
 - [x] Pricing Presented gated by property logic (5 required fields)
-- [x] Closed Won gated by property logic (14 required fields inc. Handover)
+- [x] Closed Won gated by property logic (14 handover + contract fields)
 - [x] Closed Lost gated by property logic (3 required fields)
 - [x] Discount approval via WF8 and WF8B implemented
 
 ### 4. Workflows
 - [x] Workflow 1: Demo request handler (with manual sequence enrollment task)
 - [x] Workflow 1B: Sequence 1 no response handler
-- [x] Workflow 2: Discovery call booked
+- [x] Workflow 2: Intro call booked
+- [x] Workflow 2A: Qualification form overdue handler
 - [x] Workflow 3: Qualification form validation (inc. SQL stagnant alerts at 5+10 days)
 - [x] Workflow 3B: Bad timing follow-up
 - [x] ~~Workflow 3C: SQL stagnant alert~~ (built into WF3 Branch A)
@@ -1584,25 +1611,27 @@ Enable automatic detection on:
 - [x] Workflow 5: Deal creation (inc. demo prep task)
 - [x] Workflow 6: Closed lost routing
 - [x] Workflow 7: Demo completed task reminder
+- [x] Workflow 7B: Demo completed - pricing task
 - [x] Workflow 8: Discount approval routing
 - [x] Workflow 8B: Discount approval notification
 - [x] Workflow 9: Closed won auto-actions
 - [x] Workflow 10: Pricing follow-up & escalation
+- [x] Record customization: Deals and Contacts configured
 - [ ] Workflows tested end-to-end
 
 ### 5. Sales Sequences
-- [x] Sequence 1: Discovery Call Booking created (with sender's meeting links)
+- [x] Sequence 1: Intro Call Booking created (with sender's meeting links)
 - [x] Sequence 2: No-Show Follow-Up created (with sender's meeting links)
 - [x] Sequence enrollment via task-based workaround implemented
-- [x] Meeting link strategy: Sender's default meeting link (30 min Discovery Call)
+- [x] Meeting link strategy: Sender's default meeting link (30 min Intro Call)
 - [x] ~~Sequence 3: Bad Timing Nurture~~ - Replaced by WF3B
 - [ ] Sequence 4: Competitive Win-Back (future - not needed yet)
 - [ ] Sequence 5: Product Update Engagement (future - not needed yet)
 - [ ] NO marketing contacts consumed by sequences verified
 
 ### 6. Dashboards
-- [ ] Dashboard 1: Pre-Pipeline Funnel configured
-- [ ] Dashboard 2: Deal Pipeline Health + Governance configured
+- [x] Dashboard 1: Pre-Pipeline Funnel configured (6 widgets - skipped Widget 2)
+- [x] Dashboard 2: Deal Pipeline Health + Governance configured (9 widgets - skipped Widget 3)
 - [ ] Dashboard 3: Sales Manager Overview configured
 - [ ] Dashboard 4: Lead Source Attribution configured
 - [ ] Dashboard 5: Enterprise Pipeline configured (if applicable)
@@ -1660,8 +1689,8 @@ flowchart TB
     
     subgraph PRE_PIPELINE["📋 PRE-PIPELINE (Contact-Based)"]
         direction TB
-        B["LEAD | NEW<br/>━━━━━━━━━━━━━<br/>View: Need Qualification Call<br/>Sequence 1: Qual Call Booking"]
-        C["MQL | QUALIFICATION_SCHEDULED<br/>━━━━━━━━━━━━━<br/>View: Qual Calls Scheduled<br/>Task: Prep for call"]
+        B["LEAD | NEW<br/>━━━━━━━━━━━━━<br/>View: Need Intro Call<br/>Sequence 1: Intro Call Booking"]
+        C["MQL | QUALIFICATION_SCHEDULED<br/>━━━━━━━━━━━━━<br/>View: Intro Calls Scheduled<br/>Task: Prep for call"]
         D["SQL | QUALIFIED<br/>━━━━━━━━━━━━━<br/>View: Ready for Demo Booking<br/>Task: Book product demo"]
     end
     
@@ -1829,7 +1858,7 @@ flowchart TD
 flowchart LR
     subgraph WORKFLOWS["WORKFLOWS"]
         W1["WF1: Demo Request Handler<br/>→ Lead + NEW + Assign owner"]
-        W2["WF2: Qual Call Booked<br/>→ MQL + Tasks created"]
+        W2["WF2: Intro Call Booked<br/>→ MQL + Tasks created"]
         W2A["WF2A: Overdue Form Handler<br/>→ Alerts sent"]
         W3["WF3: Qualification Validation<br/>→ Branch by outcome"]
         W4["WF4: No-Show Handler<br/>→ Follow-up sequence"]
@@ -1838,7 +1867,7 @@ flowchart LR
     end
     
     subgraph SEQUENCES["SALES SEQUENCES"]
-        SEQ1["Seq 1: Qual Call Booking<br/>Day 0, 2, 5 emails<br/>Auto-unenroll: Call booked"]
+        SEQ1["Seq 1: Intro Call Booking<br/>Day 0, 2, 5 emails<br/>Auto-unenroll: Call booked"]
         SEQ2["Seq 2: No-Show Follow-up<br/>Day 0 call + email<br/>Day 2, 7 follow-ups"]
         SEQ3["Seq 3: Bad Timing Nurture<br/>Day 7, 30, 60, 90<br/>Long-term nurture"]
         SEQ4["Seq 4: Competitive Win-Back<br/>Day 30, 90, 180<br/>Pre-renewal timing"]
@@ -1895,10 +1924,10 @@ flowchart LR
 
 ```mermaid
 flowchart TD
-    A[Website Form:<br/>Request Demo] --> B[LEAD<br/>NEW<br/>View: Need Qualification Call]
+    A[Website Form:<br/>Request Demo] --> B[LEAD<br/>NEW<br/>View: Need Intro Call]
     
-    B --> C[Books Qual Call]
-    C --> D[MQL<br/>QUALIFICATION_SCHEDULED<br/>View: Qualification Calls Scheduled]
+    B --> C[Books Intro Call]
+    C --> D[MQL<br/>QUALIFICATION_SCHEDULED<br/>View: Intro Calls Scheduled]
     
     D --> E{Attends?}
     E -->|No| F[MQL<br/>NO_SHOW<br/>View: No Shows Follow-Up]
@@ -1958,7 +1987,7 @@ flowchart TD
 | NEW | Form submitted | New Demo Requests |
 | ATTEMPTED_TO_CONTACT | Rep tried, no response | Attempted Contact - Follow Up |
 | IN_PROGRESS | Active conversation | In Progress |
-| QUALIFICATION_SCHEDULED | Call booked | Qualification Calls Scheduled |
+| QUALIFICATION_SCHEDULED | Call booked | Intro Calls Scheduled |
 | QUALIFIED | Passed qualification | Qualified - Ready for Demo |
 | NO_SHOW | Missed call | No Shows - Follow Up |
 | OPEN_DEAL | Deal exists | (Pipeline) |
@@ -1987,24 +2016,80 @@ Each sales representative must complete the following setup in their HubSpot acc
 
 | Meeting Type | Duration | Purpose | Set as Default? |
 |--------------|----------|---------|-----------------|
-| **Discovery Call** | 20-30 min | Initial qualification calls | **YES - Must be default** |
+| **Intro Call** | 30 min | Initial qualification calls | **YES - Must be default** |
 | **Product Demo** | 60 min | Product demonstrations | No |
 
-### Why Discovery Call Must Be Default
+### Why Intro Call Must Be Default
 
 - Sequences 1 & 2 use "Sender's meetings link" which pulls the rep's **default meeting scheduler**
-- This ensures booking links in automated sequences route to the correct meeting type (Discovery Call, not Product Demo)
+- This ensures booking links in automated sequences route to the correct meeting type (Intro Call, not Product Demo)
 - Product Demo bookings are manual, so they don't conflict
 
 ### Setup Steps Per Rep
 
-1. Create Discovery Call meeting scheduler (20-30 min)
+1. Create Intro Call meeting scheduler (30 min)
 2. Create Product Demo meeting scheduler (60 min)
-3. Set Discovery Call as **default meeting link** in HubSpot settings
-4. Test: Click "Insert sender's meeting link" in a test email - verify it shows Discovery Call
+3. Set Intro Call as **default meeting link** in HubSpot settings
+4. Test: Click "Insert sender's meeting link" in a test email - verify it shows Intro Call
+
+---
+
+## Appendix C: Test Scenarios
+
+### Test Contact 1: Full Funnel (Form → Customer)
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Form submitted | Lead, NEW |
+| 2 | Enroll in Sequence 1 | Sequence starts |
+| 3 | Book Intro Call | MQL, QUALIFICATION_SCHEDULED |
+| 4 | Mark meeting "Completed" | WF2A countdown |
+| 5 | Fill Sales Qualification Form (Qualified) | SQL, QUALIFIED, Task: Book demo |
+| 6 | Book Product Demo | Deal created (Demo Booked), Lifecycle: Opportunity, Task: Prep demo |
+| 7 | Mark Product Demo "Completed" | Task: Complete demo details |
+| 8 | Fill all demo fields | Can progress to Demo Completed |
+| 9 | Move to Demo Completed | Task: Prepare and send pricing (WF7B) |
+| 10 | Fill pricing fields | Can progress to Pricing Presented |
+| 11 | Move to Pricing Presented | Task: Follow up on decision (WF10) |
+| 12 | Set Discount Requested = Yes, 10% | Task for Haidar (WF8) |
+| 13 | Haidar sets Discount Approved = Yes | Notification to rep (WF8B) |
+| 14 | Fill all 14 handover fields | Can progress to Closed Won |
+| 15 | Move to Closed Won | Contact → Customer, David notified (WF9) |
+
+---
+
+### Test Contact 2: SQL Stagnant (No Demo Booked)
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Form submitted | Lead, NEW |
+| 2 | Enroll in Sequence 1 | Sequence starts |
+| 3 | Book Intro Call | MQL, QUALIFICATION_SCHEDULED |
+| 4 | Mark meeting "Completed" | WF2A countdown |
+| 5 | Fill Sales Qualification Form (Qualified) | SQL, QUALIFIED, Task: Book demo |
+| 6 | **STOP - Don't book demo** | Wait 5 days... |
+| 7 | (After 5 days) | Task: OVERDUE Book demo + Notification to Haidar |
+| 8 | (After 10 days) | Escalation notification to Haidar |
+
+**Tests:** WF3 SQL stagnant monitoring, aging reports
+
+---
+
+### Test Contact 3: No-Show Flow
+
+| Step | Action | Expected Result |
+|------|--------|-----------------|
+| 1 | Form submitted | Lead, NEW |
+| 2 | Enroll in Sequence 1 | Sequence starts |
+| 3 | Book Intro Call | MQL, QUALIFICATION_SCHEDULED |
+| 4 | **Mark meeting "No Show"** | Lead Status → NO_SHOW, Task: Enroll Sequence 2 |
+| 5 | Enroll in Sequence 2 | No-show follow-up emails start |
+| 6 | Let sequence complete (or test quick) | After 3 days, WF4B sets status → NOT_INTERESTED |
+
+**Tests:** WF4, WF4B, Sequence 2, no-show rate widget
 
 ---
 
 **Document End**
 
-*Next Action: Review with Haidar and Stelios before implementation*
+*Next Action: Complete testing with 3 test contacts, then review with Haidar and Stelios*
