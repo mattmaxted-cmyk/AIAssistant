@@ -1,0 +1,237 @@
+---
+description: Rules for writing StoneRise SEO blog posts. Apply when creating blog content, articles, or educational resources for the StoneRise website.
+alwaysApply: false
+---
+
+# StoneRise SEO Blog Writing Rules
+
+Apply these rules when writing any blog post or article for StoneRise.
+
+## Formatting Rules
+
+### Never Use Em Dashes
+
+Do NOT use em dashes (—) in any content. Instead use:
+
+- Colons for definitions or explanations
+- Commas for pauses or asides
+- Parentheses for additional information
+- Full stops to break into separate sentences
+
+**Wrong:**
+```
+Three-way matching compares three documents—purchase order, delivery note, and invoice—before approving payment.
+```
+
+**Correct:**
+```
+Three-way matching compares three documents (purchase order, delivery note, and invoice) before approving payment.
+```
+
+**Wrong:**
+```
+- **Time-consuming** — Each invoice takes 15-30 minutes
+```
+
+**Correct:**
+```
+- **Time-consuming:** Each invoice takes 15-30 minutes
+```
+
+### Hyphens Are Allowed
+
+Regular hyphens (-) are fine for:
+- Compound words (e.g., three-way, real-time, month-end)
+- Ranges (e.g., 15-30 minutes, 2-5%)
+
+---
+
+## Linking Requirements
+
+### Internal Links (Required)
+
+Every blog post MUST include 2-4 internal links to other StoneRise pages. These improve SEO and keep readers on the site.
+
+**Link to these pages where relevant:**
+
+| Page | URL | When to Link |
+|------|-----|--------------|
+| Procurement Product | `/products/procurement` | When discussing procurement features |
+| HR Product | `/products/hr` | When discussing HR features |
+| Commercial Product | `/products/commercial` | When discussing QS/commercial features |
+| Request Demo | `/request-demo` | Primary CTA |
+| About Us | `/about` | When mentioning StoneRise background |
+| Other Blog Posts | `/blog/[slug]` | When referencing related topics |
+
+**Internal Link Format:**
+
+```markdown
+Learn more about [construction procurement software](/products/procurement).
+```
+
+**Rules:**
+- Use descriptive anchor text (not "click here" or "learn more")
+- Link naturally within the content, not forced
+- Place at least one internal link in the first third of the article
+- CTA link at the end counts as one internal link
+
+### External Links (Required)
+
+Every blog post MUST include 1-3 external links to authoritative sources. These build trust and improve SEO.
+
+**Approved External Link Sources:**
+
+| Source Type | Examples | When to Use |
+|-------------|----------|-------------|
+| Industry Bodies | CIOB, RICS, Build UK, Construction Leadership Council | Industry statistics, best practices |
+| Government | HSE, HMRC, gov.uk | Regulations, compliance, tax |
+| Standards | ISO, British Standards | Certification, compliance references |
+| Research | Deloitte, McKinsey, PwC construction reports | Industry trends, statistics |
+| Trade Publications | Construction News, Building Magazine | Industry context |
+
+**External Link Format:**
+
+```markdown
+According to [RICS guidance on procurement](https://www.rics.org/...), best practice requires...
+```
+
+**Rules:**
+- Only link to authoritative, reputable sources
+- Open external links in new tab (add `{:target="_blank"}` in markdown if supported)
+- Never link to competitors
+- Verify links are live before publishing
+- Use specific pages, not homepages where possible
+
+### Link Placement Guidelines
+
+| Section | Internal Links | External Links |
+|---------|---------------|----------------|
+| Introduction | 0-1 | 0-1 |
+| Body Content | 1-2 | 1-2 |
+| Conclusion/CTA | 1 (demo link) | 0 |
+
+---
+
+## Blog Post Structure
+
+### Required Metadata Block
+
+Every blog post must start with:
+
+```markdown
+# [Title]
+
+> **Target Keyword:** [primary keyword]  
+> **Secondary Keywords:** [2-3 secondary keywords]  
+> **Target Persona:** [Commercial Leader / Finance Leader / Procurement Leader / Operations Leader]  
+> **Word Count:** ~[X] words  
+> **CTA:** [Request a demo / Download guide / etc.]
+
+---
+
+## Meta Description
+
+[150-160 character meta description including target keyword]
+
+---
+```
+
+### Required Sections
+
+1. **Introduction** (150-200 words)
+   - Hook with the problem
+   - Brief answer to the title question
+   - Promise what the article covers
+
+2. **Body Content** (800-1,200 words)
+   - Clear H2 and H3 structure
+   - Short paragraphs (2-4 sentences)
+   - Bullet points and tables where helpful
+   - Include target keyword in at least one H2
+
+3. **Conclusion** (100-150 words)
+   - Summarise key points
+   - Reinforce the main benefit
+
+4. **CTA Section** (50-100 words)
+   - Clear call to action
+   - Link with UTM parameters
+
+5. **FAQ Section** (Optional but recommended)
+   - 3-5 questions
+   - Direct answers (featured snippet format)
+
+---
+
+## Content Guidelines
+
+### Messaging Hierarchy
+
+Follow this order in every article:
+
+1. Lead with the problem
+2. Introduce the category (construction procurement software)
+3. State the solution
+4. Reinforce with pillars (multi-supplier, automated POs, approvals, tracking)
+5. Prove with benefits/stats
+6. Close with differentiation
+
+### Approved Stats (Use These Only)
+
+- Invoices processed in **3 minutes**
+- **20%** time saved per order
+- **90%** fewer admin errors
+- Approval delays reduced by **75%**
+- **90%** fewer delivery disputes
+
+### Tone
+
+- Professional but accessible
+- Use construction industry language naturally
+- Problem-first, solution-second
+- Quantify outcomes where possible
+- Never use "revolutionary", "game-changing", or generic SaaS hype
+
+### Do NOT
+
+- Call StoneRise an "ERP", "platform", or "suite"
+- Invent statistics not in the approved list
+- Use generic benefits without construction context
+- Write walls of text without headings or breaks
+- Use em dashes (—)
+
+---
+
+## CTA Link Format
+
+All blog CTAs must use proper UTM parameters:
+
+```
+https://www.stonerise.tech/request-demo?utm_source=blog&utm_medium=organic_search&utm_campaign=[keyword]_[product]&utm_content=blog_cta
+```
+
+**Example:**
+```
+https://www.stonerise.tech/request-demo?utm_source=blog&utm_medium=organic_search&utm_campaign=three_way_matching_procurement&utm_content=blog_cta
+```
+
+---
+
+## SEO Checklist
+
+Before publishing, verify:
+
+- [ ] Target keyword in title (H1)
+- [ ] Target keyword in meta description
+- [ ] Target keyword in at least one H2
+- [ ] Target keyword in first 100 words
+- [ ] 2-4 internal links included
+- [ ] 1-3 external links to authoritative sources
+- [ ] No em dashes used
+- [ ] CTA with UTM parameters
+- [ ] Word count meets minimum (800+ words)
+- [ ] FAQ section included (recommended)
+
+---
+
+*Reference: Marketing/SEO/StoneRise-SEO-Keyword-Strategy.md for keyword targets*
