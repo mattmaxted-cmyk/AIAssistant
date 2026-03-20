@@ -1,0 +1,290 @@
+---
+description: Mandatory UTM parameters for all social media posts and marketing links
+alwaysApply: false
+---
+# UTM Parameters — Master Rule Set
+
+**ALL** social media posts, marketing campaigns, and external links **MUST** include properly formatted UTM parameters. This is non-negotiable.
+
+---
+
+## URL Structure
+
+```
+https://www.stonerise.tech/[page]?utm_source=[source]&utm_medium=[medium]&utm_campaign=[campaign]&utm_content=[content]&utm_term=[term]
+```
+
+---
+
+## Parameters
+
+### utm_source — WHERE the traffic comes from
+
+**Format:** `[platform]_[account_type]`
+
+| Platform / Account | Value |
+|--------------------|-------|
+| Michael Loizias LinkedIn | `linkedin_michael` |
+| Stelios Ioannou LinkedIn | `linkedin_stelios` |
+| StoneRise Company LinkedIn | `linkedin_company` |
+| StoneRise Facebook | `facebook_company` |
+| StoneRise Instagram | `instagram_company` |
+| StoneRise Twitter/X | `twitter_company` |
+| Email campaigns | `email` |
+| Google Ads | `google_ads` |
+| Meta Ads (FB/IG paid) | `meta_ads` |
+
+✅ `utm_source=linkedin_michael`  
+❌ `utm_source=linkedin` (missing account type)  
+❌ `utm_source=Michael` (wrong format)
+
+---
+
+### utm_medium — HOW the traffic arrives
+
+**Format:** `[type]`
+
+| Traffic Type | Value |
+|--------------|-------|
+| Unpaid social posts | `organic_social` |
+| Paid social ads | `paid_social` |
+| Email campaigns | `email` |
+| Google PPC | `cpc` |
+| Retargeting ads | `retargeting` |
+| Partner / referral links | `partnership` |
+
+✅ `utm_medium=organic_social`  
+❌ `utm_medium=social` (not specific enough)
+
+---
+
+### utm_campaign — WHAT campaign or initiative
+
+**Format:** `[theme]_[product]`
+
+- **Theme:** Short descriptor of the campaign
+- **Product:** `procurement` | `hr` | `commercial` | `hs` | `general`
+- **No date** — dates belong in `utm_content` only
+
+✅ `utm_campaign=invoice_ai_procurement`  
+✅ `utm_campaign=weekly_post_general`  
+❌ `utm_campaign=202602_invoice_ai_procurement` (no date in campaign)  
+❌ `utm_campaign=InvoiceAI` (wrong format, missing product)  
+❌ `utm_campaign=february` (too vague)
+
+---
+
+### utm_content — WHICH specific post or variant
+
+**Format depends on post type:**
+
+| Post Type | Format | Example |
+|-----------|--------|---------|
+| Organic social posts | `YYYYMMDD_post[N]` | `20260304_post1` |
+| Multiple posts same day | `YYYYMMDD_post[N]` | `20260304_post2` |
+| Video ads | `video_[cta]` | `video_demo_cta` |
+| Carousel ads | `carousel_[topic]` | `carousel_supplier_mgmt` |
+| Static image ads | `static_[type]` | `static_testimonial` |
+| Text ads | `text_ad_[variant]` | `text_ad_v1` |
+
+**Date rules:**
+- Use ISO 8601 format: `YYYYMMDD` (e.g. March 4, 2026 → `20260304`)
+- Post number starts at `post1` and increments for each additional post that day
+
+✅ `utm_content=20260304_post1`  
+✅ `utm_content=20260304_post2`  
+❌ `utm_content=week1_post1` (old week-based format)  
+❌ `utm_content=post1` (no date)  
+❌ `utm_content=feb3_post1` (wrong date format)  
+❌ `utm_content=03022026_post1` (wrong date order)
+
+---
+
+### utm_term — Paid campaigns only (optional)
+
+**Format:** `[keyword_or_target]`
+
+Only for paid search or paid social with specific targeting.
+
+✅ `utm_term=procurement_software_uk`  
+✅ `utm_term=lookalike_demo_bookers`  
+— Leave blank for organic posts.
+
+---
+
+## Complete URL Examples
+
+**Michael Loizias — LinkedIn organic (Mar 4, 2026)**
+```
+https://www.stonerise.tech/request-demo?utm_source=linkedin_michael&utm_medium=organic_social&utm_campaign=invoice_ai_procurement&utm_content=20260304_post1
+```
+
+**Stelios Ioannou — LinkedIn organic (Mar 3, 2026)**
+```
+https://www.stonerise.tech/products/procurement/ROI?utm_source=linkedin_stelios&utm_medium=organic_social&utm_campaign=roi_calculator_general&utm_content=20260303_post1
+```
+
+**StoneRise Company Page — LinkedIn organic (Mar 4, 2026)**
+```
+https://www.stonerise.tech/request-demo?utm_source=linkedin_company&utm_medium=organic_social&utm_campaign=invoice_ai_procurement&utm_content=20260304_post1
+```
+
+**Meta paid ad — Carousel**
+```
+https://www.stonerise.tech/request-demo?utm_source=meta_ads&utm_medium=paid_social&utm_campaign=supplier_mgmt_procurement&utm_content=carousel_supplier_mgmt
+```
+
+**Google Search ad**
+```
+https://www.stonerise.tech/request-demo?utm_source=google_ads&utm_medium=cpc&utm_campaign=search_procurement&utm_content=text_ad_v1&utm_term=procurement_software_uk
+```
+
+---
+
+## Active Campaigns
+
+Campaign names are **date-independent** and reusable across months. Posting dates are tracked via `utm_content` only.
+
+### Procurement
+
+| Campaign Theme | utm_campaign |
+|----------------|--------------|
+| Invoice AI | `invoice_ai_procurement` |
+| Delivery Tracking | `delivery_tracking_procurement` |
+| Supplier Management | `supplier_mgmt_procurement` |
+| Approval Workflows | `approval_workflows_procurement` |
+| Three-Way Matching | `three_way_matching_procurement` |
+| RFQ Workflow | `rfq_workflow_procurement` |
+
+### Commercial
+
+| Campaign Theme | utm_campaign |
+|----------------|--------------|
+| Commercial App Launch | `commercial_launch_commercial` |
+| Commercial App Teaser | `commercial_teaser_commercial` |
+| Payment Errors | `payment_errors_commercial` |
+| QS AI Feature | `qs_ai_commercial` |
+| Payment Application Cycle | `payment_cycle_commercial` |
+| Pay Less Notice | `pay_less_notice_commercial` |
+| Subcontractor Over-claiming | `subcontractor_overclaiming_commercial` |
+| Lost Variations | `lost_variations_commercial` |
+
+### HR
+
+| Campaign Theme | utm_campaign |
+|----------------|--------------|
+| Mobile Expenses | `mobile_expenses_hr` |
+
+### Health & Safety
+
+| Campaign Theme | utm_campaign |
+|----------------|--------------|
+| H&S App Preview | `hs_app_preview_hs` |
+
+### General / Multi-product
+
+| Campaign Theme | utm_campaign |
+|----------------|--------------|
+| ROI Calculator | `roi_calculator_general` |
+| Weekly Content | `weekly_post_general` |
+| Cash Flow | `cash_flow_general` |
+| Connected Systems | `connected_systems_general` |
+| Scaling Efficiency | `scaling_efficiency_general` |
+| Origin Story | `origin_story_general` |
+| Roadmap Preview | `roadmap_preview_general` |
+| Data Security | `data_security_general` |
+| UX Focus | `ux_focus_general` |
+| Cost Analysis | `cost_analysis_general` |
+
+---
+
+## Validation Checklist
+
+Before publishing any post containing a URL:
+
+- [ ] `utm_source` — correct platform and account type
+- [ ] `utm_medium` — matches traffic type
+- [ ] `utm_campaign` — `[theme]_[product]` format, **no date**
+- [ ] `utm_content` — `YYYYMMDD_post[N]` for organic; creative identifier for ads
+- [ ] `utm_term` — included only for paid campaigns
+- [ ] All values lowercase — no capital letters
+- [ ] Underscores only — no spaces or hyphens
+- [ ] Parameters separated by `&`
+- [ ] Date in `utm_content` matches actual publishing date
+- [ ] Post number correct (increments for multiple posts on same day)
+
+---
+
+## Common Mistakes
+
+❌ No UTMs at all
+```
+https://www.stonerise.tech/request-demo
+```
+
+❌ Date inside campaign name
+```
+utm_campaign=202602_invoice_ai_procurement  →  utm_campaign=invoice_ai_procurement
+```
+
+❌ Missing account type in source
+```
+utm_source=linkedin  →  utm_source=linkedin_michael
+```
+
+❌ Wrong date format in content
+```
+utm_content=week1_post1   →  utm_content=20260304_post1
+utm_content=feb3_post1    →  utm_content=20260304_post1
+utm_content=03022026_post1  →  utm_content=20260304_post1
+```
+
+❌ Capital letters or spaces
+```
+utm_source=LinkedIn          →  utm_source=linkedin_company
+utm_content=20260304 post1   →  utm_content=20260304_post1
+```
+
+---
+
+## Tools
+
+**Build UTMs:** https://ga-dev-tools.google/campaign-url-builder/
+
+**Shorten URLs (recommended)** — long UTM strings look messy in posts. Always shorten the **full URL including all UTM parameters**, never the bare base URL.
+
+| Tool | URL | Notes |
+|------|-----|-------|
+| Bitly | https://bitly.com | 50 links/month free; custom slugs; click analytics |
+| TinyURL | https://tinyurl.com | Free, unlimited, no analytics |
+| Rebrandly | https://www.rebrandly.com | Custom branded domains (paid) |
+
+**LinkedIn note:** LinkedIn auto-shortens URLs over 23 characters via `lnkd.in`, which preserves UTM parameters. Using Bitly additionally gives a readable slug and extra click data.
+
+**Shortening workflow:**
+1. Build full URL with all UTMs
+2. Paste into Bitly → set custom slug (e.g. `sr-demo-mar04`)
+3. Use the short link in your post
+
+---
+
+## New Post Template
+
+```
+[POST CONTENT]
+
+CTA: [Call to action text]
+
+Link: https://www.stonerise.tech/[page]?utm_source=[SOURCE]&utm_medium=[MEDIUM]&utm_campaign=[CAMPAIGN]&utm_content=[YYYYMMDD_postN]
+
+UTM breakdown:
+- source:   [platform]_[account]
+- medium:   organic_social / paid_social / email / cpc
+- campaign: [theme]_[product]  ← NO date here
+- content:  [YYYYMMDD]_post[N] ← full date here
+```
+
+---
+
+**Owner:** Matt (Digital Marketing Manager)  
+**Last updated:** March 4, 2026

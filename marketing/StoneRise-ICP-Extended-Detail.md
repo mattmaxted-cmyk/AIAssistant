@@ -187,6 +187,52 @@ StoneRise has **four distinct buyer personas** within target companies. Each has
 
 ---
 
+### Persona 5: "David" — Certify Buyer
+
+This persona was developed specifically for the Certify LinkedIn paid campaign (March 2026) and represents the primary buyer for the Certify payment application module. David overlaps with the Commercial Leader persona but is defined with greater specificity for campaign targeting.
+
+| Attribute | Detail |
+|-----------|--------|
+| **Job Titles** | Commercial Director, Head of Commercial, Commercial Manager, Senior Commercial Manager, Commercial Lead, QS Director, Chief Quantity Surveyor, Head of Quantity Surveying, Senior Quantity Surveyor, Contract Director, Contract Manager, Construction Contracts Manager, Senior Contract Manager, Head of Contracts, Commercial Project Manager, Managing Director |
+| **Age** | 35–52 |
+| **Background** | Came up through QS. Knows the commercial detail but doesn't have time for it anymore. |
+| **Team** | Manages 3–8 QSs across multiple live projects |
+| **Accountable for** | Project margins, variation recovery, subcontractor payment accuracy, final account settlement |
+| **Relationship with software** | Sceptical of vendors who don't understand construction. Has been sold generic software before. Won't engage with anything that feels like it was built for a different industry. |
+| **What stops him scrolling** | Something written by someone who has done his job. A specific scenario he recognises. Not a feature list — a feeling. |
+
+**Current Setup:**
+95% of the market is still managing subcontractor payment applications on spreadsheets. David is almost certainly one of them. Copy can speak directly to this reality without qualification.
+
+**Root Cause — The Spreadsheet Problem:**
+David's pain points are not separate issues. They are all symptoms of the same root cause: running subcontractor payment management on spreadsheets. The spreadsheet has no enforcement mechanism. It does not chase deadlines, flag over-claims, or log variations. It relies entirely on people remembering to do the right thing at the right time. David does not necessarily name this as "a spreadsheet problem" — he experiences it as a series of recurring failures. The job of marketing copy is to surface the pattern he recognises and name the cause for him.
+
+**Pain Points (Priority Order — all driven by spreadsheet dependency):**
+
+1. **The full payment application cycle is entirely manual** — Every subcontract, every month: application received, assessment done, payment certificate issued, payment notice sent. On a spreadsheet this is 3 separate manual documents per subcontract per cycle with no connection between them, no automatic tracking of completion, and no audit trail linking one step to the next. Across 100+ subcontractors this is closer to 800 documents a month — all manual, all disconnected. The primary campaign focus.
+
+2. **Being overcharged by subcontractors and not catching it** — Applications are processed without a structured assessment workflow. The spreadsheet offers no mechanism to check each line against what was ordered, delivered, or previously certified. Inflated applications slip through not through carelessness but because the tool being used has no way to surface them.
+
+3. **Variations agreed on site, never formally captured, unrecoverable at final account** — Variations live outside the spreadsheet — in emails, notebooks, site meeting notes. There is no connected record. By final account, there is nothing to stand them up with. The spreadsheet was never designed to capture this.
+
+**Note on pay less notices:** While missed pay less notices are a real consequence of manual deadline tracking, this is a niche angle. It should be referenced sparingly in content — the broader payment cycle (application, certificate, notice) is the primary message.
+
+**Buying Motivation:**
+- Replace the spreadsheet with a system that enforces payment timelines automatically
+- Structured assessment workflow that makes over-claiming visible and challengeable
+- Variations captured in the contract record from day one, not reconstructed later
+- Software built by people who understand construction — not adapted from another industry
+
+**Decision Authority:** High — often final decision maker for commercial tools
+
+**Key Metrics They Care About:**
+- Missed pay less notice rate
+- Variation recovery rate
+- Over-payment rate on subcontractor applications
+- QS hours on payment application admin
+
+---
+
 ## Persona Priority
 
 | Priority | Persona | Reason |
@@ -195,6 +241,7 @@ StoneRise has **four distinct buyer personas** within target companies. Each has
 | **2** | Finance Leader | Budget holder; ROI resonates strongly; controls spend approval |
 | **3** | Procurement Leader | Core user of Procurement App; medium-high decision authority; direct beneficiary of efficiency gains |
 | **4** | Operations Leader | Ultimate sign-off; cares about scale and efficiency; harder to reach directly |
+| **5** | David (Certify Buyer) | Campaign-specific persona for Certify paid ads; QS-background commercial leader with acute pain around payment deadline management |
 
 ---
 
@@ -374,4 +421,4 @@ Review this ICP document:
 
 ---
 
-*Last updated: February 2026*
+*Last updated: March 2026*

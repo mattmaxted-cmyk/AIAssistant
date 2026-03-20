@@ -1,0 +1,175 @@
+---
+description: Task management system — weekly planning, daily task lists, and end-of-day/week completion tracking. Apply when Matt mentions start of day, end of day, start of week, end of week, or task-related triggers.
+alwaysApply: false
+---
+
+# Task Management System
+
+## Folder Structure
+
+```
+Tasks/
+  Weekly-wc-DD-Mon-YYYY.md    # One file per week, named by Monday's date (e.g. Weekly-wc-16-Mar-2026.md)
+  Daily-Tasks.md              # Single file — always overwritten at start of each day
+  Completed/
+    Week-wc-DD-Mon-YYYY.md    # One file per week — top-level one-liners only
+```
+
+---
+
+## Trigger Phrases
+
+| Phrase | Action |
+|---|---|
+| "Start of day" / "morning tasks" | Run **Start of Day** workflow |
+| "End of day" / "day done" | Run **End of Day** workflow |
+| "Start of week" / "weekly review" | Run **Start of Week** workflow |
+| "End of week" / "week done" | Run **End of Week** workflow |
+
+---
+
+## File Formats
+
+### Weekly File — `Tasks/Weekly-wc-DD-Mon-YYYY.md`
+
+```markdown
+# Week commencing DD MMM YYYY — Mon DD MMM to Fri DD MMM YYYY
+
+## Outstanding from Last Week
+1. [ ] Task carried forward
+2. [ ] Task carried forward
+
+## Monday DD MMM
+1. [ ] Task
+2. [ ] Task
+
+## Tuesday DD MMM — NOMOS DAY
+1. [ ] Nomos task
+2. [ ] Nomos task
+
+## Wednesday DD MMM
+1. [ ] Task
+
+## Thursday DD MMM
+1. [ ] Task
+
+## Friday DD MMM
+1. [ ] Task
+
+## Ongoing
+1. [ ] Ongoing responsibility or project
+
+## Key Dates This Week
+- DD MMM — Event or deadline
+```
+
+- All tasks must use numbered lists — never bullet points.
+- Mark tasks complete with `[x]` as they are confirmed done.
+- A task is only marked `[x]` when Matt confirms it.
+
+### Daily File — `Tasks/Daily-Tasks.md`
+
+```markdown
+# Daily Tasks — DAY DD MMM YYYY
+
+## From Weekly Plan
+1. [ ] Task pulled from this week's file
+2. [ ] Task pulled from this week's file
+
+## Additional Today
+1. [ ] Any task added at start of day
+
+## Completed Today
+1. [x] Task confirmed done
+```
+
+- This file is **always overwritten** at the start of each new day.
+- All tasks must use numbered lists — never bullet points.
+- At end of day, completed items move to the "Completed Today" section.
+
+### Completed Archive — `Tasks/Completed/Week-wc-DD-Mon-YYYY.md`
+
+```markdown
+# Week commencing DD MMM YYYY
+
+1. Task one-liner
+2. Task one-liner
+3. Task one-liner
+```
+
+- **No detail.** One line per completed task, maximum.
+- Numbered list only.
+- Appended to at end of week from the weekly file's completed tasks.
+
+---
+
+## Workflows
+
+### Start of Week
+
+1. Read all files in `Tasks/` and `Marketing/`, `Operations/`, `Hubspot/`, `Nomos/` for context on outstanding items.
+2. Identify any incomplete tasks from the previous weekly file.
+3. Create `Tasks/Weekly-wc-DD-Mon-YYYY.md` with tasks organised by day, all in numbered lists:
+   - Outstanding carried-forward tasks
+   - Tasks assigned to specific days
+   - Nomos tasks on Tuesday only
+   - Ongoing responsibilities
+   - Key dates (check campaign files, plans, and any dated documents)
+4. Ask Matt yes/no confirmation questions to catch anything missed:
+   - "Do you have any meetings or deadlines this week not already listed?"
+   - "Are there any campaigns or projects needing action this week?"
+   - "Anything outstanding from last week I may have missed?"
+
+### Start of Day
+
+1. Read the current `Tasks/Weekly-wc-DD-Mon-YYYY.md`.
+2. Read the previous `Tasks/Daily-Tasks.md` to check for anything incomplete yesterday.
+3. Overwrite `Tasks/Daily-Tasks.md` with today's tasks in a numbered list drawn from the weekly plan.
+4. Ask Matt yes/no questions to catch anything extra:
+   - "Any calls or meetings today not already listed?"
+   - "Anything urgent that's come up since yesterday?"
+   - "Any tasks from yesterday not completed that need to carry forward?"
+
+### End of Day
+
+1. Go through each task one by one — ask Matt yes/no per task.
+2. Update `Tasks/Daily-Tasks.md` — mark confirmed completed items `[x]`.
+3. Update `Tasks/Weekly-wc-DD-Mon-YYYY.md` — mark any weekly tasks fully done `[x]`.
+4. Ask:
+   - "Is there anything not on the list that you completed today?"
+   - "Anything to carry forward to tomorrow?"
+   - "Any new tasks that have come up for later in the week?"
+
+### End of Week
+
+1. Read `Tasks/Weekly-wc-DD-Mon-YYYY.md` — identify all completed and incomplete tasks.
+2. Go through unconfirmed items one by one — ask Matt yes/no per task.
+3. Create or append to `Tasks/Completed/Week-wc-DD-Mon-YYYY.md` — one-liner per completed task, numbered list only.
+4. Carry any incomplete tasks into the next week's file.
+5. Ask:
+   - "Any tasks completed this week not already marked?"
+   - "Anything to carry into next week?"
+   - "Any key dates next week I should note?"
+
+---
+
+## Rules
+
+1. All tasks must always be in a **numbered list** — never bullet points.
+2. When displaying any task list in chat, every single task must be on its own line with a blank line between each item to ensure vertical spacing. Never run tasks together on the same line.
+2. Always ask questions after any trigger — never assume tasks are complete without confirmation.
+3. Keep questions binary (yes/no) wherever possible to reduce friction.
+4. Never add detail to the `Completed/` archive files — one line per task, numbered list only.
+5. `Daily-Tasks.md` is always overwritten — it represents only the current day.
+6. The weekly file is the source of truth for the week.
+7. Key dates must always be surfaced at the start of each week and day where relevant.
+8. Matt will always state the day of the week when triggering a workflow. Use this to determine which tasks are relevant.
+9. All dev requests go to Michael — Matt never contacts the dev team directly.
+
+## Day-Specific Rules
+
+### Tuesday — Nomos Day
+- All Nomos-related work is scheduled exclusively on Tuesdays.
+- On any other day, do not include Nomos tasks in the daily task list.
+- At the start of each Tuesday, pull all outstanding Nomos tasks into the daily list.
+- At start of week, Nomos tasks are listed under Tuesday in the weekly file.

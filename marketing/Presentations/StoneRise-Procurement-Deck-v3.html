@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StoneRise Procurement - Presentation Preview</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            /* StoneRise Brand Colours from Guidelines */
+            --dark-blue: #2b3890;
+            --light-blue: #27aae1;
+            --dark-green: #009444;
+            --light-green: #8dc63f;
+            --black: #000000;
+            --white: #ffffff;
+            --gray-light: #f8f9fa;
+            --gray-text: #4a5568;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #1a1a2e;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        .presentation-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1.page-title {
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 40px;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .slide {
+            background: var(--white);
+            aspect-ratio: 16 / 9;
+            margin-bottom: 40px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        .slide-number {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            font-size: 12px;
+            color: var(--gray-text);
+            opacity: 0.6;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .logo-small {
+            height: 40px;
+            width: auto;
+        }
+
+        .logo-large {
+            height: 120px;
+            width: auto;
+        }
+
+        .logo-container {
+            position: absolute;
+            top: 30px;
+            left: 40px;
+        }
+
+        /* Brand accent bar using all 4 colours */
+        .accent-bar {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, var(--light-green) 0%, var(--dark-green) 33%, var(--light-blue) 66%, var(--dark-blue) 100%);
+        }
+
+        /* Slide 1: Cover - StoneRise Procurement */
+        .slide-cover {
+            background: var(--white);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .slide-cover .logo-container {
+            position: static;
+            margin-bottom: 40px;
+        }
+
+        .slide-cover h1 {
+            font-size: 72px;
+            font-weight: 700;
+            color: var(--dark-green);
+            letter-spacing: -2px;
+        }
+
+        /* Slide 2: Centralised Purchasing */
+        .slide-centralised {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+        }
+
+        .slide-centralised .left {
+            background: var(--dark-blue);
+            padding: 60px 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-centralised .left h2 {
+            font-size: 48px;
+            color: var(--white);
+            font-weight: 700;
+            line-height: 1.1;
+        }
+
+        .slide-centralised .right {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .bullet-list {
+            list-style: none;
+        }
+
+        .bullet-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            padding: 14px 0;
+            font-size: 16px;
+            color: var(--black);
+            line-height: 1.4;
+        }
+
+        .bullet-list li::before {
+            content: '';
+            width: 10px;
+            height: 10px;
+            background: var(--light-green);
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 6px;
+        }
+
+        /* Slide 3: Only software - Statement slide */
+        .slide-statement {
+            background: linear-gradient(135deg, var(--dark-green) 0%, #006633 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            text-align: center;
+        }
+
+        .slide-statement h2 {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            max-width: 800px;
+        }
+
+        .slide-statement h2 span {
+            color: var(--light-green);
+        }
+
+        /* Feature slides - split layout */
+        .slide-feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            height: 100%;
+        }
+
+        .slide-feature .content {
+            padding: 50px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .slide-feature .content h2 {
+            font-size: 44px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .slide-feature .visual {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .slide-feature .visual.blue { background: var(--dark-blue); }
+        .slide-feature .visual.green { background: var(--dark-green); }
+        .slide-feature .visual.light-blue { background: var(--light-blue); }
+        .slide-feature .visual.light-green { background: var(--light-green); }
+
+        .feature-list {
+            list-style: none;
+        }
+
+        .feature-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 12px 0;
+            font-size: 15px;
+            color: var(--gray-text);
+            line-height: 1.5;
+        }
+
+        .feature-list .bullet {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+            margin-top: 7px;
+        }
+
+        .feature-list .bullet.green { background: var(--dark-green); }
+        .feature-list .bullet.blue { background: var(--light-blue); }
+        .feature-list .bullet.light-green { background: var(--light-green); }
+
+        /* Visual placeholder */
+        .visual-placeholder {
+            width: 80%;
+            height: 70%;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255, 255, 255, 0.4);
+            font-size: 14px;
+            border: 2px dashed rgba(255, 255, 255, 0.2);
+        }
+
+        /* Slide: Plant & Materials Tracking - title only */
+        .slide-title-only {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            text-align: center;
+        }
+
+        .slide-title-only h2 {
+            font-size: 64px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            line-height: 1.1;
+        }
+
+        /* Pricing slide */
+        .slide-pricing {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            text-align: center;
+        }
+
+        .slide-pricing h2 {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--dark-blue);
+            margin-bottom: 50px;
+        }
+
+        .pricing-cards {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background: var(--gray-light);
+            border-radius: 16px;
+            padding: 40px 50px;
+            text-align: center;
+        }
+
+        .pricing-card.highlight {
+            background: var(--dark-green);
+            color: var(--white);
+            transform: scale(1.05);
+        }
+
+        .pricing-card h3 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .pricing-card.highlight h3 {
+            color: var(--white);
+        }
+
+        .pricing-card p {
+            font-size: 16px;
+            color: var(--gray-text);
+        }
+
+        .pricing-card.highlight p {
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        /* Implementation slide */
+        .slide-impl {
+            background: var(--light-blue);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 80px;
+            text-align: center;
+        }
+
+        .slide-impl h2 {
+            font-size: 56px;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+        }
+
+        /* Instructions panel */
+        .instructions {
+            background: #2d3748;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 40px;
+            color: var(--white);
+        }
+
+        .instructions h3 {
+            color: var(--light-green);
+            margin-bottom: 16px;
+            font-size: 18px;
+        }
+
+        .instructions ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        .instructions li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+        }
+
+        .instructions li::before {
+            content: '●';
+            color: var(--light-blue);
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            .instructions, h1.page-title {
+                display: none;
+            }
+            .slide {
+                page-break-after: always;
+                margin: 0;
+                border-radius: 0;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="presentation-container">
+        <h1 class="page-title">StoneRise Procurement — Presentation Preview (11 Slides)</h1>
+
+        <div class="instructions">
+            <h3>StoneRise Brand Guidelines Applied</h3>
+            <ul>
+                <li>Dark Blue: #2b3890 (RGB 43, 56, 144)</li>
+                <li>Light Blue: #27aae1 (RGB 39, 170, 225)</li>
+                <li>Dark Green: #009444 (RGB 0, 148, 68)</li>
+                <li>Light Green: #8dc63f (RGB 141, 198, 63)</li>
+                <li>Typography: Inter (web) / Avenir (print)</li>
+                <li>Circular bullet points in brand colours</li>
+            </ul>
+        </div>
+
+        <!-- Slide 1: Cover - StoneRise Procurement -->
+        <div class="slide slide-cover">
+            <div class="logo-container">
+                <img src="stonerise-logo.png" alt="StoneRise" class="logo-large">
+            </div>
+            <h1>Procurement</h1>
+            <div class="accent-bar"></div>
+            <span class="slide-number">1 / 11</span>
+        </div>
+
+        <!-- Slide 2: Centralised Purchasing -->
+        <div class="slide slide-centralised">
+            <div class="left">
+                <h2>Centralised Purchasing</h2>
+            </div>
+            <div class="right">
+                <div class="logo-container" style="position: static; margin-bottom: 30px;">
+                    <img src="stonerise-logo.png" alt="StoneRise" class="logo-small">
+                </div>
+                <ul class="bullet-list">
+                    <li>Centralised request workflow</li>
+                    <li>Standard approval process</li>
+                    <li>Real-time dashboards</li>
+                    <li>Generate approved PO's in seconds</li>
+                    <li>Control commitments and spend</li>
+                    <li>AI powered 3 way PO invoice matching</li>
+                    <li>Full audit trail across projects</li>
+                </ul>
+            </div>
+            <span class="slide-number">2 / 11</span>
+        </div>
+
+        <!-- Slide 3: Only software statement -->
+        <div class="slide slide-statement">
+            <img src="stonerise-logo.png" alt="StoneRise" class="logo" style="position: absolute; top: 30px; left: 40px; filter: brightness(0) invert(1);">
+            <h2>Only software that manages <span>materials, plant and waste</span></h2>
+            <div class="accent-bar"></div>
+            <span class="slide-number" style="color: rgba(255,255,255,0.5);">3 / 11</span>
+        </div>
+
+        <!-- Slide 4: Supplier Management -->
+        <div class="slide slide-feature">
+            <div class="content">
+                <div class="logo-container" style="position: static; margin-bottom: 20px;">
+                    <img src="stonerise-logo.png" alt="StoneRise" class="logo-small">
+                </div>
+                <h2>Supplier Management</h2>
+                <ul class="feature-list">
+                    <li><span class="bullet green"></span>Central supplier database</li>
+                    <li><span class="bullet green"></span>Track pricing and documentation</li>
+                    <li><span class="bullet green"></span>Set up agreed contract rates</li>
+                    <li><span class="bullet green"></span>Bulk upload of material prices</li>
+                    <li><span class="bullet green"></span>Maintain approved supplier lists</li>
+                </ul>
+            </div>
+            <div class="visual blue">
+                <div class="visual-placeholder">Screenshot placeholder</div>
+            </div>
+            <span class="slide-number">4 / 11</span>
+        </div>
+
+        <!-- Slide 5: Invoice Matching -->
+        <div class="slide slide-feature">
+            <div class="visual green" style="order: -1;">
+                <div class="visual-placeholder">Screenshot placeholder</div>
+            </div>
+            <div class="content">
+                <div class="logo-container" style="position: static; margin-bottom: 20px;">
+                    <img src="stonerise-logo.png" alt="StoneRise" class="logo-small">
+                </div>
+                <h2>Invoice Matching</h2>
+                <ul class="feature-list">
+                    <li><span class="bullet blue"></span>Eliminate manual invoice matching</li>
+                    <li><span class="bullet blue"></span>Match invoices to POs, GRN automatically</li>
+                    <li><span class="bullet blue"></span>Flag discrepancies instantly</li>
+                    <li><span class="bullet blue"></span>Reduce accounts workload</li>
+                </ul>
+            </div>
+            <span class="slide-number">5 / 11</span>
+        </div>
+
+        <!-- Slide 6: Plant & Materials Tracking -->
+        <div class="slide slide-title-only">
+            <div class="logo-container">
+                <img src="stonerise-logo.png" alt="StoneRise" class="logo">
+            </div>
+            <h2>Plant &<br>Materials<br>Tracking</h2>
+            <div class="accent-bar"></div>
+            <span class="slide-number">6 / 11</span>
+        </div>
+
+        <!-- Slide 7: Waste Management -->
+        <div class="slide slide-feature">
+            <div class="content">
+                <div class="logo-container" style="position: static; margin-bottom: 20px;">
+                    <img src="stonerise-logo.png" alt="StoneRise" class="logo-small">
+                </div>
+                <h2>Waste Management</h2>
+                <ul class="feature-list">
+                    <li><span class="bullet light-green"></span>Turn waste into measurable cost data</li>
+                    <li><span class="bullet light-green"></span>Track disposal and waste costs</li>
+                    <li><span class="bullet light-green"></span>Support sustainability reporting</li>
+                    <li><span class="bullet light-green"></span>Understand true waste spend</li>
+                </ul>
+            </div>
+            <div class="visual light-green">
+                <div class="visual-placeholder" style="color: rgba(0,0,0,0.3); border-color: rgba(0,0,0,0.2);">Screenshot placeholder</div>
+            </div>
+            <span class="slide-number">7 / 11</span>
+        </div>
+
+        <!-- Slide 8: Project Procurement Control -->
+        <div class="slide slide-feature">
+            <div class="visual light-blue" style="order: -1;">
+                <div class="visual-placeholder" style="color: rgba(0,0,0,0.3); border-color: rgba(0,0,0,0.2);">Screenshot placeholder</div>
+            </div>
+            <div class="content">
+                <div class="logo-container" style="position: static; margin-bottom: 20px;">
+                    <img src="stonerise-logo.png" alt="StoneRise" class="logo-small">
+                </div>
+                <h2>Project Procurement Control</h2>
+                <ul class="feature-list">
+                    <li><span class="bullet blue"></span>View commitments vs budgets</li>
+                    <li><span class="bullet blue"></span>Identify overspend risks early</li>
+                    <li><span class="bullet blue"></span>Improve cost control</li>
+                </ul>
+            </div>
+            <span class="slide-number">8 / 11</span>
+        </div>
+
+        <!-- Slide 9: Automation & Compliance -->
+        <div class="slide slide-feature">
+            <div class="content">
+                <div class="logo-container" style="position: static; margin-bottom: 20px;">
+                    <img src="stonerise-logo.png" alt="StoneRise" class="logo-small">
+                </div>
+                <h2>Automation & Compliance</h2>
+                <ul class="feature-list">
+                    <li><span class="bullet green"></span>Automate approvals and enforce buying rules</li>
+                    <li><span class="bullet green"></span>Ensure policy compliance</li>
+                    <li><span class="bullet green"></span>Reduce admin</li>
+                </ul>
+            </div>
+            <div class="visual blue">
+                <div class="visual-placeholder">Screenshot placeholder</div>
+            </div>
+            <span class="slide-number">9 / 11</span>
+        </div>
+
+        <!-- Slide 10: Staged Implementation -->
+        <div class="slide slide-impl">
+            <img src="stonerise-logo.png" alt="StoneRise" class="logo" style="position: absolute; top: 30px; left: 40px; filter: brightness(0) invert(1);">
+            <h2>Staged implementation<br>and training</h2>
+            <div class="accent-bar"></div>
+            <span class="slide-number" style="color: rgba(255,255,255,0.5);">10 / 11</span>
+        </div>
+
+        <!-- Slide 11: Pricing -->
+        <div class="slide slide-pricing">
+            <div class="logo-container">
+                <img src="stonerise-logo.png" alt="StoneRise" class="logo">
+            </div>
+            <h2>Pricing</h2>
+            <div class="pricing-cards">
+                <div class="pricing-card highlight">
+                    <h3>Free for 9 months</h3>
+                    <p>Full access during pilot</p>
+                </div>
+                <div class="pricing-card">
+                    <h3>Charge starts month 10</h3>
+                    <p>Based on PO volume</p>
+                </div>
+            </div>
+            <div class="accent-bar"></div>
+            <span class="slide-number">11 / 11</span>
+        </div>
+
+    </div>
+</body>
+</html>
