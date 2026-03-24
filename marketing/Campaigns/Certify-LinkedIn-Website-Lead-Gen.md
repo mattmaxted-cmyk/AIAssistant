@@ -1,7 +1,7 @@
 # Certify — LinkedIn Website Lead Gen Campaign
 
 **Campaign Owner:** Matt  
-**Last Updated:** 19 March 2026 (revised post Michael & Stelios input)  
+**Last Updated:** 23 March 2026 (pain point hierarchy revised — spreadsheets as overarching pain)  
 **Status:** Ready to build
 
 ---
@@ -50,14 +50,17 @@
 
 ### Pain Points (Priority Order)
 
-**1. Missing pay less notices**
-David is tracking payment deadlines manually — dates in spreadsheets, reminders in calendars, relying on someone remembering. When a deadline slips, the full application amount becomes due. No system is catching this for him. This is the primary campaign angle.
+**1. Managing subcontractor payments on spreadsheets**
+David is running the entire subcontractor payment process on spreadsheets. Manual, error-prone, no audit trail, relies entirely on people remembering things. Across 10, 20, 30 live subcontract packages, that system has gaps. This is the overarching pain — everything else flows from it.
 
-**2. Being overcharged by subcontractors and not catching it**
+**2. Variations agreed on site, never formally captured, unrecoverable at final account**
+The conversation happened. Everyone knew about it. But if it wasn't logged at the time, by final account there's nothing to stand it up with.
+
+**3. Being overcharged by subcontractors and not catching it**
 Applications come in, they get processed, nobody has time to properly assess every line. Subcontractors over-claim — sometimes deliberately, sometimes by error. With no structured assessment workflow, inflated applications slip through. Money leaves the business that shouldn't.
 
-**3. Variations agreed on site, never formally captured, unrecoverable at final account**
-The conversation happened. Everyone knew about it. But if it wasn't logged at the time, by final account there's nothing to stand it up with. This is the original primary angle — now third priority based on Michael and Stelios input.
+**4. Missing pay less notice deadlines**
+A symptom of the spreadsheet problem, not the lead hook. Pay less notices are not common enough to be the primary angle. When they do apply and a deadline slips, the full application amount becomes due — supporting proof point only.
 
 ---
 

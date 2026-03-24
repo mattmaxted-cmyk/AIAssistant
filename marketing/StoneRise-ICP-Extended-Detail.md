@@ -211,11 +211,11 @@ David's pain points are not separate issues. They are all symptoms of the same r
 
 1. **The full payment application cycle is entirely manual** — Every subcontract, every month: application received, assessment done, payment certificate issued, payment notice sent. On a spreadsheet this is 3 separate manual documents per subcontract per cycle with no connection between them, no automatic tracking of completion, and no audit trail linking one step to the next. Across 100+ subcontractors this is closer to 800 documents a month — all manual, all disconnected. The primary campaign focus.
 
-2. **Being overcharged by subcontractors and not catching it** — Applications are processed without a structured assessment workflow. The spreadsheet offers no mechanism to check each line against what was ordered, delivered, or previously certified. Inflated applications slip through not through carelessness but because the tool being used has no way to surface them.
+2. **Variations agreed on site, never formally captured, unrecoverable at final account** — Variations live outside the spreadsheet — in emails, notebooks, site meeting notes. There is no connected record. By final account, there is nothing to stand them up with. The spreadsheet was never designed to capture this.
 
-3. **Variations agreed on site, never formally captured, unrecoverable at final account** — Variations live outside the spreadsheet — in emails, notebooks, site meeting notes. There is no connected record. By final account, there is nothing to stand them up with. The spreadsheet was never designed to capture this.
+3. **Being overcharged by subcontractors and not catching it** — Applications are processed without a structured assessment workflow. The spreadsheet offers no mechanism to check each line against what was ordered, delivered, or previously certified. Inflated applications slip through not through carelessness but because the tool being used has no way to surface them.
 
-**Note on pay less notices:** While missed pay less notices are a real consequence of manual deadline tracking, this is a niche angle. It should be referenced sparingly in content — the broader payment cycle (application, certificate, notice) is the primary message.
+**Note on pay less notices:** While missed pay less notices are a real consequence of manual deadline tracking, this is a niche angle — not common enough to lead with. It should be referenced sparingly in content as a supporting proof point only — the broader payment cycle (application, certificate, notice) is the primary message.
 
 **Buying Motivation:**
 - Replace the spreadsheet with a system that enforces payment timelines automatically
@@ -421,4 +421,4 @@ Review this ICP document:
 
 ---
 
-*Last updated: March 2026*
+*Last updated: 23 March 2026 (Certify pain point order revised — variations 2nd, overcharging 3rd, pay less notices deprioritised to supporting proof point only)*
