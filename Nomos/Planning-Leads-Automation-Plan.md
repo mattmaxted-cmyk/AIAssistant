@@ -1,8 +1,10 @@
-# Planning Applications → Instantly Automation
+# Planning Applications → Instantly Automation (With AI Personalisation)
 
 ## Overview
 
-Manually import the weekly planning applications CSV into Zapier Tables, which triggers a Zapier automation to filter by budget (£0.2m+), use OpenAI to generate personalised email content, then push two leads per row into two separate Instantly campaigns — one for Client/Applicants and one for Architect/Agents.
+Manually import the weekly planning applications CSV into Zapier Tables, which triggers a Zapier automation for qualifying rows only. OpenAI generates a personalised opening line, subject, and project summary per lead, then pushes each lead into a single Instantly campaign targeting Architects/Agents. The CSV does not include a client/applicant email address — only the architect/agent email is available, so outreach is architect-only.
+
+> **Note:** The CSV includes `Architect Agent Email` only. There is no client/applicant email column. The client campaign has been removed from this plan.
 
 ---
 
@@ -11,44 +13,38 @@ Manually import the weekly planning applications CSV into Zapier Tables, which t
 ```mermaid
 flowchart TD
     A["Receive weekly email\nwith CSV attachment"] -->|"Manual step"| B["Import CSV into\nZapier Tables"]
-    B --> C["Zapier Trigger\nNew Record in Zapier Tables"]
-    C --> D{"£m Value From >= 0.2?\n(Filter step)"}
-    D -->|No| E["Stop — skip record"]
-    D -->|Yes| F["OpenAI: generate\nOpening Line, Subject,\nProject Summary"]
-    F --> G["Zapier Tables\nUpdate Record — write AI columns"]
-    G --> H["Webhooks: POST to\nInstantly Client Campaign\n(Client Applicant email + name)"]
-    G --> I["Webhooks: POST to\nInstantly Architect Campaign\n(Architect Agent email + name)"]
-    H --> J["Zapier Tables\nMark record as Processed"]
-    I --> J
-    J --> K["Instantly sends\ntwo personalised sequences"]
+    B --> C["Zapier Tables View\nfilters: budget >= £0.2m\nAND architect email not empty"]
+    C --> D["Zapier Trigger\nNew Record in View\n(qualifying rows only)"]
+    D --> E["OpenAI: generate\nOpening Line, Subject,\nProject Summary"]
+    E --> F["Zapier Tables\nUpdate Record — write AI columns"]
+    F --> G["Webhooks: POST to\nInstantly Architect Campaign"]
+    G --> H["Zapier Tables\nMark record as Processed"]
+    H --> I["Instantly sends\npersonalised sequence"]
 ```
 
 ---
 
 ## What You Need Before Starting
 
-- **Zapier account** — Professional plan or above (required for multi-step zaps, Filter, and Zapier Tables)
+- **Zapier account** — Professional plan or above (required for multi-step zaps and Zapier Tables)
 - **OpenAI API key** — platform.openai.com → API keys (paid, but very cheap — fractions of a penny per lead)
 - **Instantly API key** — found in Instantly > Settings > API
-- **Two Instantly campaigns** already created with email sequences and variable placeholders (`{{first_name}}`, `{{opening_line}}`, `{{project_summary}}`)
+- **One Instantly campaign** already created with an email sequence and variable placeholders (`{{first_name}}`, `{{opening_line}}`, `{{project_summary}}`) — Architects/Agents only
 - The weekly CSV file (columns confirmed from "2026 Week 10.csv")
 
 ---
 
 ## Zapier Tables Setup
 
-Create one table named **"Planning Applications"**. The CSV columns map directly — import them as-is. The key fields used by the automation are:
+Create one table named **"Planning Applications"**. Import the CSV as-is — all columns come through automatically. The key fields used by the automation are:
 
 | CSV Column | Used for |
 |---|---|
 | `Heading` | Project title for AI prompt |
-| `£m Value From` | Budget filter (>= 0.2) |
+| `£m Value From` | Budget filter (>= 0.2) — set as Number field |
 | `£m Value To` | Budget range for AI prompt |
 | `Proposal` | Raw planning description fed to OpenAI |
 | `Site Address` | Location for personalisation |
-| `Client Applicant Contact` | First name for Client email |
-| `Client Applicant` | Company/developer name |
-| `Mail Client Contact` | Email address → Client campaign |
 | `Architect Agent Contact` | First name for Architect email |
 | `Architect Agent` | Architect firm name |
 | `Architect Agent Email` | Email address → Architect campaign |
@@ -56,6 +52,8 @@ Create one table named **"Planning Applications"**. The CSV columns map directly
 | `Region` | Context for AI prompt |
 | `Project Stage` | Context for AI prompt |
 | `Project Category` | Context for AI prompt |
+
+The `Mail Client Contact` and `Client Applicant` columns are present in the CSV but **not used** — there is no client email to send to.
 
 Add four extra columns at the end (leave blank on import — Zapier writes these):
 
@@ -66,34 +64,51 @@ Add four extra columns at the end (leave blank on import — Zapier writes these
 | `AI_Summary` | OpenAI via Zapier |
 | `Processed` | Zapier — set to "Yes" when done |
 
-**How you use it each week:**
+**Important field type:** Set `£m Value From` and `£m Value To` to **Number** type in Zapier Tables. The view filter won't work correctly if they're treated as text.
+
+---
+
+## Zapier Tables View Setup
+
+Create a filtered view to ensure Zapier only fires for qualifying rows — this prevents wasting tasks on rows that don't meet the criteria.
+
+1. In the "Planning Applications" table, create a new **View**
+2. Name it: `Qualifying Leads`
+3. Add the following filters:
+   - `£m Value From` — **greater than or equal to** — `0.2`
+   - `Architect Agent Email` — **is different from** — *(leave value blank)*
+4. Save the view
+
+The second condition (is different from [blank]) effectively means "has a value" — it excludes any row where the architect email field is empty.
+
+**Result:** Only rows with budget ≥ £200k AND an architect email present will appear in this view. Zapier triggers exclusively from this view.
+
+---
+
+## How you use it each week
+
 1. Receive the planning email with the CSV attachment
 2. In Zapier Tables → Import CSV — drag and drop the file
-3. New records appear instantly and the zap triggers automatically for each row
+3. New records are created, the view filters them automatically, and the zap triggers only for qualifying rows
 
 ---
 
 ## Zapier Steps (in order)
 
-### Step 1 — Trigger: New Record in Zapier Tables
+### Step 1 — Trigger: New Record in View
 
 - Trigger app: **Zapier Tables**
-- Event: **New Record**
+- Event: **New Record in View**
 - Select the "Planning Applications" table
-- Fires immediately when a new record is created
+- Select the `Qualifying Leads` view
+- Fires only for rows that pass both view filters
 
-### Step 2 — Filter: Budget Threshold
-
-- App: **Filter by Zapier**
-- Condition: `£m Value From` **Number — Greater than or equal to** `0.2`
-- If not met, Zapier stops — no leads are created for this record
-
-### Step 3 — Generate Personalisation with OpenAI
+### Step 2 — Generate Personalisation with OpenAI
 
 - App: **OpenAI (ChatGPT)**
 - Action: **Send Prompt**
 - Model: `gpt-4o-mini`
-- Prompt (replace bracketed items with the corresponding Zapier field mappings):
+- Prompt (map the bracketed items to the corresponding Zapier fields from Step 1):
 
 ```
 You are writing outbound sales email personalisation for Nomos Group, a construction services company.
@@ -118,60 +133,29 @@ No preamble, no explanation — just the raw JSON.
 
 - Output: a JSON string — parsed in the next step
 
-### Step 3b — Parse the JSON Response
+### Step 2b — Parse the JSON Response
 
 - App: **Formatter by Zapier**
 - Action: **Utilities → Extract JSON**
 - Input: the OpenAI response text
 - Map out: `opening_line`, `subject_line`, `summary` as separate Zapier fields
 
-### Step 4 — Write AI Content Back to Zapier Tables
+### Step 3 — Write AI Content Back to Zapier Tables
 
 - App: **Zapier Tables**
 - Action: **Update Record**
 - Record: the record ID from Step 1
 - Set:
-  - `AI_Opening_Line` → `opening_line` from Step 3b
-  - `AI_Subject` → `subject_line` from Step 3b
-  - `AI_Summary` → `summary` from Step 3b
+  - `AI_Opening_Line` → `opening_line` from Step 2b
+  - `AI_Subject` → `subject_line` from Step 2b
+  - `AI_Summary` → `summary` from Step 2b
 
-### Step 5a — Push to Instantly: Client Campaign
+### Step 4 — Push to Instantly: Architect/Agent Campaign
 
 - App: **Webhooks by Zapier**
 - URL: `https://api.instantly.ai/api/v1/lead/add`
 - Method: POST
 - Headers: `Content-Type: application/json`
-- Add a **Filter** condition before this step: only run if `Mail Client Contact` is not empty
-- Body:
-
-```json
-{
-  "api_key": "YOUR_INSTANTLY_API_KEY",
-  "campaign_id": "CLIENT_CAMPAIGN_ID",
-  "skip_if_in_workspace": true,
-  "leads": [
-    {
-      "email": "{{Mail Client Contact}}",
-      "first_name": "{{Client Applicant Contact}}",
-      "company_name": "{{Client Applicant}}",
-      "custom_variables": {
-        "opening_line": "{{AI_Opening_Line}}",
-        "project_summary": "{{AI_Summary}}",
-        "subject_line": "{{AI_Subject}}",
-        "site_address": "{{Site Address}}",
-        "local_authority": "{{Local Authority}}"
-      }
-    }
-  ]
-}
-```
-
-### Step 5b — Push to Instantly: Architect/Agent Campaign
-
-- App: **Webhooks by Zapier**
-- URL: `https://api.instantly.ai/api/v1/lead/add`
-- Method: POST
-- Add a **Filter** condition before this step: only run if `Architect Agent Email` is not empty
 - Body:
 
 ```json
@@ -196,7 +180,9 @@ No preamble, no explanation — just the raw JSON.
 }
 ```
 
-### Step 6 — Mark Record as Processed
+Replace `YOUR_INSTANTLY_API_KEY` and `ARCHITECT_CAMPAIGN_ID` with real values.
+
+### Step 5 — Mark Record as Processed
 
 - App: **Zapier Tables**
 - Action: **Update Record**
@@ -207,29 +193,32 @@ No preamble, no explanation — just the raw JSON.
 
 ## Instantly Campaign Setup (do this first)
 
-Create **two separate campaigns** in Instantly:
+Create **one campaign** in Instantly targeting Architects/Agents:
 
-**Campaign 1 — Clients/Developers**
-- Audience: property developers and applicants commissioning the build
-- Email copy angle: Nomos Group as a construction delivery partner for their project
-- Subject line: `{{subject_line}}`
-- Opening: `{{opening_line}}`
-- Body: reference `{{project_summary}}`, `{{site_address}}`
-
-**Campaign 2 — Architects/Agents**
-- Audience: architects and planning agents who regularly work on projects
+**Campaign — Architects/Agents**
+- Audience: architects and planning agents who submitted or are named on the application
 - Email copy angle: Nomos Group as a trusted contractor they can refer or recommend
 - Subject line: `{{subject_line}}`
 - Opening: `{{opening_line}}`
 - Body: reference `{{project_summary}}`, `{{local_authority}}`
 
-Note each campaign's **Campaign ID** from the URL — needed in Steps 5a and 5b.
+Note the **Campaign ID** from the URL — needed in Step 4.
+
+---
+
+## Reply Handling
+
+Nomos and StoneRise are in the same Instantly workspace — separate workspaces aren't viable due to separate billing.
+
+**Approach:** All reply notifications go to Matt via the workspace-level positive reply notification in Instantly (**Settings > Preferences > Positive reply notification**). Matt reviews all replies (StoneRise and Nomos) and manually forwards positive Nomos replies to Neo.
+
+No additional automation needed for reply handling at this stage.
 
 ---
 
 ## Segmentation (future enhancement)
 
-Once running, add a **Paths by Zapier** step after the filter to route leads to different sub-campaigns based on:
+Once running, add a **Paths by Zapier** step after the trigger to route leads to different sub-campaigns based on:
 - `Project Category` — e.g. "HOUSING UNITS" vs "MIXED USE DEVELOPMENT" vs "COMMERCIAL"
 - `Region` — e.g. London vs outside London
 
@@ -237,10 +226,9 @@ Once running, add a **Paths by Zapier** step after the filter to route leads to 
 
 ## Key Notes
 
-- **Zapier Professional plan** required — covers multi-step zaps, Filter, and Zapier Tables
-- No Google account needed — everything stays inside Zapier
-- Zapier Tables triggers fire immediately on new records (no polling delay)
+- **Zapier Professional plan** required — covers multi-step zaps and Zapier Tables
+- Filtering happens in the Zapier Tables **view** — Zapier only fires for qualifying rows, not every row in the table
 - `skip_if_in_workspace: true` in Instantly prevents duplicate leads across weekly uploads
-- Some rows have a client email but no architect email (and vice versa) — the empty-field filters in Steps 5a/5b handle this gracefully
-- `£m Value From` uses decimal £m values (e.g. 0.5 = £500k) — ensure Zapier treats it as a Number field in the table
+- The CSV does not include a client/applicant email — outreach is architect/agent only
+- `£m Value From` uses decimal £m values (e.g. 0.5 = £500k) — must be set as a Number field in Zapier Tables
 - CSV column names are confirmed from "2026 Week 10.csv" — use them exactly as shown when mapping in Zapier

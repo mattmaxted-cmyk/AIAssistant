@@ -14,34 +14,35 @@
 
 ### HubSpot / Haidar Onboarding
 3. [x] Haidar creates his own HubSpot account
-4. [ ] Add meeting links (30 min intro, 60 min demo)
-5. [ ] Build Haidar's calling views in HubSpot
+4. [x] Add meeting links (30 min intro, 60 min demo)
+5. [x] Build Haidar's calling views in HubSpot
 6. [x] Haidar onboarding/training completed
-7. [ ] Add correct views into HubSpot for Haidar
-8. [ ] Create cold preferred list (max 100 leads) for Haidar to work from
+7. [x] Add correct views into HubSpot for Haidar
+8. [x] Create cold preferred list (max 100 leads) for Haidar to work from
 9. [ ] Tweak HubSpot workflows for Haidar
 
 ### Outbound
-7. [ ] Build Sales Navigator interim list for Haidar (before he arrives)
+7. [x] Build Sales Navigator interim list for Haidar — no longer needed
 8. [x] Meta Procurement ramp-down — frozen at £144/day
 
 ### Certify — landing page is the single biggest blocker
 9. [x] Build Certify landing page — built, awaiting review
 10. [x] Add copy to Mariana's creatives — 11 creatives uploaded to LinkedIn, awaiting Mike & Stelios sign-off
-11. [ ] Make Certify LinkedIn paid lead gen campaign live (draft ready, audience loaded, Insight Tag live ✓, budget £130/day)
-12. [ ] Get budget confirmation from Mike/Stelios for Google Search
-13. [ ] Validate keyword volumes in Google Keyword Planner
-14. [ ] Produce Google Search ad copy
-15. [ ] Set up UTM tracking in GA4 for Google Search
-16. [ ] Launch Google Search campaign (after LinkedIn is live)
+11. [x] Certify LinkedIn paid lead gen campaign — signed off, ⚠️ blocked on Mike pushing landing pages live
+12. [x] Get budget confirmation — Google Search £100/day, LinkedIn £100/day, Meta kept for 1 month while testing
+13. [x] Validate keyword volumes in Google Keyword Planner
+14. [x] Produce Google Search ad copy — both ad groups built, landing pages completed
+15. [x] Set up UTM tracking in GA4 for Google Search
+16. [ ] Launch Google Search campaign — ⚠️ blocked on Mike pushing landing pages live and confirming correct URLs
 
 ### Cold Outbound (Instantly.ai)
-17. [ ] Wait for Mike's segmented list (expected early this week)
-18. [ ] Upload list to HubSpot — get HubSpot IDs, segment using Mike's data
-19. [ ] Upload segmented list into Instantly
-20. [ ] Load email copy into Instantly
-21. [ ] Create sequences in Instantly
-22. [ ] Set up webhook: Instantly reply → HubSpot → COLD_REPLIED → task for Haidar
+17. [x] Wait for Mike's segmented list — received
+18. [x] Upload list to HubSpot — get HubSpot IDs, segment using Mike's data
+19. [x] Upload segmented list into Instantly (24,000 contacts, 1 per company)
+20. [x] Load email copy into Instantly — 6 Step 1 variants + Steps 2 & 3
+21. [x] Create sequences in Instantly — live
+22. [x] Set up webhook: Instantly reply → HubSpot → COLD_REPLIED → task for Haidar
+23. [x] Spoke with Michael re: ex-employee list issue — waiting on Michael's response re Clay as solution before relaunching.
 
 ### Social — LinkedIn
 23. [ ] Create images for the month of written posts
@@ -78,34 +79,45 @@
 ### LinkedIn Lead Gen Guides (A/B Test)
 34. [ ] Write guide 1: "Construction in 2026: The Risks UK Contractors Can't Afford to Ignore"
 35. [ ] Write guide 2: "The Commercial Control Playbook: Payments, Variations & Approvals Done Right"
-36. [ ] Set up both guides as lead magnets (LinkedIn lead gen forms)
-37. [ ] A/B test both guides in LinkedIn campaign
+36. [ ] Build creatives for both guides (ad images)
+37. [ ] Set up both guides as LinkedIn lead gen forms
+38. [ ] Build LinkedIn ad campaign for lead gen guides
+39. [ ] Set budget and get approval from Mike and Stelios
+40. [ ] Launch A/B test campaign
+
+### Lead Magnets
+41. [ ] Payment Application Template — build first (landing page, download, lead gen form)
+42. [ ] Invoice Generator — build next
+43. [ ] HR Employment Contracts for Common Construction Roles — build after invoice generator
 
 ### LinkedIn Ad Creatives
-38. [ ] Minor tweaks to Certify LinkedIn ad creatives before launch
+38. [x] Minor tweaks to Certify LinkedIn ad creatives — done
 
 ### Outbound — Microsoft Forms Survey
 39. [ ] Add Microsoft Forms survey to Instantly.ai cold email sequences
 40. [ ] Add Microsoft Forms survey to LinkedIn DM / PhantomBuster outreach
 
 ### Approvals / Confirmations Needed
-41. [ ] Confirm LinkedIn lead magnet with Mike and Stelios
+41. [x] Confirm LinkedIn lead magnet with Mike and Stelios — both guides confirmed
 42. [x] Confirm URL changes to /solutions pages — pushed to git, awaiting go live from Mike
 43. [ ] Confirm Google Search budget with Mike and Stelios
 
 ### Server-Side Tracking
-37. [ ] Share Marketing-Analytics-Tracking-Spec.md with Michael — he coordinates with dev team for Phases 1–2 estimate
+37. [x] Share Marketing-Analytics-Tracking-Spec.md with Michael — sent, awaiting dev estimate
 
 ### Admin
-38. [ ] Update budget mapping spreadsheet (out of date)
+38. [x] Budget mapping spreadsheet — replaced by custom budget tracking file
 39. [ ] Research URL shortener for LinkedIn comment linking and Facebook posts
-40. [ ] Set up Meta ad spend weekly schedule: -10% every Monday, +10% every Thursday (repeat weekly to boost weekends)
+40. [x] Meta ad spend weekly schedule — done manually; +10% applied Thu 27 Mar
+
+### Website Marketing Dashboard
+41. [x] Sent Michael required backend changes for marketing reporting dashboard — awaiting his feedback
 
 ---
 
 ## Tuesday 24 Mar — NOMOS DAY
 1. [x] Nomos domains set up by Tas ✓ — connect domains to Instantly
-2. [ ] Add Nomos email accounts to Instantly and start warm-up
+2. [x] Add Nomos email accounts to Instantly and start warm-up
 3. [ ] Configure HubSpot pipelines:
    - Design Service: Qualified → Site Visit → Design Proposal Sent → Design Proposal Approval → Build Proposal Sent → Closed Won / Closed Lost
    - Project Only: Qualified → Site Visit → Proposal Sent → Closed Won / Closed Lost
@@ -115,7 +127,7 @@
 6. [ ] Chase Neo — LinkedIn topic list and hook lines
 7. [ ] Chase Neo — Premium Networking List for newsletter
 8. [ ] Remind Mariana to ask Neo to add her to Nomos ChatGPT account
-9. [ ] Planning leads automation — Zapier + Instantly setup
+9. [x] Planning leads automation — custom MVP built (no longer Zapier; integrated into Nomos website backend once Mike builds it)
 
 ---
 
@@ -128,7 +140,7 @@
 
 ## Thursday 26 Mar
 1. [ ] Meta Procurement: check CPL and lead quality (3-day check from ramp-down)
-2. [ ] Financial reporting dashboard — build continues (PDF export due 28 Mar)
+2. [x] Financial reporting dashboard — custom coded in Cursor, completed
 3. [ ] Any outstanding Certify campaign tasks
 
 ---
@@ -143,7 +155,12 @@
 1. [ ] Weekly social posting (Mike, Stelios, Company page) via Publer
 2. [ ] PhantomBuster — scrape, DM pipeline, HubSpot sync
 3. [ ] Meta Procurement ramp-down — monitor CPL and lead quality at each -10% step (every 3 days)
-4. [ ] Financial reporting dashboard — build in progress (PDF export due 28 Mar)
+4. [x] Financial reporting dashboard — completed
+
+---
+
+## Future Tasks
+1. [ ] StoneRise accreditations and training courses for QS and other commercial roles — research, plan and build out
 
 ---
 
@@ -161,6 +178,11 @@
 
 ## Next Week — w/c 30 Mar
 1. [ ] Switch HubSpot over from Stelios to Haidar (Mon 30 Mar)
+2. [ ] Meta ad spend -10% decrease (Mon 30 Mar — do manually)
+3. [ ] Website lead capture form — replace company size field with turnover
+4. [ ] Pricing page — split main contractor and subcontractor pricing under the Payment Application header
+5. [ ] Build /solutions/payment-applications-software page for Certify
+6. [ ] Look into integrating HubSpot chatbot on the main StoneRise website
 
 ---
 

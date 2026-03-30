@@ -1,7 +1,7 @@
 # Google Paid Search — Certify / Commercial App Campaign Plan
 **Date:** 19 March 2026  
 **Campaign objective:** Generate demo requests for the Certify / Commercial App  
-**Budget:** £130/day (example — to be confirmed)  
+**Budget:** £100/day (confirmed 27 Mar 2026)  
 **Bidding strategy:** Manual CPC  
 
 ---
@@ -191,6 +191,62 @@ Quality Score is determined by three factors: expected CTR, ad relevance, and la
 **Ad copy alignment:**  
 Headline 1 must mirror the landing page hero headline exactly. Ad description must reference payment applications and construction — not generic Certify copy.
 
+---
+
+#### Ad Copy — Ad Group 1: Payment Applications
+
+**Ad type:** Responsive Search Ad (RSA)  
+**Final URL:** `stonerise.tech/certify/payment-applications`  
+**Display path:** stonerise.tech/certify/payment-apps
+
+**Headlines** *(30 chars max — Google pins H1 by default; rest rotated)*
+
+| # | Headline | Chars | Notes |
+|---|---|---|---|
+| H1 | Payment Application Software | 29 | Pin to position 1 — exact keyword match |
+| H2 | For Construction Teams | 23 | Pin to position 2 — audience qualifier |
+| H3 | Automate Your Payment Apps | 26 | Core feature |
+| H4 | Construction Pay App Software | 30 | Keyword mirror |
+| H5 | Application for Payment Tool | 29 | Keyword mirror |
+| H6 | Subcontractor Payment Software | 30 | Keyword variant |
+| H7 | Build Pay Apps in Minutes | 25 | Outcome |
+| H8 | Submit Payment Apps Digitally | 30 | Outcome |
+| H9 | Track Every Payment Application | 31 | ⚠️ 32 chars — use "Track Every Payment App" (23) ✓ |
+| H10 | From Valuation to Certified Amount | 35 | ⚠️ Over limit — use "Valuation to Certified Amount" (29) ✓ |
+| H11 | No More Manual Pay Applications | 31 | ⚠️ 31 chars — use "No More Manual Pay Apps" (23) ✓ |
+| H12 | One Workflow for Every Pay App | 30 | Product differentiator |
+| H13 | Full Audit Trail on Every App | 29 | Trust/compliance |
+| H14 | Built by QSs, for QSs | 21 | Credibility |
+| H15 | Manage All Pay Apps in One Place | 32 | ⚠️ 32 chars — use "Manage All Pay Apps in One Place" trimmed: "All Pay Apps. One Place." (24) ✓ |
+
+*Amended headlines to use: H9 → "Track Every Payment App" | H10 → "Valuation to Certified Amount" | H11 → "No More Manual Pay Apps" | H15 → "All Pay Apps. One Place."*
+
+**Descriptions** *(90 chars max — 2 shown at a time, 4 in rotation)*
+
+| # | Description | Notes |
+|---|---|---|
+| D1 | Build, submit and track payment applications in one place. No spreadsheets, no delays. | Workflow/consolidation |
+| D2 | Certify automates payment applications for construction commercial teams. | Product statement |
+| D3 | From application to certified amount — every figure tracked, every submission on record. | Outcome/accuracy |
+| D4 | Stop building payment applications manually. Certify automates the entire commercial workflow. | Pain/automation |
+
+*These descriptions also serve as the basis for landing page copy — see landing page requirements above.*
+
+---
+
+#### Sitelinks — Ad Group 1: Payment Applications
+
+**Status: To be added once landing page is live with UTM-tagged URLs.**
+
+| # | Title | Description Line 1 | Description Line 2 | URL |
+|---|---|---|---|---|
+| S1 | Payment Application Workflow | Build and submit pay apps digitally | No spreadsheets, no manual errors | TBC — `stonerise.tech/certify/payment-applications?utm_source=google&utm_medium=cpc&utm_campaign=certify-search&utm_content=sitelink-workflow` |
+| S2 | TBC | TBC | TBC | TBC |
+| S3 | TBC | TBC | TBC | TBC |
+| S4 | TBC | TBC | TBC | TBC |
+
+---
+
 ### Ad Group 2 — Pay Less Notice
 
 **Landing page requirements:**
@@ -204,6 +260,57 @@ Headline 1 must mirror the landing page hero headline exactly. Ad description mu
 
 **Ad copy alignment:**  
 Headline 1: "Never Miss a Pay Less Notice" or "Pay Less Notice Deadlines, Automated" — must match landing page hero.
+
+---
+
+#### Ad Copy — Ad Group 2: Pay Less Notice
+
+**Ad type:** Responsive Search Ad (RSA)  
+**Final URL:** `stonerise.tech/certify/pay-less-notice`  
+**Display path:** stonerise.tech/certify/pay-less-notice
+
+**Headlines** *(30 chars max)*
+
+| # | Headline | Chars | Notes |
+|---|---|---|---|
+| H1 | Never Miss a Pay Less Notice | 29 | Pin to position 1 — mirrors landing page hero |
+| H2 | Pay Less Notice Software | 25 | Pin to position 2 — keyword match |
+| H3 | Book a Demo Today | 18 | CTA |
+| H4 | Automate Pay Less Notices | 26 | Keyword + benefit |
+| H5 | Miss the Deadline? You Pay. | 27 | Consequence hook — high impact |
+| H6 | Certify by StoneRise | 20 | Brand |
+| H7 | Construction Act Compliance | 27 | Keyword/compliance signal |
+| H8 | JCT Pay Less Notice Tool | 25 | Keyword variant |
+| H9 | Auto-Calculate Notice Windows | 30 | Feature — deadline automation |
+| H10 | Pay Less Notice, On Time | 24 | Outcome |
+| H11 | Built for Commercial Teams | 26 | Persona signal |
+| H12 | Section 111 Deadline Alerts | 28 | Legislation specificity — credibility |
+| H13 | No Missed Notices. No Risk. | 27 | Benefit contrast |
+| H14 | Full Audit Trail Included | 25 | Feature/trust |
+| H15 | Built by QSs, for QSs | 21 | Credibility |
+
+**Descriptions** *(90 chars max)*
+
+| # | Description | Chars |
+|---|---|---|
+| D1 | Miss a pay less notice deadline and the full gross sum becomes due. Certify prevents that. | 90 |
+| D2 | Certify tracks pay less notice windows, auto-calculates deadlines and alerts your team. Book a demo. | ⚠️ 101 chars — see below |
+| D3 | Track every pay less notice deadline automatically. Construction Act compliant. Book a demo. | 91 — see below |
+| D4 | Stop managing pay less notices on spreadsheets. Certify automates the entire workflow. | 86 |
+
+*D2 revised (89 chars): "Certify auto-calculates pay less notice windows and alerts your team before deadlines hit."*  
+*D3 revised (88 chars): "Track every pay less notice deadline automatically. Construction Act compliant. Book a demo." — confirmed 91 chars, trim: "Track pay less notice deadlines automatically. Construction Act compliant. Book a demo." = 87 chars ✓*
+
+**Final descriptions to use:**
+
+| # | Description | Chars |
+|---|---|---|
+| D1 | Miss a pay less notice deadline and the full gross sum becomes due. Certify prevents that. | 90 |
+| D2 | Certify auto-calculates pay less notice windows and alerts your team before deadlines hit. | 90 |
+| D3 | Track pay less notice deadlines automatically. Construction Act compliant. Book a demo. | 87 |
+| D4 | Stop managing pay less notices on spreadsheets. Certify automates the entire workflow. | 86 |
+
+---
 
 ### General Quality Score rules
 - Phrase match only — no broad match keywords in either ad group
