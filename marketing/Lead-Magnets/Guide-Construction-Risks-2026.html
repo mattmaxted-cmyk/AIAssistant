@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Construction in 2026: The Risks UK Contractors Can't Afford to Ignore</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1E293B;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+    /* Cover Page */
+    .cover {
+      background: #0f1e38;
+      height: 297mm;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 60px;
+      page-break-after: always;
+      break-after: page;
+      position: relative;
+      overflow: hidden;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .cover::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      right: -100px;
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(0,168,107,0.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover::after {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      left: -80px;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(30,90,168,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .cover-logo {
+      height: 60px;
+      object-fit: contain;
+    }
+
+    .cover-tag {
+      display: inline-block;
+      background: rgba(0,168,107,0.15);
+      color: #00A86B;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 4px;
+      margin-bottom: 24px;
+    }
+
+    .cover-title {
+      font-size: 48px;
+      font-weight: 800;
+      color: #ffffff !important;
+      line-height: 1.15;
+      margin-bottom: 24px;
+      max-width: 700px;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .cover-title span {
+      color: #00A86B;
+    }
+
+    .cover-subtitle {
+      font-size: 18px;
+      color: rgba(255,255,255,0.6);
+      max-width: 560px;
+      line-height: 1.6;
+      margin-bottom: 48px;
+    }
+
+    .cover-meta {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    .cover-meta-item {
+      color: rgba(255,255,255,0.5);
+      font-size: 13px;
+    }
+
+    .cover-meta-item strong {
+      color: rgba(255,255,255,0.85);
+      display: block;
+      font-size: 14px;
+      margin-bottom: 2px;
+    }
+
+    .cover-divider {
+      width: 1px;
+      height: 36px;
+      background: rgba(255,255,255,0.15);
+    }
+
+    /* Content Pages */
+    .content {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 60px;
+    }
+
+    /* Table of Contents */
+    .toc {
+      padding: 60px;
+      page-break-after: always;
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .toc-title {
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #00A86B;
+      margin-bottom: 32px;
+    }
+
+    .toc-item {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px dotted #e8eef4;
+      gap: 16px;
+    }
+
+    .toc-item:last-child {
+      border-bottom: none;
+    }
+
+    .toc-number {
+      font-size: 12px;
+      font-weight: 700;
+      color: #00A86B;
+      min-width: 28px;
+    }
+
+    .toc-label {
+      flex: 1;
+      font-size: 15px;
+      font-weight: 500;
+      color: #1E293B;
+    }
+
+    .toc-risk {
+      font-size: 12px;
+      color: #94a3b8;
+      background: #f8fafc;
+      padding: 3px 10px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* Introduction */
+    .intro-section {
+      padding: 60px;
+      background: #f8fafc;
+      border-left: 4px solid #00A86B;
+      margin-bottom: 0;
+      page-break-after: always;
+    }
+
+    .section-label {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #00A86B;
+      margin-bottom: 16px;
+    }
+
+    .intro-heading {
+      font-size: 28px;
+      font-weight: 700;
+      color: #0f1e38;
+      margin-bottom: 20px;
+      line-height: 1.3;
+    }
+
+    .intro-text {
+      font-size: 16px;
+      color: #475569;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .intro-text:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Risk Sections */
+    .risk-section {
+      padding: 60px;
+      border-bottom: 1px solid #f0f4f8;
+    }
+
+    .risk-section:last-of-type {
+      border-bottom: none;
+    }
+
+    .risk-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      margin-bottom: 28px;
+    }
+
+    .risk-number-badge {
+      background: #0f1e38;
+      color: #00A86B;
+      font-size: 13px;
+      font-weight: 800;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      letter-spacing: 0.5px;
+    }
+
+    .risk-title {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0f1e38;
+      line-height: 1.3;
+    }
+
+    .risk-body p {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .risk-body p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* Legislation sub-items */
+    .leg-item {
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+
+    .leg-item-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f1e38;
+      margin-bottom: 6px;
+    }
+
+    .leg-item-date {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 600;
+      color: #ffffff;
+      background: #1E5AA8;
+      padding: 2px 8px;
+      border-radius: 3px;
+      margin-left: 8px;
+      vertical-align: middle;
+    }
+
+    .leg-item p {
+      font-size: 14px;
+      color: #64748b;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    /* Callout / Stat Box */
+    .callout {
+      background: #0f1e38;
+      border-radius: 10px;
+      padding: 24px 28px;
+      margin: 24px 0;
+      display: flex;
+      gap: 20px;
+      align-items: flex-start;
+    }
+
+    .callout-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .callout-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.85);
+      line-height: 1.65;
+    }
+
+    .callout-text strong {
+      color: #00A86B;
+    }
+
+    /* Stat row */
+    .stat-row {
+      display: flex;
+      gap: 16px;
+      margin: 24px 0;
+    }
+
+    .stat-card {
+      flex: 1;
+      background: #f8fafc;
+      border: 1px solid #e2e8f0;
+      border-top: 3px solid #00A86B;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 32px;
+      font-weight: 800;
+      color: #0f1e38;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .stat-number.red {
+      color: #EF4444;
+    }
+
+    .stat-label {
+      font-size: 12px;
+      color: #64748b;
+      line-height: 1.4;
+    }
+
+    /* What this means box */
+    .action-box {
+      background: rgba(0,168,107,0.06);
+      border: 1px solid rgba(0,168,107,0.2);
+      border-left: 4px solid #00A86B;
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px;
+      margin-top: 24px;
+    }
+
+    .action-box-label {
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: #00A86B;
+      margin-bottom: 8px;
+    }
+
+    .action-box p {
+      font-size: 14px;
+      color: #334155;
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* Connecting section */
+    .connecting-section {
+      background: #0f1e38;
+      padding: 60px;
+      page-break-before: always;
+    }
+
+    .connecting-section .section-label {
+      color: rgba(0,168,107,0.8);
+    }
+
+    .connecting-heading {
+      font-size: 28px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 20px;
+      line-height: 1.35;
+    }
+
+    .connecting-text {
+      font-size: 15px;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .connecting-text:last-of-type {
+      margin-bottom: 0;
+    }
+
+    /* CTA Section */
+    .cta-section {
+      padding: 60px;
+      background: #f8fafc;
+      border-top: 1px solid #e2e8f0;
+    }
+
+    .cta-heading {
+      font-size: 24px;
+      font-weight: 700;
+      color: #0f1e38;
+      margin-bottom: 12px;
+    }
+
+    .cta-text {
+      font-size: 15px;
+      color: #475569;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      max-width: 560px;
+    }
+
+    .cta-button {
+      display: inline-block;
+      background: #00A86B;
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 14px 28px;
+      border-radius: 8px;
+      text-decoration: none;
+      letter-spacing: 0.3px;
+    }
+
+    .cta-note {
+      font-size: 13px;
+      color: #94a3b8;
+      margin-top: 12px;
+    }
+
+    /* Print button */
+    .print-btn {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      background: #00A86B;
+      color: #ffffff;
+      font-family: 'Inter', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(0,168,107,0.35);
+      z-index: 9999;
+      letter-spacing: 0.3px;
+    }
+
+    .print-btn:hover {
+      background: #009960;
+    }
+
+    @media print {
+      .print-btn { display: none; }
+    }
+
+    /* Footer */
+    .footer {
+      padding: 32px 60px;
+      border-top: 1px solid #e2e8f0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      height: 40px;
+    }
+
+    .footer-text {
+      font-size: 12px;
+      color: #94a3b8;
+      text-align: right;
+    }
+
+    /* Print */
+    @media print {
+      @page {
+        margin: 0;
+        size: A4 portrait;
+      }
+
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+      }
+
+      body {
+        font-size: 12pt;
+        width: 210mm;
+        margin: 0;
+        padding: 0;
+      }
+
+      /* Full-page sections: each starts on its own page */
+      .cover {
+        width: 210mm;
+        height: 297mm;
+        page-break-after: always;
+        break-after: page;
+        overflow: hidden;
+      }
+
+      .toc {
+        page-break-after: always;
+        break-after: page;
+      }
+
+      .intro-section {
+        page-break-after: always;
+        break-after: page;
+      }
+
+      /* Each risk starts on a fresh page */
+      .risk-section {
+        page-break-before: always;
+        break-before: page;
+      }
+
+      /* Summary / connecting section starts on fresh page */
+      .connecting-section {
+        page-break-before: always;
+        break-before: page;
+        width: 210mm;
+      }
+
+      /* Footer sits on the same page as the connecting section — no forced break */
+      .footer {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* Atomic elements: never split across a page */
+      .stat-row,
+      .callout,
+      .action-box,
+      .leg-item,
+      .risk-header {
+        page-break-inside: avoid;
+        break-inside: avoid;
+      }
+
+      /* Keep a heading with the content that follows it */
+      .risk-header,
+      h2,
+      h3 {
+        page-break-after: avoid;
+        break-after: avoid;
+      }
+
+      /* Flatten flexbox layouts that don't print reliably */
+      .stat-row {
+        display: block;
+      }
+
+      .stat-card {
+        display: inline-block;
+        width: 30%;
+        margin-right: 2%;
+        vertical-align: top;
+      }
+
+      .callout {
+        display: block;
+      }
+
+      .callout-icon {
+        display: none;
+      }
+
+      /* Orphan and widow control */
+      p {
+        orphans: 3;
+        widows: 3;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- COVER PAGE -->
+  <div class="cover">
+    <div>
+      <img src="../../Marketing/Brand/stonerise-logo.png" alt="StoneRise" class="cover-logo" onerror="this.style.display='none'">
+    </div>
+    <div>
+      <div class="cover-tag">2026 Industry Report</div>
+      <h1 class="cover-title">Construction in 2026:<br><span>The Risks UK Contractors</span><br>Can't Afford to Ignore</h1>
+      <p class="cover-subtitle">A practical guide for Managing Directors, Finance Directors and Commercial Leaders at UK main contractors and subcontractors.</p>
+    </div>
+    <div></div>
+  </div>
+
+  <!-- TABLE OF CONTENTS -->
+  <div class="toc">
+    <div class="toc-title">Contents</div>
+
+    <div class="toc-item">
+      <span class="toc-number">Intro</span>
+      <span class="toc-label">Introduction</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-number">01</span>
+      <span class="toc-label">Margin Compression from Legacy Work</span>
+      <span class="toc-risk">Commercial</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-number">02</span>
+      <span class="toc-label">Cashflow Stress in a Tight Credit Environment</span>
+      <span class="toc-risk">Finance</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-number">03</span>
+      <span class="toc-label">Renewed Cost Pressure from Energy and Geopolitics</span>
+      <span class="toc-risk">Cost</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-number">04</span>
+      <span class="toc-label">Insolvency Ripple Effects</span>
+      <span class="toc-risk">Supply Chain</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-number">05</span>
+      <span class="toc-label">Contractual Risk and the Shift Toward New Payment Models</span>
+      <span class="toc-risk">Legal</span>
+    </div>
+    <div class="toc-item">
+      <span class="toc-number">End</span>
+      <span class="toc-label">What Connects All Five Risks</span>
+    </div>
+  </div>
+
+  <!-- INTRODUCTION -->
+  <div class="intro-section">
+    <div class="section-label">Introduction</div>
+    <h2 class="intro-heading">Why 2026 is different</h2>
+    <p class="intro-text">Running a construction business in the UK has never been straightforward. But 2026 brings a specific combination of pressures that, taken together, represent one of the most challenging operating environments the industry has faced in years.</p>
+    <p class="intro-text">The difference in 2026 is that several serious commercial pressures are converging at the same time. Projects priced in 2023 and 2024 are being delivered into a cost base that has not reset downward. Cash is moving slowly through supply chains while credit conditions remain tight. Energy prices are staying volatile in ways that are difficult to recover through standard contract terms. Insolvencies across the industry are running at the highest rate of any UK sector for the fourth consecutive year. And the contractual environment is shifting risk toward contractors at the very moment when margins are thinnest.</p>
+    <p class="intro-text">The contractors who manage this environment well will not necessarily be the biggest or the most experienced. They will be the ones who saw what was coming, prepared early, and made deliberate decisions about how to run their businesses rather than reacting when problems had already taken hold.</p>
+    <p class="intro-text">This guide is written for MDs, FDs and commercial leaders at UK main contractors. It does not offer easy answers. Construction in 2026 is genuinely hard. What it does offer is a clear-eyed view of where the commercial risks are, what the numbers actually say, and what actions are available to you.</p>
+    <p class="intro-text">Each of the five risks in this guide is real, current and quantified where the data allows. Read it as a briefing, not a sales document. The best outcome is that you finish it with a clearer picture of what your business is actually exposed to in the year ahead.</p>
+  </div>
+
+  <!-- RISK 1 -->
+  <div class="risk-section">
+    <div class="risk-header">
+      <div class="risk-number-badge">01</div>
+      <h2 class="risk-title">Margin Compression from Legacy Work</h2>
+    </div>
+    <div class="risk-body">
+
+      <p>A large share of the work being delivered right now was priced in 2023 and 2024, during a period when inflation appeared to be easing and costs felt more predictable. Those assumptions have not held. The cost base has remained stubbornly high, but the contracts were written before anyone could see that clearly.</p>
+
+      <p>Inflation slowing down is not the same as costs coming down. What the industry experienced was a deceleration, not a reset. Material prices stabilised at elevated levels. Labour costs continued rising. Subcontractor rates held firm as supply remained constrained. The businesses that tendered aggressively in 2023 and 2024 to win volume are now delivering those projects at margins that were already thin when they were agreed, and have since been eroded further by costs they could not have fully anticipated.</p>
+
+      <p>The squeeze is particularly sharp for contractors holding fixed-price or lump-sum contracts. The exposure runs in one direction. When costs are lower than expected, the contractor benefits. When costs are higher, the contractor absorbs the difference. With inflation having moved through the supply chain unevenly and at different speeds across materials, labour and plant, many contractors are carrying margin losses that will not fully crystallise until the project reaches final account.</p>
+
+      <div class="callout">
+        <div class="callout-icon">💷</div>
+        <div class="callout-text"><strong>The danger in 2026</strong> is that pipelines look healthy on paper while the margin within them is being quietly consumed. A business can be fully occupied, winning work and hitting revenue targets while simultaneously moving closer to a loss position on every active project. By the time the numbers make the problem visible, the options available are limited.</div>
+      </div>
+
+      <p>The contractors managing this well are treating CVRs as live documents rather than month-end exercises. They are tracking committed costs against budget in real time, capturing every variation at the point of instruction and challenging the assumption that busyness equates to profitability. The ones struggling are those whose commercial teams are still reconstructing cost positions from memory and spreadsheets at the end of each month, seeing a picture that is already weeks out of date.</p>
+
+      <div class="action-box">
+        <div class="action-box-label">What this means in practice</div>
+        <p>Go through your current project pipeline and ask a direct question: how many of these contracts were priced before Q3 2023, and what has happened to the cost base since then? If the answer is that your CVR process is not catching the gap in real time, the margin erosion is already happening whether or not the numbers reflect it yet. Prioritise the contracts where the gap between original pricing assumptions and current cost reality is largest, and make a deliberate decision about whether recovery through variations or early commercial intervention is still available to you.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RISK 2 -->
+  <div class="risk-section">
+    <div class="risk-header">
+      <div class="risk-number-badge">02</div>
+      <h2 class="risk-title">Cashflow Stress in a Tight Credit Environment</h2>
+    </div>
+    <div class="risk-body">
+
+      <p>Payment practices in the UK construction industry are improving, but the pace is slow and the practical reality on site remains difficult. Cash moves through supply chains at a speed that reflects the interests of whoever holds it longest, and in most cases that means subcontractors and specialist trades are still waiting significantly longer for payment than the law intends.</p>
+
+      <p>Retentions remain one of the most visible and damaging structural problems. Hundreds of millions of pounds sit locked up across the industry at any given time, tied to contracts that have long since reached practical completion. Reform has been discussed and deferred for years, and while pressure continues to build, contractors cannot plan their cashflow around legislation that has yet to pass. The money is held, the working capital gap is real, and the business still has to function in the meantime.</p>
+
+      <p>The lending environment has not helped. Banks and alternative lenders that tightened their appetite for construction exposure during the instability of 2023 and 2024 have not materially relaxed their positions. Facilities that were straightforward to maintain two years ago now require more covenant compliance, more financial reporting and more management time. Businesses looking to grow face a specific problem: the working capital required to support an increasing order book often outpaces what the business can generate internally or access externally at reasonable cost.</p>
+
+      <div class="callout">
+        <div class="callout-icon">⚠️</div>
+        <div class="callout-text"><strong>The defining cashflow risk of 2026</strong> is the business that is trading well by every operational measure but runs out of money. Full order book. Active sites. Good relationships. Profitable contracts on paper. And still unable to meet payroll or pay its supply chain on time because the timing of cash in does not match the timing of cash out. Busy and broke is not a contradiction in construction. For a meaningful number of businesses, it is the current reality.</div>
+      </div>
+
+      <p>Managing this requires a level of cashflow discipline that goes beyond reviewing bank statements at the end of the month. Contractors need to know when applications are going in, when they should be certified, when payment is due and when it is late. They need to know which retentions are due for release and when, and they need to be actively managing the gap between what they owe their supply chain and what they are owed by clients. For most businesses, that information currently exists across multiple spreadsheets, inboxes and people's heads rather than in a single coherent picture.</p>
+
+      <div class="action-box">
+        <div class="action-box-label">What this means in practice</div>
+        <p>Build a twelve-week cashflow forecast if you do not already have one, and make sure it reflects the actual timing of payment applications, certifications and expected receipts rather than contracted terms. The gap between what is contractually due and what actually lands in the bank is where cashflow crises begin. Identify which retentions are overdue for release and pursue them actively. Understand which of your subcontractors and suppliers are under pressure and consider what early payment or extended terms might cost you compared to the risk of a key supply chain partner failing mid-project.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RISK 3 -->
+  <div class="risk-section">
+    <div class="risk-header">
+      <div class="risk-number-badge">03</div>
+      <h2 class="risk-title">Renewed Cost Pressure from Energy and Geopolitics</h2>
+    </div>
+    <div class="risk-body">
+
+      <p>Energy prices have not returned to the stability the industry was hoping for. Ongoing geopolitical instability across multiple regions continues to create volatility in wholesale energy markets, and that volatility flows directly into construction costs in ways that are difficult to predict and harder to recover through contract mechanisms.</p>
+
+      <p>The most direct routes from energy prices into project costs are well understood. Steel production is energy-intensive. Concrete manufacturing requires significant heat. Glass, ceramics and prefabricated components are all manufactured in processes that track energy costs closely. When energy prices rise, the cost of these materials rises with them, often with a lag of several months that makes the timing of the impact unpredictable relative to when a contract was priced.</p>
+
+      <p>Haulage and site operations carry their own energy exposure. Fuel costs affect the price of every delivery to site, every item of plant running through a working day and every movement of materials through the supply chain. These costs rarely attract much attention individually, but they accumulate across a project and the total is rarely small on anything of scale.</p>
+
+      <p>The indirect effects are broader still. Subcontractors and specialist trades carry their own energy exposure through their overheads, their owned plant and their procurement costs. When those costs increase, the pressure translates into higher quotations, shorter pricing periods and less willingness to hold prices on materials or labour. The supply chain becomes more defensive precisely at the point when main contractors most need price certainty.</p>
+
+      <div class="callout">
+        <div class="callout-icon">⚡</div>
+        <div class="callout-text"><strong>The recovery problem is structural.</strong> Most standard form contracts offer limited mechanisms for recovering cost increases once a lump sum or fixed-price arrangement has been signed. Where fluctuation provisions are absent or heavily restricted, energy-driven cost increases flow directly to the contractor's margin with no route back. Contracts signed during periods of apparent price stability, with assumptions baked in about energy costs remaining at a certain level, are now carrying exposure that was never intended to sit with the contractor.</div>
+      </div>
+
+      <p>Geopolitical risk operates on a longer cycle than most project timelines. A contract signed today may be delivered over two or three years, during which time the energy market can move significantly in either direction. The businesses managing this well are those building explicit risk allowances into their tender pricing and pushing for fluctuation provisions on longer-term contracts, rather than absorbing the exposure in silence and hoping the market moves in their favour.</p>
+
+      <div class="action-box">
+        <div class="action-box-label">What this means in practice</div>
+        <p>Review your current tender pricing assumptions for energy-sensitive materials and transport costs. If you are still using pre-2024 benchmark costs as a baseline, the exposure in your current pipeline is likely understated. For new tenders on projects with a delivery period beyond 12 months, consider the explicit cost of energy volatility and whether your contract terms allow for recovery if costs move materially. The businesses that are absorbing this risk silently are making a decision they may not have consciously intended to make.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RISK 4 -->
+  <div class="risk-section">
+    <div class="risk-header">
+      <div class="risk-number-badge">04</div>
+      <h2 class="risk-title">Insolvency Ripple Effects</h2>
+    </div>
+    <div class="risk-body">
+
+      <div class="stat-row">
+        <div class="stat-card">
+          <div class="stat-number red">17.1%</div>
+          <div class="stat-label">Share of all UK insolvencies accounted for by construction, January 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number red">3,912</div>
+          <div class="stat-label">Construction firms that became insolvent in the 12 months to January 2026</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number red">4th</div>
+          <div class="stat-label">Consecutive year construction has carried the highest insolvency rate of any UK sector</div>
+        </div>
+      </div>
+
+      <p>When most people in the industry think about insolvency risk, they picture a major Tier 1 failure. A large contractor collapsing with headline-grabbing debts, frozen projects and hundreds of workers standing down. Those events happen and they are damaging, but they are not where most businesses face their actual exposure in 2026.</p>
+
+      <p>The more prevalent and less discussed pattern is the mid-tier and specialist contractor that fails quietly. A mechanical and electrical subcontractor that has been on your site for six months, carrying retentions and unpaid applications, who simply stops trading. A groundworks firm that cannot meet its payroll after a main contractor above them in the chain delays certification. A cladding specialist that has stretched its credit too far across three simultaneous projects and cannot recover when one of them disputes its final account. These are the failures that are increasing in frequency, and the cumulative damage they cause across a pipeline can be severe without ever generating a news story.</p>
+
+      <p>When a key subcontractor fails mid-project, the immediate consequences arrive fast. Unpaid valuations and retentions held by that contractor become difficult to recover, sitting in an administration process that moves slowly. The programme takes a hit while a replacement contractor is procured, often at a higher price given the urgency and the specialised nature of the work. Any unfinished work has to be assessed, priced and recommissioned, with the cost of defects or incomplete work sitting in dispute.</p>
+
+      <p>The downstream effects are slower but often as damaging. Disputes escalate as parties seek to recover costs. Supply chains become more cautious about who they work with and on what terms. Insurance costs for the project may increase. The commercial team is diverted from proactive margin management to reactive firefighting, with knock-on effects on every other project in the portfolio.</p>
+
+      <div class="callout">
+        <div class="callout-icon">📉</div>
+        <div class="callout-text"><strong>The 2026 trend to watch</strong> is more frequent, smaller failures causing cumulative damage across pipelines. A business that loses two or three subcontractors in a single year, each at a different stage of their project, can absorb tens or even hundreds of thousands of pounds in recovery costs, programme delays and lost retention that never returns. The aggregate impact of multiple small failures often exceeds what a single large failure would have cost.</div>
+      </div>
+
+      <p>Supply chains are responding to this environment by becoming more defensive. Smaller contractors are shortening their pricing validity periods, asking for earlier payment schedules and declining work they perceive as commercially risky. This further concentrates work among a smaller pool of willing subcontractors, which increases programme risk and reduces pricing competition at the point of tender.</p>
+
+      <div class="action-box">
+        <div class="action-box-label">What this means in practice</div>
+        <p>Build a simple financial health register for your live subcontract packages. You do not need complex credit monitoring tools to do this. Consistent late submission of payment applications, increasing frequency of disputed assessments, requests for early payment or unusually short pricing validity periods are all indicators worth tracking. Assign a risk rating to your key subcontractors and review it monthly. The cost of replacing a failed subcontractor mid-project is multiples of what early monitoring would have cost.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RISK 5 -->
+  <div class="risk-section">
+    <div class="risk-header">
+      <div class="risk-number-badge">05</div>
+      <h2 class="risk-title">Contractual Risk and the Shift Toward New Payment Models</h2>
+    </div>
+    <div class="risk-body">
+
+      <p>The contractual landscape for UK contractors is shifting, and not in a direction that favours those who are not paying close attention. Clients and developers facing their own cost and financing pressures are pushing risk further down the supply chain through tighter, more prescriptive contract terms. The standard position in many tender processes is now a heavily amended form that restricts the contractor's ability to recover for events that would have been compensable under earlier contracts.</p>
+
+      <p>This risk transfer takes a number of forms. Shorter notification windows for claims and variations. Stricter assessment timescales that shift the burden of proof to the contractor. Caps on recovery for loss and expense. Time-bar provisions that extinguish entitlements if they are not pursued within tight deadlines. Taken individually, none of these amendments is new. Taken together and applied consistently across a pipeline, they represent a meaningful change to the risk profile of the work being signed.</p>
+
+      <p>The legislative backdrop adds another layer of uncertainty. Retention reform has been debated for years without resolution. A ban on cash retention has been discussed, consulted on and deferred. Contractors who have been expecting reform to arrive have had to plan without it, and the ongoing uncertainty makes it difficult to factor retention release into medium-term cashflow planning. Changes to payment legislation, while broadly positive in intention, have created inconsistencies in how payment notices, pay less notices and assessment timescales are applied across different contract forms and client types.</p>
+
+      <div class="callout">
+        <div class="callout-icon">⚖️</div>
+        <div class="callout-text"><strong>Early movement toward bonds and guarantees</strong> is beginning to reshape the cost of winning work. More clients are requiring performance bonds, parent company guarantees or retention bonds as a condition of contract. These carry cost, whether in premium, facility fees or the management time required to maintain them. For businesses tendering at fine margins, the additional cost of bonding requirements can tip a borderline job into a loss before the first cubic metre of concrete has been poured.</div>
+      </div>
+
+      <p>The practical difficulty for many contractors is that contract terms vary significantly across clients, procurement frameworks and project types. A business tendering across multiple client types in a single year may encounter materially different contractual risk profiles on each project, with no consistent standard for how payment, variations and dispute resolution work. This creates a genuine commercial management challenge, particularly for businesses that do not have in-house legal resource to review and negotiate contract amendments at the point of tender.</p>
+
+      <p>The contractors managing this environment well are treating contract review as a commercial discipline rather than a legal formality. They know before signing which terms have been amended, what the practical effect of each amendment is and what allowance has been made in their tender pricing for the additional risk being accepted. The ones at greatest risk are those who sign heavily amended contracts without a clear-eyed assessment of what they have agreed to carry.</p>
+
+      <div class="action-box">
+        <div class="action-box-label">What this means in practice</div>
+        <p>Before signing any amended contract, carry out a structured review of the key risk-shifting provisions, particularly notification requirements, time-bar clauses, variation assessment timescales and retention terms. Quantify the exposure where possible and make a deliberate decision about whether the commercial return justifies the risk. If bonding or guarantee requirements are increasing across your pipeline, factor that cost into your tender pricing and review whether your existing facilities are sized appropriately for where your order book is heading.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONNECTING SECTION -->
+  <div class="connecting-section">
+    <div class="section-label">Summary</div>
+    <h2 class="connecting-heading">What connects all five risks</h2>
+    <p class="connecting-text">Every risk in this guide shares a common characteristic. Each one is harder to manage without timely, accurate commercial information, and in most contracting businesses that information is either incomplete, delayed or sitting in too many separate places for anyone to use it effectively.</p>
+    <p class="connecting-text">Margin compression from legacy work is visible only if CVRs reflect real committed costs rather than estimates reconstructed at month end. Cashflow stress only becomes manageable when payment application timings, certification dates and retention release schedules are tracked in one place rather than spread across spreadsheets and inboxes. Energy and geopolitical cost pressure requires tender pricing assumptions to be revisited against current benchmarks, which demands that those assumptions are recorded and accessible in the first place. Insolvency ripple effects can be anticipated when subcontractor payment patterns are monitored consistently rather than reviewed only when a problem has already surfaced. Contractual risk can only be managed if the terms being signed are reviewed against a clear commercial framework rather than treated as standard.</p>
+    <p class="connecting-text">The contractors who will navigate 2026 successfully are those who have built their commercial processes around real-time information rather than month-end reconstruction. That does not require a wholesale technology transformation. It requires a clear-eyed view of where the information gaps are, and a deliberate decision to close the ones that carry the most risk.</p>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <img src="../../Marketing/Brand/stonerise-logo.png" alt="StoneRise" class="footer-logo" onerror="this.style.display='none'; this.nextSibling.style.display='block'">
+    <span style="display:none; font-weight:700; color:#0f1e38; font-size:14px;">STONERISE</span>
+    <div class="footer-text">
+      stonerise.tech &nbsp;|&nbsp; info@stonerise.tech<br>
+      © 2026 StoneRise Technology Ltd
+    </div>
+  </div>
+
+  <button class="print-btn" onclick="window.print()">Save as PDF</button>
+
+</body>
+</html>

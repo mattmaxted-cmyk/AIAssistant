@@ -19,21 +19,22 @@
 ## Monday 30 Mar
 
 ### HubSpot
-1. [ ] Switch HubSpot over from Stelios to Haidar
+1. [x] Switch HubSpot over from Stelios to Haidar
 2. [ ] Tweak HubSpot workflows for Haidar
 
 ### Meta
-3. [ ] Meta ad spend -10% decrease (manual — £160 → £144/day)
+3. [x] Meta ad spend -10% decrease (manual — £160 → £144/day)
 
 ### LinkedIn Link Placement Test
-4. [ ] Update Publer posts for w/c 30 Mar:
-   - Michael: no links at all
-   - Stelios: links in comments only
+4. [x] Update Publer posts for w/c 30 Mar — Michael: no links | Stelios: links in comments
+5. [x] Company page posts scheduled in Publer up to 23 Apr (includes 2 carousel posts)
+6. [ ] Plan posts for w/c 27 Apr
+7. [ ] DCW posts — team meeting needed to agree angle before content can be written
 
 ### Website
-5. [x] Website lead capture form — replace company size field with turnover
-6. [ ] Pricing page — split main contractor and subcontractor pricing under Payment Application header
-7. [ ] Build /solutions/payment-applications-software page for Certify
+8. [x] Website lead capture form — replace company size field with turnover
+6. [x] Pricing page — split main contractor and subcontractor pricing under Payment Application header
+7. [x] Build /solutions/payment-applications-software page for Certify
 8. [ ] Look into integrating HubSpot chatbot on the main StoneRise website
 
 ### Social — LinkedIn
@@ -57,8 +58,8 @@
 ---
 
 ## Wednesday 2 Apr
-1. [ ] LinkedIn lead gen guide 1 — write: "Construction in 2026: The Risks UK Contractors Can't Afford to Ignore"
-2. [ ] LinkedIn lead gen guide 2 — write: "The Commercial Control Playbook: Payments, Variations & Approvals Done Right"
+1. [x] LinkedIn lead gen guide 1 — "Construction in 2026: The Risks UK Contractors Can't Afford to Ignore" — 1st draft complete, awaiting Stelios feedback
+2. [x] LinkedIn lead gen guide 2 — "The Commercial Control Playbook: Payments, Variations & Approvals Done Right" — 1st draft complete, awaiting Stelios feedback
 3. [ ] Payment Application Template lead magnet — build (landing page, download, lead gen form)
 4. [ ] SEO use case page briefs — continue
 
@@ -87,10 +88,20 @@
 
 ---
 
+## Meta
+1. [x] Refresh Meta creatives with new ones produced by Mariana
+
+## Cold Outbound — List Cleaning
+1. [ ] Waiting on Michael's master list
+2. [ ] Once received: bounce check all emails
+3. [ ] Check employment status via Clay for all contacts
+4. [ ] Build HubSpot workflow: when a lead completes a website form, send webhook to Instantly and blacklist them so they cannot receive any further outbound emails
+5. [ ] Relaunch cold outbound campaign once list is clean and workflow is live
+
 ## Certify Campaigns — Waiting on Mike
-1. [ ] Mike to push Certify landing pages live
-2. [ ] Mike to confirm correct URLs on Google Search and LinkedIn ads
-3. [ ] Launch both campaigns immediately once landing pages are live
+1. [x] Mike pushed Certify landing pages live
+2. [x] Mike confirmed correct URLs on Google Search and LinkedIn ads
+3. [x] Both campaigns launched
 
 ---
 
@@ -100,14 +111,14 @@
 3. [ ] Brief Michael — "Use Cases" nav drop-down and page template
 4. [ ] Write "What is a Payless Notice?"
 5. [ ] Write "How Payment Applications Work in Construction"
-6. [ ] "How to manage subcontractor compliance in construction" (blog)
-7. [ ] "Construction training records: what you need to track and why" (blog)
-8. [ ] "Bradford Factor in construction: how to manage absence on site" (blog)
+6. [x] "How to manage subcontractor compliance in construction" — pushed to dev site
+7. [x] "Construction training records: what you need to track and why" — pushed to dev site
+8. [x] "Bradford Factor in construction: how to manage absence on site" — pushed to dev site
 
 ---
 
 ## Lead Magnets
-1. [ ] Payment Application Template — build first
+1. [x] Payment Application Template — built, /templates directory and /templates/payment-application-template page live
 2. [ ] Invoice Generator — queued
 3. [ ] HR Employment Contracts for Common Construction Roles — queued
 
@@ -121,7 +132,7 @@
 ---
 
 ## Admin
-1. [ ] Research URL shortener for LinkedIn comment linking and Facebook posts
+1. [x] Research URL shortener — requires dev work, business story created and sent to Mike
 
 ---
 

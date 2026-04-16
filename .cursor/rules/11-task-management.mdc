@@ -157,16 +157,21 @@ Tasks/
 
 1. All tasks must always be in a **numbered list** — never bullet points.
 2. When displaying any task list in chat, every single task must be on its own line with a blank line between each item to ensure vertical spacing. Never run tasks together on the same line.
-2. Always ask questions after any trigger — never assume tasks are complete without confirmation.
-3. Keep questions binary (yes/no) wherever possible to reduce friction.
-4. Never add detail to the `Completed/` archive files — one line per task, numbered list only.
-5. `Daily-Tasks.md` is always overwritten — it represents only the current day.
-6. The weekly file is the source of truth for the week.
-7. Key dates must always be surfaced at the start of each week and day where relevant.
-8. Matt will always state the day of the week when triggering a workflow. Use this to determine which tasks are relevant.
-9. All dev requests go to Michael — Matt never contacts the dev team directly.
+3. Always ask questions after any trigger — never assume tasks are complete without confirmation.
+4. Keep questions binary (yes/no) wherever possible to reduce friction.
+5. Never add detail to the `Completed/` archive files — one line per task, numbered list only.
+6. `Daily-Tasks.md` is always overwritten — it represents only the current day.
+7. The weekly file is the source of truth for the week.
+8. Key dates must always be surfaced at the start of each week and day where relevant.
+9. Matt will always state the day of the week when triggering a workflow. Use this to determine which tasks are relevant.
+10. All dev requests go to Michael — Matt never contacts the dev team directly.
+11. **Never add tasks to any task file without Matt explicitly asking for them to be added.** If something seems worth adding, ask first — do not add it unilaterally.
 
 ## Day-Specific Rules
+
+### Every Morning — Publer Check
+- Remind Matt to check Publer every morning to ensure all posts for that day are planned, scheduled and have no issues.
+- Include this as the first item in every daily task list.
 
 ### Tuesday — Nomos Day
 - All Nomos-related work is scheduled exclusively on Tuesdays.

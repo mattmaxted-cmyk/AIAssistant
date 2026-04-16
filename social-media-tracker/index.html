@@ -1,0 +1,2958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Social Media Planner | StoneRise</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0f1419;
+            --bg-secondary: #1a1f2e;
+            --bg-card: #242b3d;
+            --bg-hover: #2d3548;
+            --text-primary: #ffffff;
+            --text-secondary: #a0aec0;
+            --text-muted: #718096;
+            --border-color: #2d3748;
+            --accent-blue: #3b82f6;
+            --michael-color: #10b981;
+            --stelios-color: #8b5cf6;
+            --company-color: #f59e0b;
+            --type-text: #6b7280;
+            --type-carousel: #ec4899;
+            --type-video: #ef4444;
+            --danger-red: #ef4444;
+            --danger-bg: rgba(239, 68, 68, 0.15);
+            --success-green: #10b981;
+            --success-bg: rgba(16, 185, 129, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .navbar {
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            padding: 0 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .navbar-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo-icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--accent-blue), #8b5cf6);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.875rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .nav-link {
+            padding: 0.625rem 1.25rem;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-link:hover {
+            background-color: var(--bg-hover);
+            color: var(--text-primary);
+        }
+
+        .nav-link.active {
+            background-color: var(--accent-blue);
+            color: var(--text-primary);
+        }
+
+        .main-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .rule-card {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .rule-card.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .rule-card h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .rule-card h3 .icon {
+            font-size: 1.25rem;
+        }
+
+        .rule-card h4 {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            margin: 1.25rem 0 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .rule-card p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .rule-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .rule-card li {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            padding: 0.375rem 0;
+            padding-left: 1.25rem;
+            position: relative;
+        }
+
+        .rule-card li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--accent-blue);
+        }
+
+        .frequency-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.5rem;
+        }
+
+        .frequency-table th,
+        .frequency-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.875rem;
+        }
+
+        .frequency-table th {
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        .frequency-table td {
+            color: var(--text-secondary);
+        }
+
+        .frequency-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .note-text {
+            font-size: 0.8125rem;
+            color: var(--text-muted);
+            font-style: italic;
+            margin-top: 0.75rem;
+        }
+
+        .objectives-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .objective-tag {
+            background-color: var(--bg-hover);
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        .account-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.625rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+
+        .account-badge.michael {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: var(--michael-color);
+        }
+
+        .account-badge.stelios {
+            background-color: rgba(139, 92, 246, 0.15);
+            color: var(--stelios-color);
+        }
+
+        .account-badge.company {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: var(--company-color);
+        }
+
+        .account-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+        }
+
+        .account-dot.michael { background-color: var(--michael-color); }
+        .account-dot.stelios { background-color: var(--stelios-color); }
+        .account-dot.company { background-color: var(--company-color); }
+
+        .link-banner {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .link-banner-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.625rem;
+        }
+
+        .link-banner-week {
+            font-size: 0.9375rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: 0.75rem;
+        }
+
+        .link-rules-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .link-rule-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.625rem;
+        }
+
+        .link-rule-account {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            min-width: 100px;
+        }
+
+        .link-rule-text {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        .calendar-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 1.5rem;
+        }
+
+        .calendar-nav {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .calendar-nav-btn {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 0.625rem 1rem;
+            color: var(--text-primary);
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: all 0.2s ease;
+        }
+
+        .calendar-nav-btn:hover {
+            background-color: var(--bg-hover);
+        }
+
+        .calendar-month-year {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .calendar-legend {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        .calendar-grid {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            overflow: hidden;
+        }
+
+        .calendar-weekdays {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .calendar-weekday {
+            padding: 1rem;
+            text-align: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+        }
+
+        .calendar-days {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+        }
+
+        .calendar-day {
+            min-height: 120px;
+            padding: 0.75rem;
+            border-right: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+            background-color: var(--bg-card);
+            transition: background-color 0.2s ease;
+        }
+
+        .calendar-day:nth-child(7n) {
+            border-right: none;
+        }
+
+        .calendar-day.other-month {
+            background-color: var(--bg-secondary);
+        }
+
+        .calendar-day.other-month .day-number {
+            color: var(--text-muted);
+        }
+
+        .calendar-day.today {
+            background-color: rgba(59, 130, 246, 0.1);
+        }
+
+        .calendar-day.today .day-number {
+            background-color: var(--accent-blue);
+            color: white;
+            border-radius: 50%;
+            width: 28px;
+            height: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .day-number {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .day-posts {
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        .post-item {
+            padding: 0.375rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.6875rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-left: 3px solid;
+        }
+
+        .post-item.michael {
+            background-color: rgba(16, 185, 129, 0.1);
+            border-left-color: var(--michael-color);
+        }
+
+        .post-item.stelios {
+            background-color: rgba(139, 92, 246, 0.1);
+            border-left-color: var(--stelios-color);
+        }
+
+        .post-item.company {
+            background-color: rgba(245, 158, 11, 0.1);
+            border-left-color: var(--company-color);
+        }
+
+        .post-item:hover {
+            transform: translateX(2px);
+        }
+
+        .post-title {
+            font-weight: 500;
+            color: var(--text-primary);
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .post-meta {
+            display: flex;
+            gap: 0.375rem;
+            margin-top: 0.25rem;
+        }
+
+        .post-type-tag,
+        .post-objective-tag {
+            font-size: 0.625rem;
+            padding: 0.125rem 0.375rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .post-type-tag {
+            background-color: var(--bg-hover);
+            color: var(--text-muted);
+        }
+
+        .post-type-tag.text { color: var(--type-text); }
+        .post-type-tag.carousel { color: var(--type-carousel); }
+        .post-type-tag.video { color: var(--type-video); }
+
+        .post-objective-tag {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 200;
+            padding: 2rem;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background-color: var(--bg-card);
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            max-width: 500px;
+            width: 100%;
+            padding: 1.5rem;
+        }
+
+        .modal-header {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .modal-title {
+            font-size: 1.125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            font-size: 1.5rem;
+            line-height: 1;
+            padding: 0;
+        }
+
+        .modal-close:hover {
+            color: var(--text-primary);
+        }
+
+        .modal-body {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .modal-body .detail-row {
+            display: flex;
+            padding: 0.625rem 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-body .detail-row:last-child {
+            border-bottom: none;
+        }
+
+        .modal-body .detail-label {
+            font-weight: 500;
+            color: var(--text-muted);
+            min-width: 100px;
+        }
+
+        .modal-body .detail-value {
+            color: var(--text-primary);
+        }
+
+        .no-posts {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .no-posts p {
+            margin-bottom: 0.5rem;
+        }
+
+        .no-posts code {
+            background-color: var(--bg-hover);
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-size: 0.8125rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 0 1rem;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calendar-header {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .calendar-legend {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .calendar-day {
+                min-height: 80px;
+                padding: 0.5rem;
+            }
+
+            .day-number {
+                font-size: 0.75rem;
+            }
+
+            .post-item {
+                padding: 0.25rem;
+            }
+
+            .post-title {
+                font-size: 0.625rem;
+            }
+
+            .post-meta {
+                display: none;
+            }
+
+            .link-rules-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .planning-alert {
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .planning-alert.danger {
+            background-color: var(--danger-bg);
+            border: 2px solid var(--danger-red);
+        }
+
+        .planning-alert.success {
+            background-color: var(--success-bg);
+            border: 2px solid var(--success-green);
+        }
+
+        .planning-alert-icon {
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .planning-alert-content {
+            flex: 1;
+        }
+
+        .planning-alert-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .planning-alert.danger .planning-alert-title {
+            color: var(--danger-red);
+        }
+
+        .planning-alert.success .planning-alert-title {
+            color: var(--success-green);
+        }
+
+        .planning-alert-text {
+            font-size: 0.875rem;
+            color: var(--text-secondary);
+        }
+
+        .planning-alert-details {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .planning-alert-stat {
+            font-size: 0.8125rem;
+        }
+
+        .planning-alert-stat strong {
+            color: var(--text-primary);
+        }
+
+        .post-purpose-tag {
+            font-size: 0.625rem;
+            padding: 0.125rem 0.375rem;
+            border-radius: 3px;
+            font-weight: 500;
+        }
+
+        .post-purpose-tag.brand {
+            background-color: rgba(139, 92, 246, 0.2);
+            color: #a78bfa;
+        }
+
+        .post-purpose-tag.conversion {
+            background-color: rgba(245, 158, 11, 0.2);
+            color: #fbbf24;
+        }
+
+        .purpose-indicator {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0.75rem;
+            border-radius: 6px;
+            font-size: 0.8125rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .purpose-indicator.brand {
+            background-color: rgba(139, 92, 246, 0.15);
+            color: #a78bfa;
+        }
+
+        .purpose-indicator.conversion {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+        }
+
+        .focus-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+
+        .focus-table th,
+        .focus-table td {
+            padding: 0.75rem 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.875rem;
+        }
+
+        .focus-table th {
+            color: var(--text-muted);
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.05em;
+        }
+
+        .focus-table td {
+            color: var(--text-secondary);
+        }
+
+        .focus-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* Progress bars */
+        .progress-section {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-section-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .progress-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1rem;
+        }
+
+        .progress-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .progress-label {
+            font-size: 0.8125rem;
+            font-weight: 500;
+        }
+
+        .progress-count {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background-color: var(--bg-hover);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.3s ease;
+        }
+
+        .progress-fill.michael { background-color: var(--michael-color); }
+        .progress-fill.stelios { background-color: var(--stelios-color); }
+        .progress-fill.company { background-color: var(--company-color); }
+
+        /* Weekly breakdown */
+        .weekly-breakdown {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .weekly-grid {
+            display: grid;
+            grid-template-columns: 120px repeat(4, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .weekly-header {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            text-align: center;
+            padding: 0.5rem;
+        }
+
+        .weekly-header:first-child {
+            text-align: left;
+        }
+
+        .weekly-row {
+            display: contents;
+        }
+
+        .weekly-account {
+            font-size: 0.8125rem;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .weekly-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0.5rem;
+            border-radius: 6px;
+            font-size: 0.8125rem;
+            font-weight: 500;
+        }
+
+        .weekly-cell.ok {
+            background-color: var(--success-bg);
+            color: var(--success-green);
+        }
+
+        .weekly-cell.warning {
+            background-color: rgba(245, 158, 11, 0.15);
+            color: #fbbf24;
+        }
+
+        .weekly-cell.danger {
+            background-color: var(--danger-bg);
+            color: var(--danger-red);
+        }
+
+        .weekly-cell.target-week {
+            border: 2px dashed var(--accent-blue);
+        }
+
+        /* Gap indicator for calendar days */
+        .calendar-day.needs-post {
+            background-color: rgba(239, 68, 68, 0.05);
+        }
+
+        .calendar-day.needs-post::after {
+            content: "";
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            width: 6px;
+            height: 6px;
+            background-color: var(--danger-red);
+            border-radius: 50%;
+            opacity: 0.6;
+        }
+
+        .calendar-day {
+            position: relative;
+        }
+
+        /* Target date marker */
+        .calendar-day.target-deadline {
+            border: 2px solid var(--accent-blue);
+        }
+
+        .calendar-day.target-deadline .day-number::after {
+            content: "1M";
+            font-size: 0.5rem;
+            background-color: var(--accent-blue);
+            color: white;
+            padding: 0.125rem 0.25rem;
+            border-radius: 3px;
+            margin-left: 0.25rem;
+            vertical-align: middle;
+        }
+
+        /* Balance indicator */
+        .balance-section {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            border: 1px solid var(--border-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .balance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .balance-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .balance-header {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .balance-bars {
+            display: flex;
+            height: 24px;
+            border-radius: 6px;
+            overflow: hidden;
+            background-color: var(--bg-hover);
+        }
+
+        .balance-bar {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.625rem;
+            font-weight: 600;
+            color: white;
+            min-width: 30px;
+        }
+
+        .balance-bar.brand {
+            background-color: #8b5cf6;
+        }
+
+        .balance-bar.conversion {
+            background-color: #f59e0b;
+        }
+
+        .balance-legend {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+        }
+
+        /* Focus coverage */
+        .coverage-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 0.75rem;
+            margin-top: 1rem;
+        }
+
+        .coverage-item {
+            background-color: var(--bg-hover);
+            border-radius: 8px;
+            padding: 0.75rem 1rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .coverage-item.active {
+            background-color: rgba(16, 185, 129, 0.15);
+            border: 1px solid var(--success-green);
+        }
+
+        .coverage-item.stale {
+            background-color: var(--danger-bg);
+            border: 1px solid var(--danger-red);
+        }
+
+        .coverage-module {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        .coverage-status {
+            font-size: 0.6875rem;
+            color: var(--text-muted);
+        }
+
+        .coverage-item.active .coverage-status {
+            color: var(--success-green);
+        }
+
+        .coverage-item.stale .coverage-status {
+            color: var(--danger-red);
+        }
+
+        /* ===================== */
+        /* AUDIT SECTION STYLES  */
+        /* ===================== */
+
+        .audit-summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .audit-stat-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.375rem;
+        }
+
+        .audit-stat-label {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+        }
+
+        .audit-stat-value {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            line-height: 1;
+        }
+
+        .audit-stat-sub {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        .audit-stat-card.highlight {
+            border-color: var(--stelios-color);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08), var(--bg-card));
+        }
+
+        .audit-filters {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .audit-filter-group {
+            display: flex;
+            align-items: center;
+            gap: 0.625rem;
+        }
+
+        .audit-filter-label {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            white-space: nowrap;
+        }
+
+        .audit-filter-btn {
+            padding: 0.375rem 0.875rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-hover);
+            color: var(--text-secondary);
+            font-size: 0.8125rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .audit-filter-btn:hover {
+            border-color: var(--stelios-color);
+            color: var(--text-primary);
+        }
+
+        .audit-filter-btn.active {
+            background-color: rgba(139, 92, 246, 0.2);
+            border-color: var(--stelios-color);
+            color: var(--stelios-color);
+        }
+
+        .audit-sort-select {
+            padding: 0.375rem 0.75rem;
+            border-radius: 6px;
+            border: 1px solid var(--border-color);
+            background-color: var(--bg-hover);
+            color: var(--text-secondary);
+            font-size: 0.8125rem;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .audit-sort-select:focus {
+            outline: none;
+            border-color: var(--stelios-color);
+        }
+
+        .audit-link-breakdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .audit-link-card {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+        }
+
+        .audit-link-card-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .placement-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .placement-dot.post { background-color: #3b82f6; }
+        .placement-dot.comment { background-color: #10b981; }
+        .placement-dot.none { background-color: #6b7280; }
+        .placement-dot.unknown { background-color: #4b5563; }
+
+        .audit-link-stat {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            padding: 0.25rem 0;
+            border-bottom: 1px solid var(--border-color);
+            font-size: 0.8125rem;
+        }
+
+        .audit-link-stat:last-child {
+            border-bottom: none;
+        }
+
+        .audit-link-stat-label {
+            color: var(--text-muted);
+        }
+
+        .audit-link-stat-value {
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .audit-table-wrap {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .audit-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.875rem;
+        }
+
+        .audit-table th {
+            padding: 0.875rem 1rem;
+            text-align: left;
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--text-muted);
+            background-color: var(--bg-secondary);
+            border-bottom: 1px solid var(--border-color);
+            white-space: nowrap;
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .audit-table th:hover {
+            color: var(--text-primary);
+        }
+
+        .audit-table th.sorted-asc::after { content: " ↑"; color: var(--stelios-color); }
+        .audit-table th.sorted-desc::after { content: " ↓"; color: var(--stelios-color); }
+
+        .audit-table td {
+            padding: 0.875rem 1rem;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            vertical-align: top;
+        }
+
+        .audit-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        .audit-table tr:hover td {
+            background-color: var(--bg-hover);
+        }
+
+        .audit-post-text {
+            color: var(--text-primary);
+            font-size: 0.8125rem;
+            line-height: 1.5;
+            max-width: 380px;
+        }
+
+        .audit-post-text.truncated {
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .audit-post-expand {
+            background: none;
+            border: none;
+            color: var(--stelios-color);
+            font-size: 0.75rem;
+            cursor: pointer;
+            padding: 0;
+            margin-top: 0.25rem;
+            font-family: inherit;
+        }
+
+        .audit-post-expand:hover {
+            text-decoration: underline;
+        }
+
+        .audit-post-empty {
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            font-style: italic;
+        }
+
+        .placement-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.375rem;
+            padding: 0.25rem 0.625rem;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .placement-badge.post {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+        }
+
+        .placement-badge.comment {
+            background-color: rgba(16, 185, 129, 0.15);
+            color: #34d399;
+        }
+
+        .placement-badge.none {
+            background-color: rgba(107, 114, 128, 0.15);
+            color: #9ca3af;
+        }
+
+        .placement-badge.unknown {
+            background-color: rgba(75, 85, 99, 0.15);
+            color: #6b7280;
+        }
+
+        .audit-metric {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .audit-metric.top {
+            color: #fbbf24;
+        }
+
+        .audit-er {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 0.125rem;
+        }
+
+        .audit-date {
+            white-space: nowrap;
+            color: var(--text-muted);
+            font-size: 0.8125rem;
+        }
+
+        .audit-url-link {
+            color: var(--stelios-color);
+            text-decoration: none;
+            font-size: 0.75rem;
+        }
+
+        .audit-url-link:hover {
+            text-decoration: underline;
+        }
+
+        .audit-no-results {
+            text-align: center;
+            padding: 3rem;
+            color: var(--text-muted);
+        }
+
+        .audit-count-badge {
+            background-color: var(--bg-hover);
+            color: var(--text-muted);
+            font-size: 0.75rem;
+            padding: 0.125rem 0.5rem;
+            border-radius: 10px;
+            margin-left: 0.5rem;
+        }
+
+        /* Link placement comparison bar chart */
+        .audit-comparison {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 1.25rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .audit-comparison-title {
+            font-size: 0.75rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        .audit-comparison-grid {
+            display: grid;
+            grid-template-columns: 100px 1fr 1fr;
+            gap: 0.5rem 1rem;
+            align-items: center;
+        }
+
+        .audit-comparison-row-label {
+            font-size: 0.8125rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .audit-comparison-bar-wrap {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .audit-comparison-bar {
+            height: 20px;
+            border-radius: 4px;
+            min-width: 4px;
+            transition: width 0.4s ease;
+        }
+
+        .audit-comparison-bar.impressions { background-color: var(--stelios-color); }
+        .audit-comparison-bar.engagements { background-color: #f59e0b; }
+
+        .audit-comparison-value {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            white-space: nowrap;
+        }
+
+        .audit-comparison-header {
+            font-size: 0.6875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--text-muted);
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border-color);
+            margin-bottom: 0.25rem;
+        }
+
+        /* Link test results */
+        .test-results-section {
+            background-color: var(--bg-card);
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .test-results-grid {
+            display: grid;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .test-result-item {
+            background-color: var(--bg-hover);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .test-result-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 0.5rem;
+        }
+
+        .test-result-week {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .test-result-badge {
+            font-size: 0.625rem;
+            padding: 0.25rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .test-result-badge.winner {
+            background-color: var(--success-bg);
+            color: var(--success-green);
+        }
+
+        .test-result-badge.testing {
+            background-color: rgba(59, 130, 246, 0.15);
+            color: var(--accent-blue);
+        }
+
+        .test-result-strategy {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        .test-result-notes {
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+        }
+
+        /* Strategy summary collapsible */
+        .strategy-summary {
+            background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .strategy-summary-header {
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .strategy-summary-header:hover {
+            background-color: var(--bg-hover);
+        }
+
+        .strategy-summary-title {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .strategy-summary-toggle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            transition: transform 0.2s ease;
+        }
+
+        .strategy-summary.expanded .strategy-summary-toggle {
+            transform: rotate(180deg);
+        }
+
+        .strategy-summary-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+
+        .strategy-summary.expanded .strategy-summary-content {
+            max-height: 500px;
+        }
+
+        .strategy-summary-inner {
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        .strategy-focus-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+        }
+
+        .strategy-focus-item {
+            text-align: center;
+        }
+
+        .strategy-focus-item .account-badge {
+            margin-bottom: 0.5rem;
+        }
+
+        .strategy-focus-text {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+        }
+
+        /* Post status badges */
+        .post-status-tag {
+            font-size: 0.5rem;
+            padding: 0.125rem 0.25rem;
+            border-radius: 2px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.03em;
+        }
+
+        .post-status-tag.draft {
+            background-color: rgba(107, 114, 128, 0.2);
+            color: #9ca3af;
+        }
+
+        .post-status-tag.ready {
+            background-color: rgba(59, 130, 246, 0.2);
+            color: #60a5fa;
+        }
+
+        .post-status-tag.posted {
+            background-color: var(--success-bg);
+            color: var(--success-green);
+        }
+
+        /* Post item with status */
+        .post-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 0.25rem;
+        }
+
+        /* Notes in modal */
+        .detail-notes {
+            background-color: var(--bg-hover);
+            border-radius: 6px;
+            padding: 0.75rem;
+            margin-top: 0.5rem;
+            font-size: 0.8125rem;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+
+        @media (max-width: 768px) {
+            .weekly-grid {
+                grid-template-columns: 80px repeat(4, 1fr);
+            }
+
+            .weekly-header, .weekly-cell {
+                font-size: 0.625rem;
+                padding: 0.375rem;
+            }
+
+            .strategy-focus-grid {
+                grid-template-columns: 1fr;
+                gap: 0.75rem;
+            }
+
+            .balance-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .progress-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="navbar-content">
+            <div class="logo">
+                <div class="logo-icon">SR</div>
+                Social Media Planner
+            </div>
+            <div class="nav-links">
+                <button class="nav-link active" data-section="rules">Rules</button>
+                <button class="nav-link" data-section="calendar">Calendar</button>
+                <button class="nav-link" data-section="audit">Stelios Audit</button>
+            </div>
+        </div>
+    </nav>
+
+    <div id="globalPlanningAlert"></div>
+
+    <main class="main-content">
+        <section id="rules" class="section active">
+            <h1 class="section-title">Posting Rules & Guidelines</h1>
+            
+            <div class="rules-grid">
+                <div class="rule-card">
+                    <h3><span class="icon">📅</span> Posting Frequency</h3>
+                    <table class="frequency-table">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Posts per Week</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="account-badge michael">
+                                        <span class="account-dot michael"></span>
+                                        Michael Loizias
+                                    </span>
+                                </td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="account-badge stelios">
+                                        <span class="account-dot stelios"></span>
+                                        Stelios Ioannou
+                                    </span>
+                                </td>
+                                <td>2</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="account-badge company">
+                                        <span class="account-dot company"></span>
+                                        StoneRise Company Page
+                                    </span>
+                                </td>
+                                <td>3</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="note-text">Note: Ad hoc experimental posts are allowed on top of these as needed.</p>
+                </div>
+
+                <div class="rule-card">
+                    <h3><span class="icon">📋</span> Posting Plan</h3>
+                    
+                    <p style="margin-bottom: 1rem;">Every post serves one of two purposes:</p>
+                    
+                    <div class="purpose-indicator brand">
+                        <strong>Brand Building</strong> — Awareness, authority, trust building
+                    </div>
+                    <p>Build our brand and social trust. Thought leadership, industry insights, personal stories.</p>
+                    
+                    <div class="purpose-indicator conversion" style="margin-top: 1rem;">
+                        <strong>Conversion</strong> — Directly showing the platform
+                    </div>
+                    <p>Make people want to book a demo. Product features, walkthroughs, problem/solution content.</p>
+                    
+                    <table class="focus-table">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Current Focus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="account-badge michael">
+                                        <span class="account-dot michael"></span>
+                                        Michael Loizias
+                                    </span>
+                                </td>
+                                <td>Commercial App</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="account-badge stelios">
+                                        <span class="account-dot stelios"></span>
+                                        Stelios Ioannou
+                                    </span>
+                                </td>
+                                <td>Commercial App</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="account-badge company">
+                                        <span class="account-dot company"></span>
+                                        StoneRise Company
+                                    </span>
+                                </td>
+                                <td>ERP as a whole, then Commercial + Pay Apps</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="rule-card">
+                    <h3><span class="icon">🎯</span> Post Purpose</h3>
+                    <p>Every post must be tagged with its purpose and aligned to the account's ICP:</p>
+                    <div class="objectives-list" style="margin-top: 0.75rem;">
+                        <span class="purpose-indicator brand" style="margin: 0;">Brand Building</span>
+                        <span class="purpose-indicator conversion" style="margin: 0;">Conversion</span>
+                    </div>
+                    
+                    <table class="focus-table" style="margin-top: 1rem;">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Purpose Must Resonate With</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="account-badge michael">
+                                        <span class="account-dot michael"></span>
+                                        Michael
+                                    </span>
+                                </td>
+                                <td>PMs, site managers, QSs, contractors, subcontractors. People who have done the job and recognise the problems from lived experience.</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="account-badge stelios">
+                                        <span class="account-dot stelios"></span>
+                                        Stelios
+                                    </span>
+                                </td>
+                                <td>MDs, CEOs, Finance Directors, Commercial Directors, business owners. People who control budgets and ask "what is the ROI?"</td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="account-badge company">
+                                        <span class="account-dot company"></span>
+                                        Company
+                                    </span>
+                                </td>
+                                <td>Broader construction industry. Product features, company news, thought leadership.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="note-text">Brand = awareness, authority, trust. Conversion = demos, sign ups, direct product interest.</p>
+                </div>
+
+                <div class="rule-card full-width">
+                    <h3><span class="icon">👥</span> ICP — Who We Are Posting To</h3>
+                    
+                    <h4>
+                        <span class="account-badge michael">
+                            <span class="account-dot michael"></span>
+                            Michael Loizias
+                        </span>
+                    </h4>
+                    <p>Construction industry professionals — project managers, site managers, QSs, contractors, subcontractors. Industry peers. People who have done the job. Posts resonate with people who recognise the problems from lived experience. Tone is direct, personal, occasionally blunt. Posts range from personal/health/adversity to industry critique to StoneRise product content.</p>
+                    
+                    <h4>
+                        <span class="account-badge stelios">
+                            <span class="account-dot stelios"></span>
+                            Stelios Ioannou
+                        </span>
+                    </h4>
+                    <p>Commercial and financial decision-makers in construction — Managing Directors, CEOs, Finance Directors, Financial Controllers, Commercial Directors, business owners. People who control budgets and ask "what is the ROI?" before approving anything. Tone is calm, analytical, financially grounded. Posts focus on business case, cost of inefficiency, and return on investment.</p>
+                    
+                    <h4>
+                        <span class="account-badge company">
+                            <span class="account-dot company"></span>
+                            StoneRise Company Page
+                        </span>
+                    </h4>
+                    <p>Broader construction industry. Product features, company news, thought leadership, lead generation content.</p>
+                </div>
+
+                <div class="rule-card full-width">
+                    <h3><span class="icon">✍️</span> Writing Style Summary</h3>
+                    
+                    <h4>
+                        <span class="account-badge michael">
+                            <span class="account-dot michael"></span>
+                            Michael Loizias
+                        </span>
+                    </h4>
+                    <p>Direct and unvarnished. Personal and grounded. Problem-first for product posts. Uses specific numbers, names, timeframes. Short paragraphs. No hyphens or dashes of any kind. Signature close: "Keep Moving Forward" where appropriate. Ends with: #BuiltByConstruction4Construction #StoneRise #ChallengingTheStatusQuo</p>
+                    
+                    <h4>
+                        <span class="account-badge stelios">
+                            <span class="account-dot stelios"></span>
+                            Stelios Ioannou
+                        </span>
+                    </h4>
+                    <p>Commercially and financially grounded. Calm, measured, authoritative. Leads with the financial problem. Uses real numbers — percentages, £ figures, payback periods. Short paragraphs. No hyphens or dashes of any kind. Ends with a soft CTA ("let's talk", "worth doing the maths"). No emoji.</p>
+                </div>
+
+                <div class="rule-card full-width">
+                    <h3><span class="icon">🔗</span> LinkedIn Link Placement Rules</h3>
+                    <p>Link placement rules change weekly on a rotating test schedule. The active rules are displayed in a banner at the top of the Calendar view.</p>
+                    <p class="note-text">Check the Calendar section for the current week's link placement rules for each account.</p>
+                </div>
+
+                <div class="rule-card full-width test-results-section">
+                    <h3><span class="icon">📊</span> Link Test Results</h3>
+                    <p>Record findings from link placement experiments here. Update manually in <code>link-schedule.js</code>.</p>
+                    <div class="test-results-grid" id="testResults"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="calendar" class="section">
+            <h1 class="section-title">Content Calendar</h1>
+
+            <!-- Quick Strategy Summary (Collapsible) -->
+            <div class="strategy-summary" id="strategySummary">
+                <div class="strategy-summary-header" onclick="toggleStrategySummary()">
+                    <div class="strategy-summary-title">
+                        <span>📋</span> Current Strategy & Focus
+                    </div>
+                    <div class="strategy-summary-toggle">▼</div>
+                </div>
+                <div class="strategy-summary-content">
+                    <div class="strategy-summary-inner">
+                        <div class="strategy-focus-grid">
+                            <div class="strategy-focus-item">
+                                <span class="account-badge michael">
+                                    <span class="account-dot michael"></span>
+                                    Michael
+                                </span>
+                                <div class="strategy-focus-text">Commercial App<br>ICP: PMs, QSs, contractors</div>
+                            </div>
+                            <div class="strategy-focus-item">
+                                <span class="account-badge stelios">
+                                    <span class="account-dot stelios"></span>
+                                    Stelios
+                                </span>
+                                <div class="strategy-focus-text">Commercial App<br>ICP: MDs, FDs, business owners</div>
+                            </div>
+                            <div class="strategy-focus-item">
+                                <span class="account-badge company">
+                                    <span class="account-dot company"></span>
+                                    Company
+                                </span>
+                                <div class="strategy-focus-text">ERP + Commercial + Pay Apps<br>ICP: Broader construction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Progress Bars -->
+            <div class="progress-section">
+                <div class="progress-section-title">1 Month Planning Progress</div>
+                <div class="progress-grid" id="progressBars"></div>
+            </div>
+
+            <!-- Weekly Breakdown -->
+            <div class="weekly-breakdown">
+                <div class="progress-section-title">Next 4 Weeks Breakdown</div>
+                <div class="weekly-grid" id="weeklyBreakdown"></div>
+            </div>
+
+            <!-- Balance Indicator -->
+            <div class="balance-section">
+                <div class="progress-section-title">Post Purpose Balance (Next 30 Days)</div>
+                <div class="balance-grid" id="balanceIndicator"></div>
+            </div>
+
+            <!-- Focus Coverage -->
+            <div class="balance-section">
+                <div class="progress-section-title">Module Coverage (Last 14 Days)</div>
+                <div class="coverage-grid" id="focusCoverage"></div>
+            </div>
+            
+            <div class="link-banner" id="linkBanner">
+                <div class="link-banner-title">Link Placement Rules</div>
+                <div class="link-banner-week" id="bannerWeek"></div>
+                <div class="link-rules-grid" id="linkRulesContent"></div>
+            </div>
+
+            <div class="calendar-header">
+                <div class="calendar-nav">
+                    <button class="calendar-nav-btn" id="prevMonth">← Previous</button>
+                    <div class="calendar-month-year" id="monthYear"></div>
+                    <button class="calendar-nav-btn" id="nextMonth">Next →</button>
+                </div>
+                <div class="calendar-legend">
+                    <div class="legend-item">
+                        <span class="account-dot michael"></span>
+                        Michael Loizias
+                    </div>
+                    <div class="legend-item">
+                        <span class="account-dot stelios"></span>
+                        Stelios Ioannou
+                    </div>
+                    <div class="legend-item">
+                        <span class="account-dot company"></span>
+                        StoneRise Company
+                    </div>
+                </div>
+            </div>
+
+            <div class="calendar-grid">
+                <div class="calendar-weekdays">
+                    <div class="calendar-weekday">Mon</div>
+                    <div class="calendar-weekday">Tue</div>
+                    <div class="calendar-weekday">Wed</div>
+                    <div class="calendar-weekday">Thu</div>
+                    <div class="calendar-weekday">Fri</div>
+                    <div class="calendar-weekday">Sat</div>
+                    <div class="calendar-weekday">Sun</div>
+                </div>
+                <div class="calendar-days" id="calendarDays"></div>
+            </div>
+        </section>
+
+        <!-- ==================== -->
+        <!-- STELIOS AUDIT SECTION -->
+        <!-- ==================== -->
+        <section id="audit" class="section">
+            <h1 class="section-title">Stelios Ioannou — LinkedIn Post Audit</h1>
+            <p style="color: var(--text-muted); font-size: 0.875rem; margin-bottom: 1.5rem; margin-top: -1rem;">
+                Apr 2025 – Apr 2026 &nbsp;·&nbsp; <span id="auditPostCount">0</span> posts &nbsp;·&nbsp; Data from LinkedIn Analytics export
+            </p>
+
+            <!-- Summary Stats -->
+            <div class="audit-summary-grid" id="auditSummaryGrid"></div>
+
+            <!-- Link Placement Comparison -->
+            <div class="audit-comparison">
+                <div class="audit-comparison-title">Avg Performance by Link Placement</div>
+                <div class="audit-comparison-grid" id="auditComparisonGrid">
+                    <div class="audit-comparison-header"></div>
+                    <div class="audit-comparison-header">Avg Impressions</div>
+                    <div class="audit-comparison-header">Avg Engagements</div>
+                </div>
+            </div>
+
+            <!-- Filters -->
+            <div class="audit-filters">
+                <div class="audit-filter-group">
+                    <span class="audit-filter-label">Link placement:</span>
+                    <button class="audit-filter-btn active" data-filter="all">All</button>
+                    <button class="audit-filter-btn" data-filter="post">In post</button>
+                    <button class="audit-filter-btn" data-filter="comment">In comment</button>
+                    <button class="audit-filter-btn" data-filter="none">No link</button>
+                    <button class="audit-filter-btn" data-filter="">Not recorded</button>
+                </div>
+                <div class="audit-filter-group" style="margin-left: auto;">
+                    <span class="audit-filter-label">Sort by:</span>
+                    <select class="audit-sort-select" id="auditSortSelect">
+                        <option value="date-desc">Date (newest first)</option>
+                        <option value="date-asc">Date (oldest first)</option>
+                        <option value="impressions-desc">Impressions (high to low)</option>
+                        <option value="impressions-asc">Impressions (low to high)</option>
+                        <option value="engagements-desc">Engagements (high to low)</option>
+                        <option value="engagements-asc">Engagements (low to high)</option>
+                        <option value="er-desc">Eng. rate (high to low)</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Posts Table -->
+            <div class="audit-table-wrap">
+                <table class="audit-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 90px;" data-col="date">Date</th>
+                            <th>Post</th>
+                            <th style="width: 110px;">Link</th>
+                            <th style="width: 100px;" data-col="impressions">Impressions</th>
+                            <th style="width: 100px;" data-col="engagements">Engagements</th>
+                            <th style="width: 80px;" data-col="er">Eng. Rate</th>
+                            <th style="width: 60px;"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="auditTableBody"></tbody>
+                </table>
+                <div class="audit-no-results" id="auditNoResults" style="display:none;">
+                    No posts match the current filter.
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="modal-overlay" id="postModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="modal-title" id="modalTitle"></div>
+                <button class="modal-close" id="modalClose">×</button>
+            </div>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="posts.js"></script>
+    <script src="link-schedule.js"></script>
+    <script src="stelios-audit.js"></script>
+    <script>
+        const accountNames = {
+            michael: "Michael Loizias",
+            stelios: "Stelios Ioannou",
+            company: "StoneRise Company"
+        };
+
+        const monthNames = [
+            "January", "February", "March", "April", "May", "June",
+            "July", "August", "September", "October", "November", "December"
+        ];
+
+        let currentDate = new Date();
+        let currentYear = currentDate.getFullYear();
+        let currentMonth = currentDate.getMonth();
+
+        function init() {
+            setupNavigation();
+            renderCalendar();
+            updateLinkBanner();
+            updatePlanningAlert();
+            updateProgressBars();
+            updateWeeklyBreakdown();
+            updateBalanceIndicator();
+            updateFocusCoverage();
+            updateTestResults();
+        }
+
+        function toggleStrategySummary() {
+            document.getElementById('strategySummary').classList.toggle('expanded');
+        }
+
+        function updateProgressBars() {
+            const container = document.getElementById('progressBars');
+            const today = new Date();
+            const oneMonthAhead = new Date(today);
+            oneMonthAhead.setMonth(oneMonthAhead.getMonth() + 1);
+            
+            const accounts = ['michael', 'stelios', 'company'];
+            const postsPerWeek = { michael: 2, stelios: 2, company: 3 };
+            const accountLabels = { michael: 'Michael Loizias', stelios: 'Stelios Ioannou', company: 'StoneRise Company' };
+            
+            let html = '';
+            
+            accounts.forEach(account => {
+                const weeksAhead = 4.3;
+                const required = Math.ceil(postsPerWeek[account] * weeksAhead);
+                
+                const todayStr = formatDate(today);
+                const oneMonthAheadStr = formatDate(oneMonthAhead);
+                const scheduled = posts.filter(p => 
+                    p.account === account && 
+                    p.date >= todayStr && 
+                    p.date <= oneMonthAheadStr
+                ).length;
+                
+                const percentage = Math.min(100, Math.round((scheduled / required) * 100));
+                
+                html += `
+                    <div class="progress-item">
+                        <div class="progress-header">
+                            <span class="progress-label" style="color: var(--${account}-color)">${accountLabels[account]}</span>
+                            <span class="progress-count">${scheduled}/${required} posts</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill ${account}" style="width: ${percentage}%"></div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function updateWeeklyBreakdown() {
+            const container = document.getElementById('weeklyBreakdown');
+            const today = new Date();
+            const oneMonthAhead = new Date(today);
+            oneMonthAhead.setMonth(oneMonthAhead.getMonth() + 1);
+            
+            const weeks = [];
+            let currentMonday = getMondayOfWeek(today);
+            
+            for (let i = 0; i < 4; i++) {
+                const weekStart = new Date(currentMonday);
+                const weekEnd = new Date(currentMonday);
+                weekEnd.setDate(weekEnd.getDate() + 6);
+                weeks.push({ start: weekStart, end: weekEnd });
+                currentMonday.setDate(currentMonday.getDate() + 7);
+            }
+            
+            const accounts = ['michael', 'stelios', 'company'];
+            const postsPerWeek = { michael: 2, stelios: 2, company: 3 };
+            const accountLabels = { michael: 'Michael', stelios: 'Stelios', company: 'Company' };
+            
+            let html = '<div class="weekly-header"></div>';
+            weeks.forEach((week, i) => {
+                const isTargetWeek = week.end >= oneMonthAhead && week.start <= oneMonthAhead;
+                const weekLabel = week.start.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+                html += `<div class="weekly-header ${isTargetWeek ? 'target-week' : ''}">w/c ${weekLabel}</div>`;
+            });
+            
+            accounts.forEach(account => {
+                html += `
+                    <div class="weekly-account">
+                        <span class="account-badge ${account}">
+                            <span class="account-dot ${account}"></span>
+                            ${accountLabels[account]}
+                        </span>
+                    </div>
+                `;
+                
+                weeks.forEach((week, i) => {
+                    const isTargetWeek = week.end >= oneMonthAhead && week.start <= oneMonthAhead;
+                    const weekStartStr = formatDate(week.start);
+                    const weekEndStr = formatDate(week.end);
+                    
+                    const weekPosts = posts.filter(p => 
+                        p.account === account && 
+                        p.date >= weekStartStr && 
+                        p.date <= weekEndStr
+                    ).length;
+                    
+                    const required = postsPerWeek[account];
+                    let statusClass = 'danger';
+                    if (weekPosts >= required) statusClass = 'ok';
+                    else if (weekPosts > 0) statusClass = 'warning';
+                    
+                    html += `<div class="weekly-cell ${statusClass} ${isTargetWeek ? 'target-week' : ''}">${weekPosts}/${required}</div>`;
+                });
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function updateBalanceIndicator() {
+            const container = document.getElementById('balanceIndicator');
+            const today = new Date();
+            const thirtyDaysAhead = new Date(today);
+            thirtyDaysAhead.setDate(thirtyDaysAhead.getDate() + 30);
+            
+            const todayStr = formatDate(today);
+            const thirtyDaysStr = formatDate(thirtyDaysAhead);
+            
+            const accounts = ['michael', 'stelios', 'company'];
+            const accountLabels = { michael: 'Michael', stelios: 'Stelios', company: 'Company' };
+            
+            let html = '';
+            
+            accounts.forEach(account => {
+                const accountPosts = posts.filter(p => 
+                    p.account === account && 
+                    p.date >= todayStr && 
+                    p.date <= thirtyDaysStr
+                );
+                
+                const brandCount = accountPosts.filter(p => p.purpose === 'Brand Building').length;
+                const conversionCount = accountPosts.filter(p => p.purpose === 'Conversion').length;
+                const total = brandCount + conversionCount;
+                
+                const brandPct = total > 0 ? Math.round((brandCount / total) * 100) : 50;
+                const conversionPct = total > 0 ? 100 - brandPct : 50;
+                
+                html += `
+                    <div class="balance-item">
+                        <div class="balance-header">
+                            <span class="account-badge ${account}">
+                                <span class="account-dot ${account}"></span>
+                                ${accountLabels[account]}
+                            </span>
+                        </div>
+                        <div class="balance-bars">
+                            ${brandCount > 0 ? `<div class="balance-bar brand" style="width: ${brandPct}%">${brandCount}</div>` : ''}
+                            ${conversionCount > 0 ? `<div class="balance-bar conversion" style="width: ${conversionPct}%">${conversionCount}</div>` : ''}
+                            ${total === 0 ? '<div style="flex:1;display:flex;align-items:center;justify-content:center;color:var(--text-muted);font-size:0.75rem;">No posts</div>' : ''}
+                        </div>
+                        <div class="balance-legend">
+                            <span>🟣 Brand: ${brandCount}</span>
+                            <span>🟠 Conversion: ${conversionCount}</span>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function updateFocusCoverage() {
+            const container = document.getElementById('focusCoverage');
+            const today = new Date();
+            const fourteenDaysAgo = new Date(today);
+            fourteenDaysAgo.setDate(fourteenDaysAgo.getDate() - 14);
+            
+            const todayStr = formatDate(today);
+            const fourteenDaysAgoStr = formatDate(fourteenDaysAgo);
+            
+            const modules = [
+                { id: 'commercial', name: 'Commercial App', keywords: ['commercial', 'payment app', 'pay app', 'subcontractor', 'variation'] },
+                { id: 'erp', name: 'Full ERP', keywords: ['erp', 'platform', 'stonerise'] },
+                { id: 'procurement', name: 'Procurement', keywords: ['procurement', 'purchase', 'supplier', 'invoice'] },
+                { id: 'hr', name: 'HR', keywords: ['hr', 'employee', 'training', 'leave', 'expense'] },
+                { id: 'certify', name: 'Certify', keywords: ['certify', 'certificate', 'training record', 'cscs'] }
+            ];
+            
+            const recentPosts = posts.filter(p => p.date >= fourteenDaysAgoStr && p.date <= todayStr);
+            
+            let html = '';
+            
+            modules.forEach(module => {
+                const modulePosts = recentPosts.filter(p => {
+                    const titleLower = p.title.toLowerCase();
+                    return module.keywords.some(kw => titleLower.includes(kw));
+                });
+                
+                const lastPost = modulePosts.length > 0 ? 
+                    modulePosts.sort((a, b) => b.date.localeCompare(a.date))[0] : null;
+                
+                let statusClass = '';
+                let statusText = 'No recent posts';
+                
+                if (lastPost) {
+                    const daysSince = Math.floor((today - new Date(lastPost.date)) / (1000 * 60 * 60 * 24));
+                    if (daysSince <= 7) {
+                        statusClass = 'active';
+                        statusText = `${daysSince === 0 ? 'Today' : daysSince + ' days ago'}`;
+                    } else {
+                        statusClass = 'stale';
+                        statusText = `${daysSince} days ago`;
+                    }
+                }
+                
+                html += `
+                    <div class="coverage-item ${statusClass}">
+                        <div class="coverage-module">${module.name}</div>
+                        <div class="coverage-status">${statusText}</div>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function updateTestResults() {
+            const container = document.getElementById('testResults');
+            
+            const results = typeof linkTestResults !== 'undefined' ? linkTestResults : [];
+            
+            if (results.length === 0) {
+                container.innerHTML = `
+                    <div class="test-result-item">
+                        <div class="test-result-strategy">No test results recorded yet.</div>
+                        <div class="test-result-notes">Add results to <code>linkTestResults</code> array in link-schedule.js</div>
+                    </div>
+                `;
+                return;
+            }
+            
+            let html = '';
+            results.forEach(result => {
+                html += `
+                    <div class="test-result-item">
+                        <div class="test-result-header">
+                            <div class="test-result-week">${result.week} — ${result.account}</div>
+                            <span class="test-result-badge ${result.status}">${result.status === 'winner' ? 'Winner' : 'Testing'}</span>
+                        </div>
+                        <div class="test-result-strategy">Strategy: ${result.strategy}</div>
+                        ${result.notes ? `<div class="test-result-notes">${result.notes}</div>` : ''}
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+
+        function updatePlanningAlert() {
+            const alertContainer = document.getElementById('globalPlanningAlert');
+            const today = new Date();
+            const oneMonthAhead = new Date(today);
+            oneMonthAhead.setMonth(oneMonthAhead.getMonth() + 1);
+            
+            const requiredPosts = {
+                michael: { required: 0, scheduled: 0 },
+                stelios: { required: 0, scheduled: 0 },
+                company: { required: 0, scheduled: 0 }
+            };
+            
+            const postsPerWeek = { michael: 2, stelios: 2, company: 3 };
+            
+            let currentDate = new Date(today);
+            currentDate.setHours(0, 0, 0, 0);
+            
+            while (currentDate <= oneMonthAhead) {
+                const dayOfWeek = currentDate.getDay();
+                if (dayOfWeek >= 1 && dayOfWeek <= 5) {
+                    const weekFraction = 1 / 5;
+                    requiredPosts.michael.required += postsPerWeek.michael * weekFraction;
+                    requiredPosts.stelios.required += postsPerWeek.stelios * weekFraction;
+                    requiredPosts.company.required += postsPerWeek.company * weekFraction;
+                }
+                currentDate.setDate(currentDate.getDate() + 1);
+            }
+            
+            Object.keys(requiredPosts).forEach(account => {
+                requiredPosts[account].required = Math.ceil(requiredPosts[account].required);
+            });
+            
+            const todayStr = formatDate(today);
+            const oneMonthAheadStr = formatDate(oneMonthAhead);
+            
+            posts.forEach(post => {
+                if (post.date >= todayStr && post.date <= oneMonthAheadStr) {
+                    if (requiredPosts[post.account]) {
+                        requiredPosts[post.account].scheduled++;
+                    }
+                }
+            });
+            
+            const allAccountsOk = 
+                requiredPosts.michael.scheduled >= requiredPosts.michael.required &&
+                requiredPosts.stelios.scheduled >= requiredPosts.stelios.required &&
+                requiredPosts.company.scheduled >= requiredPosts.company.required;
+            
+            const formatDateShort = (date) => {
+                return date.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' });
+            };
+            
+            if (allAccountsOk) {
+                alertContainer.innerHTML = `
+                    <div class="planning-alert success" style="max-width: 1400px; margin: 1rem auto 0; padding-left: 2rem; padding-right: 2rem; box-sizing: content-box;">
+                        <div class="planning-alert-icon">✓</div>
+                        <div class="planning-alert-content">
+                            <div class="planning-alert-title">Planning On Track</div>
+                            <div class="planning-alert-text">All accounts have posts scheduled through ${formatDateShort(oneMonthAhead)}</div>
+                            <div class="planning-alert-details">
+                                <span class="planning-alert-stat"><strong style="color: var(--michael-color)">Michael:</strong> ${requiredPosts.michael.scheduled}/${requiredPosts.michael.required}</span>
+                                <span class="planning-alert-stat"><strong style="color: var(--stelios-color)">Stelios:</strong> ${requiredPosts.stelios.scheduled}/${requiredPosts.stelios.required}</span>
+                                <span class="planning-alert-stat"><strong style="color: var(--company-color)">Company:</strong> ${requiredPosts.company.scheduled}/${requiredPosts.company.required}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                const missing = [];
+                if (requiredPosts.michael.scheduled < requiredPosts.michael.required) {
+                    missing.push(`Michael needs ${requiredPosts.michael.required - requiredPosts.michael.scheduled} more`);
+                }
+                if (requiredPosts.stelios.scheduled < requiredPosts.stelios.required) {
+                    missing.push(`Stelios needs ${requiredPosts.stelios.required - requiredPosts.stelios.scheduled} more`);
+                }
+                if (requiredPosts.company.scheduled < requiredPosts.company.required) {
+                    missing.push(`Company needs ${requiredPosts.company.required - requiredPosts.company.scheduled} more`);
+                }
+                
+                alertContainer.innerHTML = `
+                    <div class="planning-alert danger" style="max-width: 1400px; margin: 1rem auto 0; padding-left: 2rem; padding-right: 2rem; box-sizing: content-box;">
+                        <div class="planning-alert-icon">⚠</div>
+                        <div class="planning-alert-content">
+                            <div class="planning-alert-title">Not Planned 1 Month Ahead</div>
+                            <div class="planning-alert-text">Posts needed by ${formatDateShort(oneMonthAhead)}: ${missing.join(' • ')}</div>
+                            <div class="planning-alert-details">
+                                <span class="planning-alert-stat"><strong style="color: var(--michael-color)">Michael:</strong> ${requiredPosts.michael.scheduled}/${requiredPosts.michael.required}</span>
+                                <span class="planning-alert-stat"><strong style="color: var(--stelios-color)">Stelios:</strong> ${requiredPosts.stelios.scheduled}/${requiredPosts.stelios.required}</span>
+                                <span class="planning-alert-stat"><strong style="color: var(--company-color)">Company:</strong> ${requiredPosts.company.scheduled}/${requiredPosts.company.required}</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function setupNavigation() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+                    
+                    this.classList.add('active');
+                    document.getElementById(this.dataset.section).classList.add('active');
+                });
+            });
+
+            document.getElementById('prevMonth').addEventListener('click', () => {
+                currentMonth--;
+                if (currentMonth < 0) {
+                    currentMonth = 11;
+                    currentYear--;
+                }
+                renderCalendar();
+                updateLinkBanner();
+            });
+
+            document.getElementById('nextMonth').addEventListener('click', () => {
+                currentMonth++;
+                if (currentMonth > 11) {
+                    currentMonth = 0;
+                    currentYear++;
+                }
+                renderCalendar();
+                updateLinkBanner();
+            });
+
+            document.getElementById('modalClose').addEventListener('click', closeModal);
+            document.getElementById('postModal').addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+        }
+
+        function getMondayOfWeek(date) {
+            const d = new Date(date);
+            const day = d.getDay();
+            const diff = d.getDate() - day + (day === 0 ? -6 : 1);
+            return new Date(d.setDate(diff));
+        }
+
+        function formatDate(date) {
+            return date.toISOString().split('T')[0];
+        }
+
+        function updateLinkBanner() {
+            const firstDayOfMonth = new Date(currentYear, currentMonth, 1);
+            const monday = getMondayOfWeek(firstDayOfMonth);
+            
+            const weekStart = new Date(monday);
+            const options = { day: 'numeric', month: 'short' };
+            const weekLabel = `w/c ${weekStart.toLocaleDateString('en-GB', options)}`;
+            
+            document.getElementById('bannerWeek').textContent = weekLabel;
+            
+            const michaelRule = getLinkRule('michael', firstDayOfMonth);
+            const steliosRule = getLinkRule('stelios', firstDayOfMonth);
+            const companyRule = getLinkRule('company', firstDayOfMonth);
+            
+            document.getElementById('linkRulesContent').innerHTML = `
+                <div class="link-rule-item">
+                    <span class="link-rule-account" style="color: var(--michael-color)">Michael:</span>
+                    <span class="link-rule-text">${michaelRule}</span>
+                </div>
+                <div class="link-rule-item">
+                    <span class="link-rule-account" style="color: var(--stelios-color)">Stelios:</span>
+                    <span class="link-rule-text">${steliosRule}</span>
+                </div>
+                <div class="link-rule-item">
+                    <span class="link-rule-account" style="color: var(--company-color)">Company:</span>
+                    <span class="link-rule-text">${companyRule}</span>
+                </div>
+            `;
+        }
+
+        function renderCalendar() {
+            const monthYearEl = document.getElementById('monthYear');
+            const calendarDaysEl = document.getElementById('calendarDays');
+            
+            monthYearEl.textContent = `${monthNames[currentMonth]} ${currentYear}`;
+            
+            const firstDay = new Date(currentYear, currentMonth, 1);
+            const lastDay = new Date(currentYear, currentMonth + 1, 0);
+            
+            let startDay = firstDay.getDay();
+            startDay = startDay === 0 ? 6 : startDay - 1;
+            
+            const totalDays = lastDay.getDate();
+            const prevMonthLastDay = new Date(currentYear, currentMonth, 0).getDate();
+            
+            let html = '';
+            const today = new Date();
+            
+            for (let i = startDay - 1; i >= 0; i--) {
+                const day = prevMonthLastDay - i;
+                const date = new Date(currentYear, currentMonth - 1, day);
+                html += createDayCell(day, date, true);
+            }
+            
+            for (let day = 1; day <= totalDays; day++) {
+                const date = new Date(currentYear, currentMonth, day);
+                const isToday = date.toDateString() === today.toDateString();
+                html += createDayCell(day, date, false, isToday);
+            }
+            
+            const remainingCells = 42 - (startDay + totalDays);
+            for (let day = 1; day <= remainingCells; day++) {
+                const date = new Date(currentYear, currentMonth + 1, day);
+                html += createDayCell(day, date, true);
+            }
+            
+            calendarDaysEl.innerHTML = html;
+            
+            document.querySelectorAll('.post-item').forEach(item => {
+                item.addEventListener('click', () => showPostModal(item.dataset.postId));
+            });
+        }
+
+        function createDayCell(day, date, isOtherMonth, isToday = false) {
+            const dateStr = formatDate(date);
+            const dayPosts = posts.filter(p => p.date === dateStr);
+            
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            const oneMonthAhead = new Date(today);
+            oneMonthAhead.setMonth(oneMonthAhead.getMonth() + 1);
+            
+            const isTargetDeadline = date.toDateString() === oneMonthAhead.toDateString();
+            
+            const dayOfWeek = date.getDay();
+            const isWeekday = dayOfWeek >= 1 && dayOfWeek <= 5;
+            const isFutureDate = date > today && date <= oneMonthAhead;
+            const needsPost = isWeekday && isFutureDate && dayPosts.length === 0 && !isOtherMonth;
+            
+            let classes = 'calendar-day';
+            if (isOtherMonth) classes += ' other-month';
+            if (isToday) classes += ' today';
+            if (isTargetDeadline) classes += ' target-deadline';
+            if (needsPost) classes += ' needs-post';
+            
+            let postsHtml = '';
+            if (dayPosts.length > 0) {
+                postsHtml = '<div class="day-posts">';
+                dayPosts.forEach(post => {
+                    const purposeClass = post.purpose === 'Brand Building' ? 'brand' : 'conversion';
+                    const statusClass = post.status ? post.status.toLowerCase() : 'draft';
+                    postsHtml += `
+                        <div class="post-item ${post.account}" data-post-id="${post.id}">
+                            <div class="post-item-header">
+                                <div class="post-title">${escapeHtml(post.title)}</div>
+                                <span class="post-status-tag ${statusClass}">${post.status || 'Draft'}</span>
+                            </div>
+                            <div class="post-meta">
+                                <span class="post-type-tag ${post.type.toLowerCase()}">${post.type}</span>
+                                <span class="post-purpose-tag ${purposeClass}">${post.purpose}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                postsHtml += '</div>';
+            }
+            
+            return `
+                <div class="${classes}">
+                    <div class="day-number">${isToday ? `<span>${day}</span>` : day}</div>
+                    ${postsHtml}
+                </div>
+            `;
+        }
+
+        function showPostModal(postId) {
+            const post = posts.find(p => String(p.id) === String(postId));
+            if (!post) return;
+            
+            const purposeClass = post.purpose === 'Brand Building' ? 'brand' : 'conversion';
+            const statusClass = post.status ? post.status.toLowerCase() : 'draft';
+            const statusLabel = post.status || 'Draft';
+            
+            document.getElementById('modalTitle').textContent = post.title;
+            document.getElementById('modalBody').innerHTML = `
+                <div class="detail-row">
+                    <span class="detail-label">Date</span>
+                    <span class="detail-value">${formatDisplayDate(post.date)}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Account</span>
+                    <span class="detail-value">
+                        <span class="account-badge ${post.account}">
+                            <span class="account-dot ${post.account}"></span>
+                            ${accountNames[post.account]}
+                        </span>
+                    </span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Type</span>
+                    <span class="detail-value">${post.type}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Purpose</span>
+                    <span class="detail-value">
+                        <span class="purpose-indicator ${purposeClass}" style="margin: 0; padding: 0.25rem 0.5rem;">${post.purpose}</span>
+                    </span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Status</span>
+                    <span class="detail-value">
+                        <span class="post-status-tag ${statusClass}" style="font-size: 0.75rem; padding: 0.25rem 0.5rem;">${statusLabel}</span>
+                    </span>
+                </div>
+                ${post.notes ? `
+                <div class="detail-row" style="flex-direction: column; gap: 0.5rem;">
+                    <span class="detail-label">Notes</span>
+                    <div class="detail-notes">${escapeHtml(post.notes)}</div>
+                </div>
+                ` : ''}
+            `;
+            
+            document.getElementById('postModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('postModal').classList.remove('active');
+        }
+
+        function formatDisplayDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('en-GB', { 
+                weekday: 'long', 
+                day: 'numeric', 
+                month: 'long', 
+                year: 'numeric' 
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        document.addEventListener('DOMContentLoaded', init);
+
+        // ========================
+        // AUDIT SECTION LOGIC
+        // ========================
+
+        let auditFilterPlacement = 'all';
+        let auditSortKey = 'date-desc';
+
+        function initAudit() {
+            renderAuditSummary();
+            renderAuditComparison();
+            renderAuditTable();
+
+            document.querySelectorAll('.audit-filter-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.audit-filter-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    auditFilterPlacement = this.dataset.filter;
+                    renderAuditTable();
+                });
+            });
+
+            document.getElementById('auditSortSelect').addEventListener('change', function() {
+                auditSortKey = this.value;
+                renderAuditTable();
+            });
+        }
+
+        function getAuditPosts() {
+            return typeof steliosAuditPosts !== 'undefined' ? steliosAuditPosts : [];
+        }
+
+        function calcER(impressions, engagements) {
+            if (!impressions || impressions === 0 || engagements === null || engagements === undefined) return null;
+            return (engagements / impressions) * 100;
+        }
+
+        function renderAuditSummary() {
+            const posts = getAuditPosts();
+            const withData = posts.filter(p => p.impressions > 0);
+
+            document.getElementById('auditPostCount').textContent = posts.length;
+
+            const totalImpressions = withData.reduce((s, p) => s + p.impressions, 0);
+            const avgImpressions = withData.length ? Math.round(totalImpressions / withData.length) : 0;
+
+            const withEng = withData.filter(p => p.engagements !== null);
+            const totalEng = withEng.reduce((s, p) => s + p.engagements, 0);
+            const avgEng = withEng.length ? (totalEng / withEng.length).toFixed(1) : 0;
+
+            const avgER = withEng.length ? ((totalEng / withData.reduce((s, p) => s + p.impressions, 0)) * 100).toFixed(2) : 0;
+
+            const topByImpressions = [...withData].sort((a, b) => b.impressions - a.impressions)[0];
+            const topByEng = [...withEng].sort((a, b) => b.engagements - a.engagements)[0];
+
+            const notRecorded = posts.filter(p => p.linkPlacement === '').length;
+            const recorded = posts.length - notRecorded;
+
+            const container = document.getElementById('auditSummaryGrid');
+            container.innerHTML = `
+                <div class="audit-stat-card">
+                    <div class="audit-stat-label">Total Posts</div>
+                    <div class="audit-stat-value">${posts.length}</div>
+                    <div class="audit-stat-sub">${recorded} with link placement recorded</div>
+                </div>
+                <div class="audit-stat-card">
+                    <div class="audit-stat-label">Total Impressions</div>
+                    <div class="audit-stat-value">${totalImpressions.toLocaleString()}</div>
+                    <div class="audit-stat-sub">Avg ${avgImpressions.toLocaleString()} per post</div>
+                </div>
+                <div class="audit-stat-card">
+                    <div class="audit-stat-label">Total Engagements</div>
+                    <div class="audit-stat-value">${totalEng.toLocaleString()}</div>
+                    <div class="audit-stat-sub">Avg ${avgEng} per post</div>
+                </div>
+                <div class="audit-stat-card">
+                    <div class="audit-stat-label">Avg Engagement Rate</div>
+                    <div class="audit-stat-value">${avgER}%</div>
+                    <div class="audit-stat-sub">Across all posts with data</div>
+                </div>
+                <div class="audit-stat-card highlight">
+                    <div class="audit-stat-label">Top by Impressions</div>
+                    <div class="audit-stat-value">${topByImpressions ? topByImpressions.impressions.toLocaleString() : '—'}</div>
+                    <div class="audit-stat-sub">${topByImpressions ? formatAuditDate(topByImpressions.date) : ''}</div>
+                </div>
+                <div class="audit-stat-card highlight">
+                    <div class="audit-stat-label">Top by Engagements</div>
+                    <div class="audit-stat-value">${topByEng ? topByEng.engagements.toLocaleString() : '—'}</div>
+                    <div class="audit-stat-sub">${topByEng ? formatAuditDate(topByEng.date) : ''}</div>
+                </div>
+            `;
+        }
+
+        function renderAuditComparison() {
+            const posts = getAuditPosts();
+            const placements = [
+                { key: 'post', label: 'Link in post', dotClass: 'post' },
+                { key: 'comment', label: 'Link in comment', dotClass: 'comment' },
+                { key: 'none', label: 'No link', dotClass: 'none' },
+            ];
+
+            const allWithData = posts.filter(p => p.impressions > 0 && p.linkPlacement !== '');
+            const maxAvgImpressions = Math.max(...placements.map(pl => {
+                const group = allWithData.filter(p => p.linkPlacement === pl.key);
+                return group.length ? group.reduce((s, p) => s + p.impressions, 0) / group.length : 0;
+            }), 1);
+            const maxAvgEng = Math.max(...placements.map(pl => {
+                const group = allWithData.filter(p => p.linkPlacement === pl.key && p.engagements !== null);
+                return group.length ? group.reduce((s, p) => s + p.engagements, 0) / group.length : 0;
+            }), 1);
+
+            const container = document.getElementById('auditComparisonGrid');
+            let html = `
+                <div class="audit-comparison-header"></div>
+                <div class="audit-comparison-header">Avg Impressions</div>
+                <div class="audit-comparison-header">Avg Engagements</div>
+            `;
+
+            placements.forEach(pl => {
+                const group = allWithData.filter(p => p.linkPlacement === pl.key);
+                const engGroup = group.filter(p => p.engagements !== null);
+                const avgImp = group.length ? Math.round(group.reduce((s, p) => s + p.impressions, 0) / group.length) : null;
+                const avgEng = engGroup.length ? (engGroup.reduce((s, p) => s + p.engagements, 0) / engGroup.length).toFixed(1) : null;
+
+                const impBarWidth = avgImp ? Math.max(4, Math.round((avgImp / maxAvgImpressions) * 220)) : 0;
+                const engBarWidth = avgEng ? Math.max(4, Math.round((parseFloat(avgEng) / maxAvgEng) * 220)) : 0;
+
+                html += `
+                    <div class="audit-comparison-row-label">
+                        <span class="placement-dot ${pl.dotClass}"></span>
+                        ${pl.label}
+                        <span style="color:var(--text-muted);font-size:0.7rem;">(${group.length})</span>
+                    </div>
+                    <div class="audit-comparison-bar-wrap">
+                        ${avgImp !== null ? `<div class="audit-comparison-bar impressions" style="width:${impBarWidth}px"></div><span class="audit-comparison-value">${avgImp.toLocaleString()}</span>` : '<span style="color:var(--text-muted);font-size:0.75rem;">No data</span>'}
+                    </div>
+                    <div class="audit-comparison-bar-wrap">
+                        ${avgEng !== null ? `<div class="audit-comparison-bar engagements" style="width:${engBarWidth}px"></div><span class="audit-comparison-value">${avgEng}</span>` : '<span style="color:var(--text-muted);font-size:0.75rem;">No data</span>'}
+                    </div>
+                `;
+            });
+
+            container.innerHTML = html;
+        }
+
+        function renderAuditTable() {
+            const allPosts = getAuditPosts();
+
+            let filtered = auditFilterPlacement === 'all'
+                ? allPosts
+                : allPosts.filter(p => p.linkPlacement === auditFilterPlacement);
+
+            filtered = [...filtered].sort((a, b) => {
+                const erA = calcER(a.impressions, a.engagements);
+                const erB = calcER(b.impressions, b.engagements);
+                switch (auditSortKey) {
+                    case 'date-desc': return b.date.localeCompare(a.date);
+                    case 'date-asc': return a.date.localeCompare(b.date);
+                    case 'impressions-desc': return (b.impressions || 0) - (a.impressions || 0);
+                    case 'impressions-asc': return (a.impressions || 0) - (b.impressions || 0);
+                    case 'engagements-desc': return (b.engagements || 0) - (a.engagements || 0);
+                    case 'engagements-asc': return (a.engagements || 0) - (b.engagements || 0);
+                    case 'er-desc': return (erB || 0) - (erA || 0);
+                    default: return 0;
+                }
+            });
+
+            const tbody = document.getElementById('auditTableBody');
+            const noResults = document.getElementById('auditNoResults');
+
+            if (filtered.length === 0) {
+                tbody.innerHTML = '';
+                noResults.style.display = 'block';
+                return;
+            }
+            noResults.style.display = 'none';
+
+            const maxImp = Math.max(...filtered.map(p => p.impressions || 0));
+
+            tbody.innerHTML = filtered.map(post => {
+                const er = calcER(post.impressions, post.engagements);
+                const isTopImp = post.impressions === maxImp;
+                const placementLabel = { post: 'In post', comment: 'In comment', none: 'No link', '': 'Unknown' };
+                const placementClass = post.linkPlacement || 'unknown';
+
+                const textHtml = post.text
+                    ? `<div class="audit-post-text truncated" id="audit-text-${post.id}">${escapeHtml(post.text)}</div>
+                       <button class="audit-post-expand" onclick="toggleAuditText(${post.id})">Show more</button>`
+                    : `<span class="audit-post-empty">No text recorded yet</span>`;
+
+                return `
+                    <tr>
+                        <td class="audit-date">${formatAuditDate(post.date)}</td>
+                        <td>
+                            ${textHtml}
+                        </td>
+                        <td>
+                            <span class="placement-badge ${placementClass}">
+                                <span class="placement-dot ${placementClass}"></span>
+                                ${placementLabel[post.linkPlacement] ?? 'Unknown'}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="audit-metric ${isTopImp ? 'top' : ''}">${post.impressions ? post.impressions.toLocaleString() : '—'}</div>
+                        </td>
+                        <td>
+                            <div class="audit-metric">${post.engagements !== null && post.engagements !== undefined ? post.engagements.toLocaleString() : '—'}</div>
+                            ${er !== null ? `<div class="audit-er">${er.toFixed(2)}% ER</div>` : ''}
+                        </td>
+                        <td>
+                            <div class="audit-metric" style="color:var(--text-muted);">${er !== null ? er.toFixed(2) + '%' : '—'}</div>
+                        </td>
+                        <td>
+                            <a href="${post.url}" target="_blank" class="audit-url-link">View ↗</a>
+                        </td>
+                    </tr>
+                `;
+            }).join('');
+        }
+
+        function toggleAuditText(postId) {
+            const el = document.getElementById('audit-text-' + postId);
+            const btn = el.nextElementSibling;
+            if (el.classList.contains('truncated')) {
+                el.classList.remove('truncated');
+                btn.textContent = 'Show less';
+            } else {
+                el.classList.add('truncated');
+                btn.textContent = 'Show more';
+            }
+        }
+
+        function formatAuditDate(dateStr) {
+            const d = new Date(dateStr + 'T00:00:00');
+            return d.toLocaleDateString('en-GB', { day: 'numeric', month: 'short', year: '2-digit' });
+        }
+
+        // Hook audit init into nav click
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', function() {
+                    if (this.dataset.section === 'audit') {
+                        initAudit();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

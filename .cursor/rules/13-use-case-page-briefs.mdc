@@ -1,0 +1,94 @@
+---
+description: Rules for writing and reviewing StoneRise use case page briefs. Apply when creating or editing any /use-cases page brief, page structure, or page copy for the StoneRise website.
+globs: Marketing/Website/*-Page-Brief.md
+alwaysApply: false
+---
+
+# Use Case Page Brief Rules
+
+## Visitor Intent
+
+Every /use-cases visitor arrives with one of two entry points:
+- **Google organic** — searched a specific keyword (e.g. "construction CVR software"), landing cold with no prior StoneRise context
+- **Site navigation** — already on the site, self-selected into this use case, warmer but still evaluating
+
+In both cases the intent is identical: does this solve my specific problem and is this the right product for me?
+
+---
+
+## Page Structure (Mandatory Order)
+
+### 1. Hero
+- H1 must exactly match or closely mirror the target search keyword
+- Subheadline must describe the visitor's current situation in language they recognise from their own day
+- Single CTA: "Book a Free Demo"
+
+### 2. Problem Block — 3 pain points
+- Each pain point must include the **consequence**, not just the symptom
+  - BAD: "CSCS cards tracked on spreadsheets"
+  - GOOD: "A worker with a lapsed card ends up on site and you find out during a CDM audit"
+- Must feel written by someone who has done the job, not a software company guessing
+- Use construction industry language naturally (RFQs, POs, CSCS, pay less notices, CVRs, QS, subcontract, package)
+
+### 3. CTA (repeat)
+- Repeat the "Book a Free Demo" CTA button after the problem block
+
+### 4. Solution Block — 4 features
+- Each feature = heading + one sentence of benefit
+- Make the before/after workflow explicit, not just the feature name
+  - BAD: "Automated PO creation"
+  - GOOD: "A request is raised, approved, and the PO is built and sent to the supplier automatically — no manual document creation"
+
+### 5. Differentiation Block — "Built for construction, not adapted for it"
+- 2–3 lines positioning StoneRise against generic alternatives
+- Do NOT list features here — this is a positioning statement
+- Reference that Stelios and Michael are qualified QSs who ran construction businesses
+- Example angle: "Unlike generic tools built for any industry, the workflows in Certify match how a construction commercial team actually operates — because they were designed by people who ran one"
+
+### 6. Credibility Block
+- "Built by QSs who ran construction businesses. Not generic software adapted for construction."
+- Stelios Ioannou and Michael Loizias are qualified quantity surveyors with 10 years running construction businesses before building StoneRise.
+
+### 7. FAQ Block — 3–4 questions
+Address the practical fit and risk objections that prevent demo bookings:
+- How long does it take to set up / get started?
+- Does it integrate with Sage or our accounting software?
+- Is it suitable for a business our size?
+- What does the demo involve — is there any commitment?
+
+Answers should be brief (2 sentences max each) and reassuring without being vague.
+
+### 8. Final CTA Section
+- Headline: specific to the page feature (e.g. "See Certify produce your CVRs from live project data")
+- Body: qualifying offer (3 months free for qualifying contractors)
+- CTA button: "Book a Free Demo"
+
+---
+
+## Writing Rules (Non-Negotiable)
+
+- No dashes anywhere — no hyphens, em dashes, en dashes. Rephrase using commas or full stops.
+- No generic SaaS language: "revolutionary", "game-changing", "all in one", "seamless", "powerful"
+- No invented statistics — only approved proof points from rule 03
+- Problem-first always — never mention the solution before the pain
+- Short paragraphs — 2 sentences maximum per block
+- Single CTA colour and label throughout — never vary the button text
+
+---
+
+## SEO Requirements
+
+- Page title format: `[Feature Name] for [Audience] | StoneRise`
+- Meta description: problem-led, 150 characters max, no invented stats
+- H1 must match or mirror the target keyword
+- Keywords used naturally throughout — not stuffed
+- All /use-cases pages are indexed (no noindex)
+
+---
+
+## What These Pages Are NOT
+
+- Not a feature catalogue — each page owns one problem and one solution
+- Not the place to mention other StoneRise modules or apps
+- Not the place to mention pricing
+- Not a blog post — no long paragraphs, no background context, no history

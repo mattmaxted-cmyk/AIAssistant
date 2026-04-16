@@ -1,36 +1,41 @@
-# Daily Tasks — Monday 30 Mar 2026
+# Daily Tasks — Wednesday 15 Apr 2026
+
+## Reminder
+- Check Publer — confirm today's posts are scheduled and ready
+- DCW landing page hard deadline Friday 18 Apr — 3 days away, chase Mike
+
+## Completed Today
+1. [x] Cold outbound campaign launched — 4 to 8 score leads (Michael's scoring system)
+2. [x] SEMrush position tracking set up for all keywords
 
 ## From Weekly Plan
 
-### HubSpot
-1. [ ] Switch HubSpot over from Stelios to Haidar
-2. [ ] Tweak HubSpot workflows for Haidar
+### DCW — Urgent
+3. [ ] ⚠️ DCW landing page — must be live by Friday 18 Apr, chase Mike today
 
-### Meta
-3. [ ] Meta ad spend -10% decrease (manual — £160 → £144/day)
+### Campaigns
+4. [ ] Monitor cold outbound — check sends, open rates, any early replies
+5. [ ] Monitor LinkedIn Certify2/3 vs original
+6. [ ] Monitor Meta bot lead rate
 
-### LinkedIn Link Placement Test
-4. [ ] Update Publer posts for w/c 30 Mar:
-   - Michael: no links at all
-   - Stelios: links in comments only
+### New — Invoice Matching Software
+7. [ ] Plan organic SEO pages for Invoice Matching software product launch
+8. [ ] Write use case page brief for /use-cases/ai-invoice-matching (or equivalent URL)
 
-### Website
-5. [x] Website lead capture form — replace company size field with turnover
-6. [ ] Pricing page — split main contractor / subcontractor under Payment Application header
-7. [ ] Build /solutions/payment-applications-software page for Certify
-8. [ ] Look into integrating HubSpot chatbot on the main StoneRise website
-
-### Certify Campaigns
-9. [ ] ⚠️ Chase Mike — push landing pages live so both campaigns can launch
-
-### Social — LinkedIn
-10. [ ] Create images for the month of written posts
-11. [ ] Upload scheduled posts to Publer
-12. [ ] Create carousel test content (overdue from last week)
+### LinkedIn — Stelios
+9. [ ] Start using Stelios's LinkedIn account to comment on relevant posts — aim for daily engagement
 
 ### Admin
-13. [ ] Research URL shortener for LinkedIn comment linking and Facebook posts
+10. [ ] Add fake name with Nomos email for competitor analysis
+11. [ ] Speak to Stelios about premium SEMrush
 
 ## Additional Today
+- Added interactive demo pipeline to future tasks:
+  1. PQQ (priority 1)
+  2. Subcontractor payment assessment (priority 2)
+  3. Variation Management (priority 3)
+  4. Workflow Builder (priority 4)
+  5. Site Verification (priority 5)
+  6. Sub-contract order creation (wait until feature built)
 
 ## Completed Today
